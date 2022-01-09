@@ -69,3 +69,8 @@
     时间：2022.01.09 18:39
     内容：Programming Rust 第209-211页。 具名结构体(Named-Field Structs)~~~
 
+## 第 015 个番茄时间
+
+    时间：2022.01.09 
+    内容：Programming Rust 第212-215页。 类元祖结构体(Tuple-Like Structs)~~~ 用.0 .1 .2 方式访问元素(elements)，相较于具名结构体，类元祖结构体更适合在模式匹配的情况下使用。。。   类单元结构体(Unit-Like Structs)~~~ 无元素的结构体（空结构），很像unit类型`()`。  结构体存储布局～～`#[repr(C)]`属性
+
