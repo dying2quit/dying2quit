@@ -81,8 +81,8 @@
 
 ## 第 017 个番茄时间
 
-    时间：2022.01.10 18:
-    内容：Programming Rust 第217页。 通过Box指针将特殊的数据（大小不确定的、大量数据所有权传递的、实现了trait的）包装到heap上？
+    时间：2022.01.10 18:20
+    内容：Programming Rust 第217页。 通过Box指针将特殊的数据（如递归一样大小不确定的类型、大量数据所有权传递的、实现trait类型）包装到heap上？
     
     ```rust
         #[derive(Debug)]
@@ -100,3 +100,22 @@
         println!("{:?}", list);
         // Node { value: 1, next: Some(Node { value: 1, next: None }) }
     ```
+
+## 第 018 个番茄时间
+
+    时间：2022.01.11 00:37
+    内容： 
+        智能指针 https://rustwiki.org/zh-CN/book/ch15-00-smart-pointers.html。
+        智能指针区别于常规结构体的显著特性在于其实现了 Deref 和 Drop trait。
+        常用智能指针：String 和 Vec<T>
+        Deref trait 允许智能指针结构体实例表现的像引用一样，这样就可以编写既用于引用、又用于智能指针的代码。
+        Drop trait 允许我们自定义当智能指针离开作用域时运行的代码。
+
+        ```
+        enum List {
+            Cons(i32, List),
+            Nil,
+        }
+        //  List 的一个成员被定义为是递归的：它直接存放了另一个相同类型的值。这意味着 Rust 无法计算为了存放 List 值到底需要多少空间。  故而编译失败。
+        ```
+        未完待续。。。  https://rustwiki.org/zh-CN/book/ch15-01-box.html#%E8%AE%A1%E7%AE%97%E9%9D%9E%E9%80%92%E5%BD%92%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%A7%E5%B0%8F
