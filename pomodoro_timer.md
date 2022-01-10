@@ -79,3 +79,24 @@
     时间：2022.01.10 01:25
     内容：Programming Rust 第215-217页。 给结构添加方法～～～  智能指针(Box, Rc, Arc)？   此处需要再细细琢磨～～～
 
+## 第 017 个番茄时间
+
+    时间：2022.01.10 18:
+    内容：Programming Rust 第217页。 通过Box指针将特殊的数据（大小不确定的、大量数据所有权传递的、实现了trait的）包装到heap上？
+    
+    ```rust
+        #[derive(Debug)]
+        struct Node<T> {
+            value: T,
+            next: Box<Option<Node<T>>>
+        }
+        let list = Node {
+            value: 1,
+            next: Box::new(Some(Node {
+                value: 1,
+                next: Box::new(None)
+            }))
+        };
+        println!("{:?}", list);
+        // Node { value: 1, next: Some(Node { value: 1, next: None }) }
+    ```
