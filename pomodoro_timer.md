@@ -119,3 +119,46 @@
         //  List 的一个成员被定义为是递归的：它直接存放了另一个相同类型的值。这意味着 Rust 无法计算为了存放 List 值到底需要多少空间。  故而编译失败。
         ```
         未完待续。。。  https://rustwiki.org/zh-CN/book/ch15-01-box.html#%E8%AE%A1%E7%AE%97%E9%9D%9E%E9%80%92%E5%BD%92%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%A7%E5%B0%8F
+
+
+## 第 019 个番茄时间
+
+    时间：2022.01.11 23:02
+    内容：  Rust 程序设计语言 中文版 15.1 
+        使用 Box<T> 给递归类型一个已知的大小，打破编译过程中存储空间计算时的无限递归。
+        ```
+        enum List {
+            Cons(i32, Box<List>),
+            Nil,
+        }
+        ```
+        通过 Deref trait 将智能指针当作常规引用处理（即解引用：*y ）。
+        ```
+            use std::ops::Deref;
+
+            struct MyBox<T>(T);
+
+            impl<T> Deref for MyBox<T> {
+                type Target = T;        // 定义用于Deref trait 的关联类型。
+
+                fn deref(&self) -> &T {
+                    &self.0
+                }
+            }
+
+            // *y 实际被解析为：*(y.deref())
+        ```
+        未完待续。。。。。   已实现Deref trait的类型之解引用强制转换（deref coercions）。
+
+## 第 020 个番茄时间
+
+    时间：2022.01.13 01:
+    内容：https://rustwiki.org/zh-CN/book/ch15-02-deref.html
+        当所涉及到的类型定义了 Deref trait，Rust 会分析这些类型并可以任意多次调用 Deref::deref方法以获得匹配参数的类型。
+        DerefMut trait 用于重载可变引用的 * 运算符。
+        当 T: Deref<Target=U> 时从 &T 到 &U。
+        当 T: DerefMut<Target=U> 时从 &mut T 到 &mut U。
+        当 T: Deref<Target=U> 时从 &mut T 到 &U。
+        ---------------
+        Drop trait是智能指针第二个重要的trait，允许我们在值要离开作用域时执行一些代码（drop方法）。未完待续。。。
+
