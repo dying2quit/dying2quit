@@ -152,7 +152,7 @@
 
 ## 第 020 个番茄时间
 
-    时间：2022.01.13 01:
+    时间：2022.01.13 01:24
     内容：https://rustwiki.org/zh-CN/book/ch15-02-deref.html
         当所涉及到的类型定义了 Deref trait，Rust 会分析这些类型并可以任意多次调用 Deref::deref方法以获得匹配参数的类型。
         DerefMut trait 用于重载可变引用的 * 运算符。
@@ -162,3 +162,13 @@
         ---------------
         Drop trait是智能指针第二个重要的trait，允许我们在值要离开作用域时执行一些代码（drop方法）。未完待续。。。
 
+## 第 021 个番茄时间
+
+    时间：2022.01.14 00:03
+    内容：https://rustwiki.org/zh-CN/book/ch15-03-drop.html
+        Drop trait的drop方法就是通常意义上的析构函数。
+        Drop trait的drop方法是不能够被主动调用的（会造成double free的问题）。当我们希望在作用域结束之前就强制释放变量的话，我们应该使用的是由标准库提供的 std::mem::drop。
+        -------------------
+        Rc<T> 引用计数智能指针（Reference Counting）
+
+## 第 022 个番茄时间
