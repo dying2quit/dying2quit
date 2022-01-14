@@ -196,3 +196,11 @@
         内部可变性的用例：mock 对象
 
         待延展阅读：停机问题（Halting Problem）
+
+## 第 024 个番茄时间
+
+    时间：2022.01.14 19:50
+    内容：https://rustwiki.org/zh-CN/book/ch15-05-interior-mutability.html
+        内部可变性的用例：mock 对象
+        PS：阅读用例代码，发现关于生命周期的知识又迷糊了。。。。。   FUCK。。。
+
