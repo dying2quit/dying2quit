@@ -25,3 +25,7 @@
     内容：Programming Rust 第176-179页。 关于版本控制可进一步参考：The Edition Guide(https://doc.rust-lang.org/edition-guide/)。
 
 ## 第 006 个番茄时间
+
+    时间：2022.01.08 13:30
+    内容：Programming Rust 第179-184页。 主要是关于模块的内容(Modules)。
+    
