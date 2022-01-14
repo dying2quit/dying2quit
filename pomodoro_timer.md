@@ -172,3 +172,27 @@
         Rc<T> 引用计数智能指针（Reference Counting）
 
 ## 第 022 个番茄时间
+
+    时间：2022.01.14 17:21
+    内容：https://rustwiki.org/zh-CN/book/ch15-04-rc.html
+        每次调用Rc:clone(&T)，则Rc<T>中数据的引用计数会加1，而不是进行“深拷贝”。 也可以T.clone()。
+        Rc::strong_count(&T) 可获取引用计数值。
+        Rc<T>只允许多个不可变引用，因为：相同位置的多个可变借用可能造成数据竞争和不一致。
+        通过内部可变性模式和 RefCell<T> 类型，可以与 Rc<T> 结合使用来处理不可变性的限制。
+
+        待延展阅读：[Rust 中几个智能指针的异同与使用场景](https://ipotato.me/article/57)
+
+## 第 023 个番茄时间
+
+    时间：2022.01.14 19:50
+    内容：https://rustwiki.org/zh-CN/book/ch15-05-interior-mutability.html
+        内部可变性（Interior mutability）是 Rust 中的一个设计模式，它允许你即使在有不可变引用时也可以改变数据，这通常是借用规则所不允许的。
+        RefCell<T> 用于能够确保代码遵守借用规则，但编译器不能理解和确定的情况，使代码在运行时检查借用规则，而非编译过程中检查借用规则。
+
+        - Rc<T> 允许相同数据有多个所有者；Box<T> 和 RefCell<T> 有单一所有者。
+        - Box<T> 允许在编译时执行不可变或可变借用检查；Rc<T>仅允许在编译时执行不可变借用检查；RefCell<T> 允许在运行时执行不可变或可变借用检查。
+        - 因为 RefCell<T> 允许在运行时执行可变借用检查，所以我们可以在即便 RefCell<T> 自身是不可变的情况下修改其内部的值。
+
+        内部可变性的用例：mock 对象
+
+        待延展阅读：停机问题（Halting Problem）
