@@ -11,3 +11,22 @@
 
 - (2022.01.08) 大家都这么看好Rust，有没有可能是大家都被虐的很惨，不敢承认自己呆，故而无限吹捧之？
 
+- (2022.01.15) 太怕社死，将commit中的信息修改下。。。
+    使用如下命令批量执行。。。。   git rebase -i ; git commit -amend 的方式太慢了，一个一个弄～～～
+    ```
+        git filter-branch -f --env-filter '
+        OLD_EMAIL="dying2quit@example.com"
+        CORRECT_NAME="quit"
+        CORRECT_EMAIL="dying2quit@example.com"
+        if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+        then
+            export GIT_COMMITTER_NAME="$CORRECT_NAME"
+            export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+        fi
+        if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+        then
+            export GIT_AUTHOR_NAME="$CORRECT_NAME"
+            export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+        fi
+        ' --tag-name-filter cat -- --branches --tags
+    ```
