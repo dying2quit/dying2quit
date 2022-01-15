@@ -215,3 +215,11 @@
         Cell<T> ？？？
         Mutex<T>提供线程间安全的内部可变性。
 
+## 第 026 个番茄时间
+
+    时间：2022.01.16 01:34
+    内容：https://rustwiki.org/zh-CN/book/ch15-06-reference-cycles.html
+        Rust 并不保证完全地避免内存泄漏。 Rc<T> 和 RefCell<T> 可以创建出循环引用，导致数据可以永远不被清除（内存泄漏）。创建引用循环是一个程序上的逻辑 bug。
+        避免引用循环：将 Rc<T> 变为 Weak<T>。
+        调用 Rc::downgrade 时会得到 Weak<T> 类型的智能指针。不同于将 Rc<T> 实例的 strong_count 加1，调用 Rc::downgrade 会将 weak_count 加1。使用 Weak<T> 所指向的值时，需要先尝试upgrade()方法，返回Some表示目标值还存在，否者返回None。
+
