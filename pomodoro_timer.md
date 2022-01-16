@@ -235,7 +235,32 @@
 
         返回《Programming Rust》217页   Passing Self as a Box, Rc, or Arc
 
-## 第 027 个番茄时间
+## 第 028 个番茄时间
+
+    时间：2022.01.16 15:38
+    内容：Programming Rust 第217-219页。
+        用impl为结构定义方法时，第一个参数可以是引用(&self, &mut self)或者自身(self，涉及到所有权转移)。将其他实例引用或拥有当前实例时，需要把Self封装到Box, Rc, Arc中。。。
+
+## 第 029 个番茄时间
+
+    时间：2022.01.16 16:20
+    内容：Programming Rust 第219-220页。
+        impl块定义函数时也可以不用self作为参数。
+        参数含有self --> 方法？ --> T.some_method()
+        参数不含self --> 函数？ (type-associated functions) --> T::some_function()
+        --------------
+        关联常量(Associated Consts)，即关联在特定类型上的常量。
+        ```
+        pub struct Vector2 { x: f32,
+                            y: f32, 
+                        }
+        impl Vector2 {
+            const ZERO: Vector2 = Vector2 { x: 0.0, y: 0.0 }; 
+            const UNIT: Vector2 = Vector2 { x: 1.0, y: 0.0 };
+        }
+        ```
+
+## 第 029 个番茄时间
 
     时间：2022.01.16 
-    内容：Programming Rust 第217- 
+    内容：Programming Rust 第220-页。
