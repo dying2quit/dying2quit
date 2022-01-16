@@ -223,3 +223,19 @@
         避免引用循环：将 Rc<T> 变为 Weak<T>。
         调用 Rc::downgrade 时会得到 Weak<T> 类型的智能指针。不同于将 Rc<T> 实例的 strong_count 加1，调用 Rc::downgrade 会将 weak_count 加1。使用 Weak<T> 所指向的值时，需要先尝试upgrade()方法，返回Some表示目标值还存在，否者返回None。
 
+## 第 027 个番茄时间
+
+    时间：2022.01.16 14:44
+    内容：https://rustwiki.org/zh-CN/book/ch15-06-reference-cycles.html
+        在树结构中，父节点拥有子节点，但子节点不应该拥有父节点(循环引用)，然而子节点可以知道其父节点(即弱引用)。
+
+        Box<T> 有一个已知的大小并指向分配在堆上的数据。
+        Rc<T> 记录了堆上数据的引用数量以便可以拥有多个所有者。
+        RefCell<T> 和其内部可变性提供了一个可以用于当需要不可变类型但是需要改变其内部值能力的类型，并在运行时而不是编译时检查借用规则。
+
+        返回《Programming Rust》217页   Passing Self as a Box, Rc, or Arc
+
+## 第 027 个番茄时间
+
+    时间：2022.01.16 
+    内容：Programming Rust 第217- 
