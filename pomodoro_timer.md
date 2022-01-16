@@ -246,8 +246,8 @@
     时间：2022.01.16 16:20
     内容：Programming Rust 第219-220页。
         impl块定义函数时也可以不用self作为参数。
-        参数含有self --> 方法？ --> T.some_method()
-        参数不含self --> 函数？ (type-associated functions) --> T::some_function()
+        参数含有self --> （实例的）方法？ --> T.some_method()
+        参数不含self --> 类型关联函数？ (type-associated functions) --> T::some_function()
         --------------
         关联常量(Associated Consts)，即关联在特定类型上的常量。
         ```
@@ -260,7 +260,25 @@
         }
         ```
 
-## 第 029 个番茄时间
+## 第 030 个番茄时间
+
+    时间：2022.01.16 19:11
+    内容：Programming Rust 第220-223页。
+        关联常量的访问 -->  `::`，除了关联本身类型外，也可以关联别的类型。
+        ---------
+        范型结构体(Generic Structs)
+        ```
+        pub struct Queue<T> { 
+                older: Vec<T>,
+                younger: Vec<T>
+            }
+        ```
+        Queue<T>中的T读作：对于任意元素类型T，，，，  T叫做类型参数
+        impl<T> Queue<T> 读作：对于任何类型T，以下部分定义Queue<T>实现的关联函数。 impl<T> 表明如下实现是正对任意类型T的。 在代码块中 Self 等同于 Queue<T>。 
+
+## 第 031 个番茄时间
 
     时间：2022.01.16 
-    内容：Programming Rust 第220-页。
+    内容：Programming Rust 第223-页。
+        伴随生命周期的结构体。（Structs with Lifetime Parameters）
+        
