@@ -278,7 +278,24 @@
 
 ## 第 031 个番茄时间
 
-    时间：2022.01.16 
-    内容：Programming Rust 第223-页。
-        伴随生命周期的结构体。（Structs with Lifetime Parameters）
-        
+    时间：2022.01.17 08:00
+    内容：Programming Rust 第223-225页。
+        使用生命周期参数的结构体。（Structs with Lifetime Parameters）
+        如果结构体中包含有引用，那么这些引用必须指定生命周期。在一个函数中，如果返回类型中使用的生命周期参数与输入参数的生命周期相同，则可以省略不写。
+        ------------------
+        Deriving Common Traits for Struct Types
+        ```
+        #[derive(Copy, Clone, Debug, PartialEq)]
+        struct Point { 
+            x: f64,
+            y: f64
+        }
+        ```
+
+## 第 032 个番茄时间
+
+    时间：2022.01.1x
+    内容：Programming Rust 第225-页。
+        Interior Mutability 内部可变性
+
+
