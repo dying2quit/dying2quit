@@ -294,8 +294,27 @@
 
 ## 第 032 个番茄时间
 
-    时间：2022.01.1x
-    内容：Programming Rust 第225-页。
+    时间：2022.01.17 21:27
+    内容：Programming Rust 第225-228页。
         Interior Mutability 内部可变性
+        Cell<T>, 针对存放在栈中的（实现了Copy trait的）值。
+        RefCell<T>, 支持引用值。
+
+        Cell<T>
+        cell.get()
+        cell.set()
+
+        RefCell::new(value)
+        ref_cell.borrow() --> Ref<T>, 共享引用。
+        ref_cell.borrow_mut() --> RefMut<T>, 可变引用。
+        ref_cell.try_borrow(), ref_cell.try_borrow_mut()，出错时返回Error，而非直接Panic。
+
+        以上两者非线程安全，后续(19章)讨论：Mutex<T>
 
 
+## 第 033 个番茄时间
+
+    时间：2022.01.17 
+    内容：Programming Rust 第229-页。
+        Enums and Patterns
+        
