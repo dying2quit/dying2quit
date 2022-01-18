@@ -314,7 +314,35 @@
 
 ## 第 033 个番茄时间
 
-    时间：2022.01.17 
-    内容：Programming Rust 第229-页。
-        Enums and Patterns
-        
+    时间：2022.01.17 23:32
+    内容：Programming Rust 第229-232页。
+        Enums and Patterns (枚举和模式)
+        枚举值转换成整数是允许的，反之则不行。但可以自行实现，
+        枚举也可以和结构体一样实现(impl)方法。
+
+## 第 034 个番茄时间
+
+    时间：2022.01.19 00:20
+    内容：Programming Rust 第232-236页。
+        Enums with Data：
+        枚举值可以是三种结构体（Unit-Like 类型，Tuple-Like, 具名结构体）。
+        Enums in Memory：
+        在内存中，带数据的枚举存储为带标签的小整数（不保证顺序），外加足够存储字段内容的空间。
+        Rich Data Structures Using Enums：
+
+        serde_json::Value 枚举的定义：https://docs.serde.rs/serde_json/enum.Value.html
+        ```
+        pub enum Value {
+            Null,
+            Bool(bool),
+            Number(Number),
+            String(String),
+            Array(Vec<Value>),
+            Object(Map<String, Value>),
+        }
+        ```
+
+## 第 035 个番茄时间
+
+    时间：2022.01.19 00:
+    内容：Programming Rust 第232-236页。
