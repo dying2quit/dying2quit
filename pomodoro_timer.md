@@ -361,5 +361,14 @@
 
 ## 第 036 个番茄时间
 
-    时间：2022.01.19 00:xx
-    内容：Programming Rust 第239-页。
+    时间：2022.01.19 23:07
+    内容：Programming Rust 第239-241页。
+        Patterns。
+        待拓展阅读：《Rust Design Patterns》 https://fomalhauthmj.github.io/patterns/
+
+## 第 037 个番茄时间
+
+    时间：2022.01.19 xxx
+    内容：Programming Rust 第242-页。
+        Literals, Variables, and Wildcards in Patterns。
+        
