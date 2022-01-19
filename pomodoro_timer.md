@@ -344,5 +344,22 @@
 
 ## 第 035 个番茄时间
 
-    时间：2022.01.19 00:
-    内容：Programming Rust 第232-236页。
+    时间：2022.01.19 10:23
+    内容：Programming Rust 第236-239页。
+        最常见的Generic Enums（范型枚举）：
+        ```
+        enum Option<T> { 
+            None,
+            Some(T), 
+        }
+        enum Result<T, E> {
+            Ok(T),
+            Err(E), 
+        }
+        ```
+        枚举的值不能直接访问和获取。
+
+## 第 036 个番茄时间
+
+    时间：2022.01.19 00:xx
+    内容：Programming Rust 第239-页。
