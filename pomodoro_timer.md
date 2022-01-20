@@ -368,7 +368,17 @@
 
 ## 第 037 个番茄时间
 
-    时间：2022.01.19 xxx
-    内容：Programming Rust 第242-页。
+    时间：2022.01.20 10:16
+    内容：Programming Rust 第242-244页。
         Literals, Variables, and Wildcards in Patterns。
+        Tuple and Struct Patterns。 匹配过程中，可以用 .. 来省略不关心的字段。 .. 语法称为 rest 模式。
+        ```
+            Some(Account { name, language, .. }) =>
+                language.show_custom_greeting(name),
+        ```
+        Array and Slice Patterns。
         
+## 第 0xx 个番茄时间
+
+    时间：2022.01.xx xx:xx
+    内容：Programming Rust 第 - 页。
