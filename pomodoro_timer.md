@@ -378,9 +378,10 @@
         ```
         Array and Slice Patterns。
         
-## 第 0xx 个番茄时间
+## 第 038 个番茄时间
 
-    时间：2022.01.xx xx:xx
-    内容：Programming Rust 第245- 页。
+    时间：2022.02.06 19:44
+    内容：Programming Rust 第245-246页。
         Reference Patterns。
+        引用(Ref)的模式匹配？？？
         
