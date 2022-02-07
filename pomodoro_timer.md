@@ -383,5 +383,22 @@
     时间：2022.02.06 19:44
     内容：Programming Rust 第245-246页。
         Reference Patterns。
-        引用(Ref)的模式匹配？？？
-        
+        引用(Ref)的模式匹配......
+
+## 第 039 个番茄时间
+
+    时间：2022.02.07 10:26
+    内容：Programming Rust 第247-249页。
+        Match Guards, 加入if条件。
+        ```
+        match point_to_hex(click) {
+            None => Err("That's not a game space."),
+            Some(hex) if hex == current_hex => Err("You are already there! You must click somewhere else"),
+            Some(hex) => Ok(hex)
+            }
+        ```
+        多值匹配：用 ｜ 分隔多个可能的匹配值。 该符号可以理解为按位OR，但更应该理解为正则表达式的｜。
+        范围匹配：..= 。 
+
+        @ 绑定: x @ pattern，可理解为 x if (x match pattern)。 
+
