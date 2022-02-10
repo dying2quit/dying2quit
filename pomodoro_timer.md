@@ -402,3 +402,38 @@
 
         @ 绑定: x @ pattern，可理解为 x if (x match pattern)。 
 
+## 第 040 个番茄时间
+
+    时间：2022.02.08 12:00
+    内容：Programming Rust 第249-250页。
+        不可辩驳模式（irrefutable patterns）：适用于let,for,函数参数，闭包参数。
+        可辩驳模式(refutable patterns): 适用于match, if let, while let。
+
+
+## 第 041 个番茄时间
+
+    时间：2022.02.09 
+    内容：Programming Rust 第251-254页。
+        特性及范型：Rust中多态性的实现方式。
+
+## 第 042 个番茄时间
+
+    时间：2022.02.11 00:35
+    内容：Programming Rust 第254-256页。
+        Trait为包括内建类型在内的各种类型添加拓展方法。
+        Self类型，关联函数，关联类型，，，，
+
+        特征(trait)代表一种能力：一个类型是否能做什么事儿～
+        调用类型的trait方法时，相关trait必须要被导入(use <trait>)，以避免可能的重名冲突。
+        trait方法类似于C++/C#中的虚拟方法。
+
+        &mut dyn Write 如此类形式会产生动态调度开销。
+        dyn Write 被称为“特征对象”(trait object)。
+        ---------------
+        在Rust中有两种通过trait实现多态的方式：特征对象(trait object)和范型(generics)。
+
+## 第 043 个番茄时间
+
+    时间：2022.02.11  
+    内容：Programming Rust 第256-页。
+        特征对象（Trait Objects）
