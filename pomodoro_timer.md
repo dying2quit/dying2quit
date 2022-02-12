@@ -266,7 +266,7 @@
     内容：Programming Rust 第220-223页。
         关联常量的访问 -->  `::`，除了关联本身类型外，也可以关联别的类型。
         ---------
-        范型结构体(Generic Structs)
+        泛型结构体(Generic Structs)
         ```
         pub struct Queue<T> { 
                 older: Vec<T>,
@@ -346,7 +346,7 @@
 
     时间：2022.01.19 10:23
     内容：Programming Rust 第236-239页。
-        最常见的Generic Enums（范型枚举）：
+        最常见的Generic Enums（泛型枚举）：
         ```
         enum Option<T> { 
             None,
@@ -414,7 +414,7 @@
 
     时间：2022.02.09 
     内容：Programming Rust 第251-254页。
-        特性及范型：Rust中多态性的实现方式。
+        特性及泛型：Rust中多态性的实现方式。
 
 ## 第 042 个番茄时间
 
@@ -430,7 +430,7 @@
         &mut dyn Write 如此类形式会产生动态调度开销。
         dyn Write 被称为“特征对象”(trait object)。
         ---------------
-        在Rust中有两种通过trait实现多态的方式：特征对象(trait object)和范型(generics)。
+        在Rust中有两种通过trait实现多态的方式：特征对象(trait object)和泛型(generics)。
 
 ## 第 043 个番茄时间
 
@@ -456,8 +456,8 @@
     内容：Programming Rust 第258-259页。
         Box<dyn Write>和&mut dyn Write一样，是一个胖指针：它包含值本身的地址和vtable的地址。其他指针类型也是如此，如Rc<dyn Write>。
         ------------
-        范型函数及类型参数（Generic Functions and Type Parameters）：
-        以特征对象作为参数的函数可以转化为范型函数：
+        泛型函数及类型参数（Generic Functions and Type Parameters）：
+        以特征对象作为参数的函数可以转化为泛型函数：
         ```
         fn say_hello(out: &mut dyn Write) // plain function 
         fn say_hello<W: Write>(out: &mut W) // generic function, <W: Write>即是类型参数。
@@ -485,18 +485,21 @@
         fn run_query<M: Mapper + Serialize, R: Reducer + Serialize>(data: &DataSet, map: M, reduce: R) -> Results
         {...}
         ```
-        范型函数可以有多个类型参数，为了便于书写阅读，可以将类型参数声明在where分句：
+        泛型函数可以有多个类型参数，为了便于书写阅读，可以将类型参数声明在where分句：
         ```
         fn run_query<M, R>(data: &DataSet, map: M, reduce: R) -> Results
             where   M: Mapper + Serialize,
                     R: Reducer + Serialize
             {...}
         ```
-        这样的where分句同样可以用在范型结构体、枚举、类型别称、方法等任何允许bounds的地方。
+        这样的where分句同样可以用在泛型结构体、枚举、类型别称、方法等任何允许bounds的地方。
 
-        范型函数可以同时具有生命周期参数和类型参数。
+        泛型函数可以同时具有生命周期参数和类型参数。
 
 ## 第 046 个番茄时间
 
-    时间：2022.02.1x
-    内容：Programming Rust 第261-页。
+    时间：2022.02.13 01:06
+    内容：Programming Rust 第261-262页。
+        特征对象与泛型的使用区别～～～
+        通过特征对象实现的代码相比于泛型的，少了一些代码肿胀(code bloat)。
+        一般地，泛型更具有优势：不使用dyn关键词(没有涉及特征对象）因此不涉及动态调度，故而运行速度更快。
