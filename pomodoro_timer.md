@@ -434,6 +434,69 @@
 
 ## 第 043 个番茄时间
 
-    时间：2022.02.11  
-    内容：Programming Rust 第256-页。
-        特征对象（Trait Objects）
+    时间：2022.02.12 00:30
+    内容：Programming Rust 第256-257页。
+        特征对象（Trait Objects）: 一个指向trait类型的引用。
+        Rust 不允许`dyn Write`类型的变量，因为实现Write特征的类型的具体大小是未知的，这违反了Rust需要知道类型大小的编译要求。
+        Java中类似Write的接口OutputStream实际上是一个引用，因此，Rust中声明特征的变量时应该声明为引用。
+        类似于： ` let writer: &mut dyn Write = &mut buf; `，此处的writer即是特征对象(trait object)。
+
+        特征对象的不同之处在于，Rust在编译时通常不知道引用的具体类型。
+
+        --------------------
+
+        特征对象的布局：
+        特征对象含有两个指针(占两个机器字节)，分别指向具体值和值类型。
+
+        C++有类似的运行时类型，称为 virtual table (或vtable)。
+
+## 第 044 个番茄时间
+
+    时间：2022.02.12 16:13
+    内容：Programming Rust 第258-259页。
+        Box<dyn Write>和&mut dyn Write一样，是一个胖指针：它包含值本身的地址和vtable的地址。其他指针类型也是如此，如Rc<dyn Write>。
+        ------------
+        范型函数及类型参数（Generic Functions and Type Parameters）：
+        以特征对象作为参数的函数可以转化为范型函数：
+        ```
+        fn say_hello(out: &mut dyn Write) // plain function 
+        fn say_hello<W: Write>(out: &mut W) // generic function, <W: Write>即是类型参数。
+        ```
+        调用时：
+        ```
+        say_hello(&mut local_file)?; // calls say_hello::<File>
+        say_hello::<File>(&mut local_file)?;  // 可以指明参数类型，但非必要(rust可以自动推测)
+        ```
+        某些情况必须要声明参数类型(type parameters):
+        ```
+        // calling a generic method collect<C>() that takes no arguments 
+        let v1 = (0 .. 1000).collect(); // error: can't infer type
+        let v2 = (0 .. 1000).collect::<Vec<i32>>(); // ok
+        ```
+
+## 第 045 个番茄时间
+
+    时间：2022.02.12 23:55
+    内容：Programming Rust 第259-261页。
+        类型参数可同时声明多个trait。如：
+        ```
+        fn top_ten<T: Debug + Hash + Eq>(values: &Vec<T>) { ... }
+        -------
+        fn run_query<M: Mapper + Serialize, R: Reducer + Serialize>(data: &DataSet, map: M, reduce: R) -> Results
+        {...}
+        ```
+        范型函数可以有多个类型参数，为了便于书写阅读，可以将类型参数声明在where分句：
+        ```
+        fn run_query<M, R>(data: &DataSet, map: M, reduce: R) -> Results
+            where   M: Mapper + Serialize,
+                    R: Reducer + Serialize
+            {...}
+        ```
+        这样的where分句同样可以用在范型结构体、枚举、类型别称、方法等任何允许bounds的地方。
+
+        范型函数可以同时具有生命周期参数和类型参数。
+
+## 第 046 个番茄时间
+
+    时间：2022.02.1x
+    内容：Programming Rust 第261-页。
