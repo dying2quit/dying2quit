@@ -563,6 +563,40 @@
 
 ## 第 050 个番茄时间
 
-    时间：2022.02.1x 
-    内容：Programming Rust 第269-页。
-        
+    时间：2022.02.13 21:05
+    内容：Programming Rust 第269-271页。
+        [Subtraits]
+        trait object不能支持同时声明多个trait，但可以通过subtrait来处理：将trait的拓展(extension)定义为新拓展。
+        ```
+        trait Creature: Visible { }
+        // Creature是Visible的子特征(subtrait)，Visible是Creature的超级特征(supertrait)。
+        -----------------
+        trait Creature where Self: Visible { }  // 本质写法
+        ```
+        subtrait类似于C#中的子接口，但在Rust中，subtrait不会继承supertrait的关联项。
+
+        [Type-Associated Functions] 类型关联函数？ 类似于面向对象中的静态方法～
+        ```
+        trait StringSet {
+            fn new() -> Self;    // 参数中不含&self，即为type-associated function??? 通过StringSet::new()调用？（此处可能理解有误）
+            fn contains(&self, string: &str) -> bool;
+        ```
+        与Java和C#接口一样，trait object不支持type-associated function？？？
+
+## 第 051 个番茄时间
+
+    时间：2022.02.13 23:37
+    内容：《Programming Rust 2nd Edition》第271-273页。
+        [Fully Qualified Method Calls]完全限定名调用
+        ```
+        "hello".to_string()
+        str::to_string("hello")
+        ToString::to_string("hello")   // to_string是ToString trait的一种方法。
+        <str as ToString>::to_string("hello")   // a fully qualified method call
+        ```
+        使用完全限定名调用的原因：
+        1. 方法重名。
+        2. self参数的类型不能推测。
+        3. 函数本身作为函数值时。 ？？？ 不理解
+        4. 在宏中调用trait方法时。
+
