@@ -533,13 +533,36 @@
         可以使用泛型impl块一次性向整个类型系列添加扩展特征(extension trait)。
         ```
         /// You can write HTML to any std::io writer.
+        /// 为所有实现了Write trait的泛型W实现WriteHtml方法。
         impl<W: Write> WriteHtml for W {
             fn write_html(&mut self, html: &HtmlDocument) -> io::Result<()> {
             ... }
         }
         ```
+        
 
 ## 第 049 个番茄时间
 
-    时间：2022.02.13 
-    内容：Programming Rust 第264-267页。
+    时间：2022.02.13 17:55
+    内容：Programming Rust 第267-269页。
+        Rust孤儿规则(orphan rule)：
+            1. 当你为某类型实现某 trait 的时候，必须要求类型或者 trait 至少有一个是在当前 crate 中定义的。你不能为第三方的类型实现第三方的 trait 。
+            2. 在调用 trait 中定义的方法的时候，一定要记得让这个 trait 可被访问。
+        
+        [Self in Traits]
+        trait可以把关键字Self作为类型。
+        使用Self类型的trait与 trait object是不兼容的：
+        ```
+        // error: the trait `Spliceable` cannot be made into an object
+        fn splice_anything(left: &dyn Spliceable, right: &dyn Spliceable) { 
+            let combo = left.splice(right);
+            // ...
+        }
+        ```
+        Rust拒绝此代码，因为left.splice(right)无法通过编译器的类型检查，left和right都需要在运行时确定值类型，可能出现类型不匹配。
+
+## 第 050 个番茄时间
+
+    时间：2022.02.1x 
+    内容：Programming Rust 第269-页。
+        
