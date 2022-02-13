@@ -514,5 +514,32 @@
 
 ## 第 048 个番茄时间
 
-    时间：2022.02.1x
-    内容：Programming Rust 第264-页。
+    时间：2022.02.13 15:44
+    内容：Programming Rust 第264-267页。
+        为类型实现trait方法：
+        ```
+        impl Visible for Broom {...}
+        ```
+        为类型实现独立的方法：
+        ```
+        impl Broom {
+                fn fun01() ....
+        }
+        ```
+        [Default Methods]
+        Iterator trait除了一个需要实现的方法(.next())外，拥有数十个默认方法。
+
+        [Traits and Other People’s Types]
+        可以使用泛型impl块一次性向整个类型系列添加扩展特征(extension trait)。
+        ```
+        /// You can write HTML to any std::io writer.
+        impl<W: Write> WriteHtml for W {
+            fn write_html(&mut self, html: &HtmlDocument) -> io::Result<()> {
+            ... }
+        }
+        ```
+
+## 第 049 个番茄时间
+
+    时间：2022.02.13 
+    内容：Programming Rust 第264-267页。
