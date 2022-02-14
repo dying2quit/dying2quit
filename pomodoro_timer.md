@@ -636,6 +636,20 @@
 
 ## 第 054 个番茄时间
 
-    时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第277-页。
+    时间：2022.02.14 23:09
+    内容：《Programming Rust 2nd Edition》第277-278页。
         [Generic Traits (or How Operator Overloading Works)] 泛型特征
+        min::<i32> 与 min::<String> 是不同的函数。min::<T>
+        Vec<i32> 与 Vec<String> 是不同的类型。  Vec<T>
+        Mul<f64> 与 Mul<String> 是不同的trait。 Mul<RHS>
+
+        orphan rule孤儿规则的例外：当trait的类型参数定义在当前crate时，可以为外部类实现外部trait。
+
+        在Rust中，lhs * rhs 是Mul::mul(lhs, rhs)的缩写。因此，在Rust中重载*运算符就像实现Mul trait一样简单。
+
+## 第 055 个番茄时间
+
+    时间：2022.02.1x
+    内容：《Programming Rust 2nd Edition》第278-页。
+        [impl Trait]
+        
