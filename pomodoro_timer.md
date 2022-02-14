@@ -628,5 +628,14 @@
 
 ## 第 053 个番茄时间
 
+    时间：2022.02.14 14:43
+    内容：《Programming Rust 2nd Edition》第275-277页。
+        除了associated Item type，还有associated Output type，associated Match type。
+
+        关联类型非常适合于每一个实现都有一个特定相关类型的情况：每种Task类型都产生特定的Output类型；每种Pattern类型都查找特定的Match类型。？？？
+
+## 第 054 个番茄时间
+
     时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第275-页。
+    内容：《Programming Rust 2nd Edition》第277-页。
+        [Generic Traits (or How Operator Overloading Works)] 泛型特征
