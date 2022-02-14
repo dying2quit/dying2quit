@@ -649,7 +649,27 @@
 
 ## 第 055 个番茄时间
 
-    时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第278-页。
-        [impl Trait]
+    时间：2022.02.15 00:33
+    内容：《Programming Rust 2nd Edition》第278-280页。
+        [impl Trait]    ？？？？  这部分真够难懂的～～～～
+        impl Trait允许我们“抹去”返回值的类型，仅返回某个trait。 即简化代码也便于统一类型签名。
+        ```
+        fn cyclical_zip(v: Vec<u8>, u: Vec<u8>) -> iter::Cycle<iter::Chain<IntoIter<u8>, IntoIter<u8>>> {
+            v.into_iter().chain(u.into_iter()).cycle()
+        }
+        -------------------
+        fn cyclical_zip(v: Vec<u8>, u: Vec<u8>) -> Box<dyn Iterator<Item=u8>> { 
+            Box::new(v.into_iter().chain(u.into_iter()).cycle())
+        }
+        -------------------
+        fn cyclical_zip(v: Vec<u8>, u: Vec<u8>) -> impl Iterator<Item=u8> {
+            v.into_iter().chain(u.into_iter()).cycle()
+        }
+        ```
+        impl Trait 是一种静态分发形式（故而不能由动态值控制）。
+        需要注意的是，rust不允许特征的方法将impl Trait作为返回值。
         
+## 第 056 个番茄时间
+
+    时间：2022.02.1x
+    内容：《Programming Rust 2nd Edition》第280-页。
