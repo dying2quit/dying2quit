@@ -600,3 +600,33 @@
         3. 函数本身作为函数值时。 ？？？ 不理解
         4. 在宏中调用trait方法时。
 
+## 第 052 个番茄时间
+
+    时间：2022.02.14 10:28
+    内容：《Programming Rust 2nd Edition》第273-275页。
+        [Traits That Define Relationships Between Types] 定义类型间关系的trait
+        [Associated Types (or How Iterators Work)]关联类型
+        ```
+        pub trait Iterator {
+            type Item;   // associated type, 关联类型； 
+            // 实现Iterator的每个类型都必须指定它生成的item类型。
+            fn next(&mut self) -> Option<Self::Item>;
+            ...
+        }
+        ```
+        Item(即：<I as Iterator>::Item)是每种迭代器类型的feature，而不是独立的类型。
+        ```
+        // (code from the std::env standard library module)
+        impl Iterator for Args {
+            type Item = String;
+            fn next(&mut self) -> Option<String> {
+                ...
+            }
+            ... 
+        }
+        ```
+
+## 第 053 个番茄时间
+
+    时间：2022.02.1x
+    内容：《Programming Rust 2nd Edition》第275-页。
