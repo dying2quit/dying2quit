@@ -667,9 +667,32 @@
         }
         ```
         impl Trait 是一种静态分发形式（故而不能由动态值控制）。
-        需要注意的是，rust不允许特征的方法将impl Trait作为返回值。
+        需要注意的是，rust不允许trait的方法将impl Trait作为返回值。
         
 ## 第 056 个番茄时间
 
+    时间：2022.02.15 11:03
+    内容：RFC: impl trait
+        [RFC导读：impl trait](https://zhuanlan.zhihu.com/p/26516100)
+            impl Trait 这个语法，在某些场景下，具有明显优势，可以提高语言的表达能力。但是，要把它推广到各个场景下使用，还需要大量的设计和实现工作。目前的这个RFC将目标缩小为了：先推进这个语法在函数参数和返回值场景下使用，其它的情况，后面再考虑。
+            不要过于激进地使用这个功能，在每个可以使用 impl Trait 的地方都用它替换原先的具体类型。它更多的倾向于简洁性，而牺牲了一部分表达能力。
+            
+
+            [Stabilize impl Trait](https://github.com/rust-lang/rust/pull/49255)
+            [Tracking issue for impl Trait (RFC 1522, RFC 1951, RFC 2071)](https://github.com/rust-lang/rust/issues/34511)
+
+            1.26版本引入的存在类型(existential type)，通过impl trait实现。
+
+        // -----------------------------
+        rust中返回trait对象的方法:
+            方法一：引入Box （trait object)，Box<dyn TraitName>
+            方法二：impl trait
+        
+        // -----------------------------
+        impl dyn Trait？？？？
+
+## 第 057 个番茄时间
+
     时间：2022.02.1x
     内容：《Programming Rust 2nd Edition》第280-页。
+        
