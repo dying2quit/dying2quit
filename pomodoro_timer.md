@@ -693,6 +693,53 @@
 
 ## 第 057 个番茄时间
 
+    时间：2022.02.15 21:41
+    内容：《Programming Rust 2nd Edition》第280-284页。
+        [Associated Consts]关联常数
+        类似于关联类型和关联函数，关联常数可以不预先赋值，而在实现中进行赋值。
+
+        [Reverse-Engineering Bounds]逆向工程约束？？？
+
+        [Traits as a Foundation]
+
+## 第 058 个番茄时间
+
+    时间：2022.02.15 23:11
+    内容：《Programming Rust 2nd Edition》第285-288页。
+        [CHAPTER 12 - Operator Overloading]
+            [Arithmetic and Bitwise Operators]
+
+## 第 059 个番茄时间
+
+    时间：2022.02.16 01:06
+    内容：《Programming Rust 2nd Edition》第289-290页。
+        [Unary Operators] 一元运算符
+        运算符'!'同时具有bool型取反和按位取反的能力。
+        ```
+        use std::ops::Neg;
+        impl<T> Neg for Complex<T>
+        where
+            T: Neg<Output = T>, 
+        {
+            type Output = Complex<T>;
+            fn neg(self) -> Complex<T> {
+                    Complex {
+                        re: -self.re,
+                        im: -self.im,
+                    }
+            }
+        }
+        ```
+        [Binary Operators] 二元运算符
+        ```
+        trait BitXor<Rhs = Self> {
+            type Output;
+            fn bitxor(self, rhs: Rhs) -> Self::Output;
+        }
+        ```
+
+## 第 060 个番茄时间
+
     时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第280-页。
-        
+    内容：《Programming Rust 2nd Edition》第291-页。
+    
