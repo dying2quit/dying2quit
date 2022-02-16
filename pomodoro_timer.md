@@ -740,6 +740,113 @@
 
 ## 第 060 个番茄时间
 
+    时间：2022.02.16 11:11
+    内容：关联类型（associated types）
+
+        关联类型（associated types）是一个将类型占位符与 trait 相关联的方式，这样 trait 的方法签名中就可以使用这些占位符类型。trait 的实现者会针对特定的实现在这个类型的位置指定相应的具体类型。如此可以定义一个使用多种类型的 trait，直到实现此 trait 时都无需知道这些类型具体是什么。
+        ```
+        pub trait Watch {
+            type Item;      // 关联类型
+            fn inner(&self) -> Option<Self::Item>;
+        }
+
+        struct A {
+            data: i32,
+        }
+
+        impl Watch for A {
+            type Item = i32;
+            fn inner(&self) -> Option<Self::Item> {
+                Some(self.data)
+            }
+        }
+        ```
+        ---------------------
+        Add<RHS = Self>是默认泛型类型参数，表示如果不显示指定泛型类型，就默认泛型类型为Self。
+        ```
+        pub trait Watch<Inner=String> {
+            type Item;
+            fn inner(&self) -> Option<Self::Item>;
+            fn info(&self) -> Inner;
+        }
+        ------------------
+        pub trait Add<RHS = Self> {
+            type Output;
+
+            #[must_use]
+            fn add(self, rhs: RHS) -> Self::Output;
+        }
+        ```
+
+        -------------------
+        泛型关联类型(GAT)           https://zhuanlan.zhihu.com/p/369302538
+        关联条目一共有三种：关联常数，关联函数，关联类型(别名)；它们与条目中的三种：常数、函数、类型(别名) 一一对应。
+
+        任务#1：用泛型关联类型支持类型家族
+
+        任务#2：用泛型关联类型实现流式处理迭代器
+
+
+## 第 061 个番茄时间
+
+    时间：2022.02.16 21:22
+    内容：RFC - https://rust-lang.github.io/rfcs/1598-generic_associated_types.html
+        Feature Name: generic_associated_types
+        Start Date: 2016-04-29
+        RFC PR: rust-lang/rfcs#1598
+        Rust Issue: rust-lang/rust#44265
+
+        Kinds：种类？ Kinds are often called 'the type of a type'
+        Higher-kinded types：高级类型
+
+        If you have a type like Foo<'a>, the kind of Foo is lifetime -> type
+        vec::Iter<'a, T> vec::Iter 的种类(kind)是： lifetime, type -> type
+
+        难懂的要死！！！
+
+        [Features of associated type constructors]
+
+## 第 062 个番茄时间
+
+    时间：2022.02.16 23:12
+    内容：RFC - https://rust-lang.github.io/rfcs/1598-generic_associated_types.html
+        [Features of associated type constructors]
+
+        WQNMLGB，太南了，宛如天书。
+
+## 第 063 个番茄时间
+
+    时间：2022.02.17 01:24
+    内容：《Programming Rust 2nd Edition》第291-293页。
+        [Compound Assignment Operators]
+        复合赋值操作符与相同功能的二元操作符是完全独立的。 + 是实现的 std::ops::Add, += 是实现的std::ops::AddAssign。
+
+        [Equivalence Comparisons] 等值比较
+        ```
+        trait PartialEq<Rhs = Self>
+        where
+                Rhs: ?Sized,     // 因为只是借用，不回移动所有权。
+        {
+            fn eq(&self, other: &Rhs) -> bool;
+            fn ne(&self, other: &Rhs) -> bool {
+                    !self.eq(other)
+                }
+        }
+
+        impl<T: PartialEq> PartialEq for Complex<T> {
+            fn eq(&self, other: &Complex<T>) -> bool {
+                    self.re == other.re && self.im == other.im
+                }
+        }
+        -------------
+        // 可以直接在类型定义的derive属性中添加PartialEq，rust既可自动实现。
+        #[derive(Clone, Copy, Debug, PartialEq)]
+        struct Complex<T> {
+            ...
+        }
+        ```
+
+## 第 063 个番茄时间
+
     时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第291-页。
-    
+    内容：《Programming Rust 2nd Edition》第293-页。
