@@ -825,7 +825,7 @@
         ```
         trait PartialEq<Rhs = Self>
         where
-                Rhs: ?Sized,     // 因为只是借用，不回移动所有权。
+                Rhs: ?Sized,     // 因为只是借用，不会转移所有权。
         {
             fn eq(&self, other: &Rhs) -> bool;
             fn ne(&self, other: &Rhs) -> bool {
@@ -848,5 +848,63 @@
 
 ## 第 063 个番茄时间
 
+    时间：2022.02.17 10:31
+    内容：《Programming Rust 2nd Edition》第293-295页。
+        `where Rhs: ?Sized,`约束用以满足rust要求类型参数大小可知。 后续会进一步探讨 sized type, unsized type, Sized trait。
+
+        rust中，NaN != NaN 。 所以 PartialEq(partial equivalence relation，== )才作为rust的内建trait。
+
+        rust的标准库中，只有f32,f64没有实现Eq，只实现了PartialEq。
+        
+        ```
+        trait Eq: PartialEq<Self> {}
+
+        impl<T: Eq> Eq for Complex<T> {}
+
+        // --------------------------------
+        // 只需在复杂类型定义的派生属性中包含Eq，即可完成实现。
+        #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+            struct Complex<T> { ...
+            }
+        ```
+
+## 第 064 个番茄时间
+
+    时间：2022.02.18 00:18
+    内容：《Programming Rust 2nd Edition》第295-297页。
+        [Ordered Comparisons]
+        ```
+        trait PartialOrd<Rhs = Self>: PartialEq<Rhs>
+        where
+            Rhs: ?Sized,
+        {
+            fn partial_cmp(&self, other: &Rhs) -> Option<Ordering>;  // 唯一待实现的方法。
+
+            fn lt(&self, other: &Rhs) -> bool { ... } 
+            fn le(&self, other: &Rhs) -> bool { ... } 
+            fn gt(&self, other: &Rhs) -> bool { ... } 
+            fn ge(&self, other: &Rhs) -> bool { ... }
+        }
+        ```
+        
+## 第 065 个番茄时间
+
+    时间：2022.02.18 01:39
+    内容：《Programming Rust 2nd Edition》第298-300页。
+        [Index and IndexMut]  索引
+
+        [Other Operators] 其他运算符重载
+        有些操作符不可重载：
+            ?           错误检查操作符
+            && / ||     逻辑运算符
+            .. / ..=    ？？？
+            &           引用操作符
+            =           赋值操作符
+
+        -------------------
+        解引用操作符： * 
+
+## 第 066 个番茄时间
+
     时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第293-页。
+    内容：《Programming Rust 2nd Edition》第301-页。
