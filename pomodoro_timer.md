@@ -906,5 +906,42 @@
 
 ## 第 066 个番茄时间
 
+    时间：2022.02.18 10:37
+    内容：《Programming Rust 2nd Edition》第301-305页。
+        [Utility Traits] 实用特征
+        rust的utility traits主要有三类：
+            1. 语言扩展traits。 Drop, Deref, DerefMut, From, Into
+            2. 标记traits。 Sized, Copy
+            3. 公共词汇traits。 Default, AsRef, AsMut, Borrow, BorrowMut, TryFrom, TryInto, ToOwned, Clone
+        [Drop]
+            Drop trait的drop()方法不可以被主动调用。
+            一般只有在自定义类型中，需要释放rust不可知的资源时才实现Drop。
+
+            如果类型实现Drop，则无法实现Copy。如果类型是Copy，这意味着简单逐字节复制足以生成该值的独立副本。
+
+## 第 067 个番茄时间
+
+    时间：2022.02.18 15:39
+    内容：《Programming Rust 2nd Edition》第305-306页。
+        [Utility Traits] - Sized
+        其值在内存中大小相同的类型 -- sized type。
+        Vec<T>是一个指针，所以也是sized type。
+        
+        所有的sized类型都实现了std::marker::Sized trait。
+
+        Siezed只作为类似于 T:Sized 样式来约束某类型的变量，用以约束T在编译阶段大小可知。
+
+        大小非总是相同的类型 -- unsized type。
+
+        string切片类型：str -- unsized type；但&str是 sized type。
+
+        Array切片类型：[T] -- unsized type；但&[T]是 sized type。
+
+        另一个众所周知的unsized类型：dyn 类型 -- 特征对象的参照？？？
+
+        特征对象是指向实现给定特征的某些值的指针。（a trait object is a pointer to some value that implements a given trait.）
+
+## 第 068 个番茄时间
+
     时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第301-页。
+    内容：《Programming Rust 2nd Edition》第305-306页。
