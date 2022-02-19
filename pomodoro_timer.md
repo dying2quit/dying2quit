@@ -924,14 +924,14 @@
     时间：2022.02.18 15:39
     内容：《Programming Rust 2nd Edition》第305-306页。
         [Utility Traits] - Sized
-        其值在内存中大小相同的类型 -- sized type。
+        其值在内存中大小相同的类型 -- sized type。 固定大小的类型
         Vec<T>是一个指针，所以也是sized type。
         
         所有的sized类型都实现了std::marker::Sized trait。
 
         Siezed只作为类似于 T:Sized 样式来约束某类型的变量，用以约束T在编译阶段大小可知。
 
-        大小非总是相同的类型 -- unsized type。
+        大小非总是相同的类型 -- unsized type。   非固定大小的类型
 
         string切片类型：str -- unsized type；但&str是 sized type。
 
@@ -943,5 +943,88 @@
 
 ## 第 068 个番茄时间
 
+    时间：2022.02.18 22:31
+    内容：《Programming Rust 2nd Edition》第306-308页。
+         T: ?Sized 表示：T不需要大小固定。
+         如果声明 struct S<T: ?Sized> { b: Box<T> }，那么S<str>和S<dyn Write>是允许的。
+
+        非固定大小类型(unsized type)不能存储自在变量中，也不能作为参数传递。。。。
+        然而非固定大小类型也有优点：变量/参数可接受slices、trait objects类型的值。
+        ?Sized约束 表示类型变量可以是Sized,也可以是Unsized。
+
+        除了slices和trait objects外，结构体类型的最后一个字段可能是Unsized类型。
+        ```
+        struct RcBox<T: ?Sized>
+        {
+            ref_count: usize,
+            value: T,
+        }
+        ```
+
+## 第 069 个番茄时间
+
+    时间：2022.02.19 13:28
+    内容：《Programming Rust 2nd Edition》第308-310页。
+        [Utility Traits] - Clone
+        
+        std::fs::File提供了try_clone方法。
+
+        [Utility Traits] - Copy
+
+        实现了Drop的类型不可以实现Copy，因为rust设定：如果一个类型剧要特殊的清理代码，那也需要特殊的复制代码。
+
+        ---------------
+        Copy 和 Clone 两者的区别和联系有：
+
+        1. Copy内部没有方法，Clone内部有两个方法。
+        
+        2. Copy trait 是给编译器用的，告诉编译器这个类型默认采用 copy 语义，而不是 move 语义。Clone trait 是给程序员用的，我们必须手动调用clone方法，它才能发挥作用。
+        
+        3. Copy trait不是你想实现就实现，它对类型是有要求的，有些类型就不可能 impl Copy。Clone trait 没有什么前提条件，任何类型都可以实现（unsized 类型除外）。
+        
+        4. Copy trait规定了这个类型在执行变量绑定、函数参数传递、函数返回等场景下的操作方式。即这个类型在这种场景下，必然执行的是“简单内存拷贝”操作，这是由编译器保证的，程序员无法控制。Clone trait 里面的 clone 方法究竟会执行什么操作，则是取决于程序员自己写的逻辑。一般情况下，clone 方法应该执行一个“深拷贝”操作，但这不是强制的，如果你愿意，也可以在里面启动一个人工智能程序，都是有可能的。
+        
+        5. 如果你确实需要Clone trait执行“深拷贝”操作，编译器帮我们提供了一个工具，我们可以在一个类型上添加#[derive(Clone)]，来让编译器帮我们自动生成那些重复的代码。
+        
+        6. 然而Rust语言规定了当T: Copy的情况下，Clone trait代表的含义。即：当某变量let t: T;，符合T: Copy时， 它调用 let x = t.clone() 方法的时候，它的含义必须等同于“简单内存拷贝”。也就是说，clone的行为必须等同于let x = std::ptr::read(&t);，也等同于let x = t;。当T: Copy时，我们不要在Clone trait里面乱写自己的逻辑。所以，当我们需要指定一个类型是 Copy 的时候，最好顺便也指定它 Clone 的行为，就是编译器为我们自动生成的那个逻辑。正因为如此，在希望让一个类型具有 Copy 性质的时候，一般使用 #[derive(Copy, Clone)] 这种方式，这种情况下它们俩最好一起出现，避免手工实现 Clone 导致错误。
+
+## 第 070 个番茄时间
+
+    时间：2022.02.19 16:49
+    内容：《Programming Rust 2nd Edition》第310-313页。
+        [Utility Traits] - Deref and DerefMut
+        可以通过实现std::ops::Deref和std::ops::DerefMut特征来指定 * 和 . 等解引用运算符在类型上的操作。
+
+        ```
+        trait Deref {
+            type Target: ?Sized;
+            fn deref(&self) -> &Self::Target;
+        }
+        trait DerefMut: Deref {
+            fn deref_mut(&mut self) -> &mut Self::Target;
+        }
+        ```
+
+        某类型实现了Deref<Target=T>，那么该类型可被解引用强制转换(deref coercions)为T类型。 比如String实现了Deref<Target=str>，所以可以在String上直接使用 str实现的方法，&String可以解引用强制转换为&str。
+
+        Deref 和 DerefMut 特征不能用于类型变量的合法检测？？？？ 但可以通过 as 操作符先进行类型转换。
+
+## 第 071 个番茄时间
+
+    时间：2022.02.20 00:15
+    内容：《Programming Rust 2nd Edition》第313-315页。
+        [Utility Traits] - Default
+        如果结构体的各字段都实现了Default，则可以使用#[derive(Default)]自动实现结构的默认值。
+
+        [Utility Traits] - AsRef and AsMut
+        如果一个类型实现了AsRef<T>，则可以有效地借用一个&T。AsMut -----> &mut T
+
+        AsRef通常用于使函数在接受参数的类型中更加灵活。如此，任何实现了AsRef<T>的类型都可以被接受。
+
+
+
+## 第 0xx 个番茄时间
+
     时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第305-306页。
+    内容：《Programming Rust 2nd Edition》第xxx-yyy页。
+
