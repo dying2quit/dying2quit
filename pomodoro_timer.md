@@ -1021,10 +1021,102 @@
 
         AsRef通常用于使函数在接受参数的类型中更加灵活。如此，任何实现了AsRef<T>的类型都可以被接受。
 
+## 第 072 个番茄时间
 
+    时间：2022.02.20 13:27
+    内容：《Programming Rust 2nd Edition》第315-316页。
+        字符串的字面量是&str，但实现AsRef<Path>的是str。 因为Rust不会尝试解引用强制转换类型去满足类型变量绑定，所以这里不会发生强制转型。。。。
+        然而标准库包含有一个非限制性(blanket)的实现：  
+        ```
+        trait AsRef<T: ?Sized> {
+            fn as_ref(&self) -> &T;
+        }
+        // ------------------------
+        impl<'a, T, U> AsRef<U> for &'a T
+            where   T: AsRef<U>,
+                    T: ?Sized, U: ?Sized
+        {
+            fn as_ref(&self) -> &U {
+                    (*self).as_ref()
+                }
+        }
+        ```
+        原理上大概可以猜测，但不能很好的理解代码～ ？？？？？？
 
-## 第 0xx 个番茄时间
+        对于任意类型T和U，如果T:AsRef<U>，则&T:AsRef<U>也成立，即引用跟随。 str:AsRef<Path> 故而 &str:AsRef<Path>。  可以理解为有限制的解引用强制转型。
 
-    时间：2022.02.1x
-    内容：《Programming Rust 2nd Edition》第xxx-yyy页。
+        同样，对于大部分情况，AsRef<T> ------> AsMut<T>。 不适用的情况是：如果修改T会影响对应类型的不变性约束，则不可以。 比如UTF8的字符串就不能够AsMut<T>。
+
+## 第 073 个番茄时间
+
+    时间：2022.02.20 16:20
+    内容：《Programming Rust 2nd Edition》第316-319页。
+        [Utility Traits] - Borrow and BorrowMut
+        Borrow与AsRef存在什么区别？？？？？
+        Borrow有更加严格的限制：只有当&T与它所借用的值具有相同hashes和比较特性时，该类型才能实现Borrow<T>。 （非Rust强制要求，但这是文档中规定的Borrow trait的意图）。这使得Borrow在处理哈希表或树中的键（或其他被hash或比较的值）时很有用。
+        
+        只有当&T散列和计算解析与借款价值相同时，类型才应实现Borrow<T>。
+
+        [Utility Traits] - From and Into
+        AsRef和AsMut是转换数据的借用类型。
+        From和Into是直接转换数据本身的类型，也涉及到所有权转移。
+
+        标准库中，对每种类型T都实现了From<T>和Into<T>。 通常Into比From更灵活。。。。
+
+## 第 074 个番茄时间
+
+    时间：2022.02.20 17:26
+    内容：《Programming Rust 2nd Edition》第320-321页。
+        From和Into转化可能比AsRef和AsMut需要更多的开销。
+        ？运算符使用From和Into来帮助清理可能以多种方式失败的函数中的代码，方法是在需要时自动从特定的错误类型转换为常规错误类型。
+
+        From和Into是绝对可靠的trait。  wrapping转换？  saturating(饱和)转换？
+
+        [Utility Traits] - From and Into
+        对于不确定如何转化为妥的情形，Rust中实现复杂一些的TryFrom和TryInto来替代From和Into。 对应的方法是：try_from() 和 try_into()。
+
+## 第 075 个番茄时间
+
+    时间：2022.02.20 18:05
+    内容：《Programming Rust 2nd Edition》第322-323页。
+        ```
+        use std::convert::TryInto;
+        // Saturate on overflow, rather than wrapping   饱和转换
+        let smaller: i32 = huge.try_into().unwrap_or(i32::MAX);
+        ```
+
+        [Utility Traits] - ToOwned   ？？？？？？
+        某些类型不能使用std::clone::Clone，如&str和&[i32]不能Clone。
+        根据定义，克隆 &T 必须返回 T类型的值，而str 和 [u8] 都是unsized type, 它们甚至不能作为函数的返回类型。
+
+        std::borrow::ToOwned trait提供了一个稍微宽松的方案来将引用转换成具有所有权的类型。
+        ```
+        trait ToOwned {
+            type Owned: Borrow<Self>;
+            fn to_owned(&self) -> Self::Owned;
+        }
+        ```
+        Owned类型必须实现Borrow<Self>。 
+
+        ？？？？
+
+## 第 076 个番茄时间
+
+    时间：2022.02.20 21:40
+    内容：《Programming Rust 2nd Edition》第323-324页。
+        [Utility Traits] - Borrow and ToOwned at Work: The Humble Cow     写时复制 / 写时克隆 -- 避免不必要的复制。
+        函数参数接收值还是引用？ 这是一个问题～～～～，可用Cow类型来解决～  Clone-on-write，即写时克隆。本质上是一个智能指针。
+
+        https://wiki.jikexueyuan.com/project/rust-primer/intoborrow/cow.html
+
+        写时复制（Copy on Write）技术是一种程序中的优化策略，多应用于读多写少的场景。主要思想是创建对象的时候不立即进行复制，而是先引用（借用）原有对象进行大量的读操作，只有进行到少量的写操作的时候，才进行复制操作，将原有对象复制后再写入。这样的好处是在读多写少的场景下，减少了复制操作，提高了性能。
+
+        -------------------------
+        Rust的诸多trait仍旧不懂～～～～～
+
+## 第 077 个番茄时间
+
+    时间：2022.02.2x 
+    内容：《Programming Rust 2nd Edition》第325-页。
+        [CHAPTER 14 -- Closures]
 
