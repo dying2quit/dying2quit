@@ -1172,5 +1172,16 @@
 
 ## 第 080 个番茄时间
 
-    时间：2022.02.21 
-    内容：《Programming Rust 2nd Edition》第333-页。
+    时间：2022.02.22 00:24
+    内容：《Programming Rust 2nd Edition》第333-336页。
+        [Closures and Safety]
+        
+        [FnOnce] FnOnce闭包只能被调用一次？
+        调用Fn闭包时，实际调用closure.call(), 使用&self。
+        调用FnOnce闭包时，实际调用closure.call_once()，使用self本身，将会被消费。
+
+## 第 081 个番茄时间
+
+    时间：2022.02.22 
+    内容：《Programming Rust 2nd Edition》第336-页。
+    
