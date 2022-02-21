@@ -1116,7 +1116,61 @@
 
 ## 第 077 个番茄时间
 
-    时间：2022.02.2x 
-    内容：《Programming Rust 2nd Edition》第325-页。
+    时间：2022.02.21 10:03
+    内容：《Programming Rust 2nd Edition》第325-327页。
         [CHAPTER 14 -- Closures]
+        [Closures - Capturing Variables]
+        变量捕获～～～
 
+## 第 078 个番茄时间
+
+    时间：2022.02.21 19:35
+    内容：《Programming Rust 2nd Edition》第328-330页。
+        ```
+        fn start_sorting_thread(mut cities: Vec<City>, stat: Statistic) -> thread::JoinHandle<Vec<City>>
+        {
+            let key_fn = move |city: &City| -> i64 { -city.get_statistic(stat) };   // 闭包key_fn获得了stat的所有权，如果stat是可复制值（如i32），那么此处执行的是复制操作。
+
+            thread::spawn(move || { cities.sort_by_key(key_fn); cities})    // 此处闭包获得了cities和key_fn的所有权，因为Vec<City>是不可复制类型，所以此处cities转移到了新线程。
+        }
+        ```
+
+        [Closures - Capturing Variables]
+        [Function and Closure Types] 函数和闭包类型
+        函数和闭包被当作值来使用，那他们理当有自己所属的类型。
+
+        可以像使用其他类型一样来使用函数类型。
+
+## 第 079 个番茄时间
+
+    时间：2022.02.21 20:50
+    内容：《Programming Rust 2nd Edition》第330-333页。
+        一个函数可以接收另一个函数作为参数。
+
+        效果相同（trait相同）的函数和闭包的类型是不同的。 如下泛型函数可实现同时接受闭包和函数。
+        ```
+        fn count_selected_cities<F>(cities: &Vec<City>, test_fn: F) -> usize
+        where F: Fn(&City) -> bool
+        {
+            let mut count = 0; for city in cities {
+                if test_fn(city) {
+                    count += 1;
+                }
+            }
+            count
+        }
+        ```
+
+        `fn(&City) -> bool` // fn type (functions only)
+        `Fn(&City) -> bool` // Fn trait (both functions and closures)
+
+        函数的类型是fn, 而闭包有自己独特的类型（因为闭包可能包含从作用域中借来活偷来的数据），但是所有的闭包都实现了一个Fn trait。 比如： `Fn(&City) -> bool`。
+
+        [Closure Performance]   闭包的性能
+
+
+
+## 第 080 个番茄时间
+
+    时间：2022.02.21 
+    内容：《Programming Rust 2nd Edition》第333-页。
