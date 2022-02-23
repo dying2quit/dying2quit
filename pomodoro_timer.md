@@ -846,7 +846,7 @@
         }
         ```
 
-## 第 063 个番茄时间
+## 第 064 个番茄时间
 
     时间：2022.02.17 10:31
     内容：《Programming Rust 2nd Edition》第293-295页。
@@ -868,7 +868,7 @@
             }
         ```
 
-## 第 064 个番茄时间
+## 第 065 个番茄时间
 
     时间：2022.02.18 00:18
     内容：《Programming Rust 2nd Edition》第295-297页。
@@ -887,7 +887,7 @@
         }
         ```
         
-## 第 065 个番茄时间
+## 第 066 个番茄时间
 
     时间：2022.02.18 01:39
     内容：《Programming Rust 2nd Edition》第298-300页。
@@ -904,7 +904,7 @@
         -------------------
         解引用操作符： * 
 
-## 第 066 个番茄时间
+## 第 067 个番茄时间
 
     时间：2022.02.18 10:37
     内容：《Programming Rust 2nd Edition》第301-305页。
@@ -919,7 +919,7 @@
 
             如果类型实现Drop，则无法实现Copy。如果类型是Copy，这意味着简单逐字节复制足以生成该值的独立副本。
 
-## 第 067 个番茄时间
+## 第 068 个番茄时间
 
     时间：2022.02.18 15:39
     内容：《Programming Rust 2nd Edition》第305-306页。
@@ -941,7 +941,7 @@
 
         特征对象是指向实现给定特征的某些值的指针。（a trait object is a pointer to some value that implements a given trait.）
 
-## 第 068 个番茄时间
+## 第 069 个番茄时间
 
     时间：2022.02.18 22:31
     内容：《Programming Rust 2nd Edition》第306-308页。
@@ -961,7 +961,7 @@
         }
         ```
 
-## 第 069 个番茄时间
+## 第 070 个番茄时间
 
     时间：2022.02.19 13:28
     内容：《Programming Rust 2nd Edition》第308-310页。
@@ -988,7 +988,7 @@
         
         6. 然而Rust语言规定了当T: Copy的情况下，Clone trait代表的含义。即：当某变量let t: T;，符合T: Copy时， 它调用 let x = t.clone() 方法的时候，它的含义必须等同于“简单内存拷贝”。也就是说，clone的行为必须等同于let x = std::ptr::read(&t);，也等同于let x = t;。当T: Copy时，我们不要在Clone trait里面乱写自己的逻辑。所以，当我们需要指定一个类型是 Copy 的时候，最好顺便也指定它 Clone 的行为，就是编译器为我们自动生成的那个逻辑。正因为如此，在希望让一个类型具有 Copy 性质的时候，一般使用 #[derive(Copy, Clone)] 这种方式，这种情况下它们俩最好一起出现，避免手工实现 Clone 导致错误。
 
-## 第 070 个番茄时间
+## 第 071 个番茄时间
 
     时间：2022.02.19 16:49
     内容：《Programming Rust 2nd Edition》第310-313页。
@@ -1009,7 +1009,7 @@
 
         Deref 和 DerefMut 特征不能用于类型变量的合法检测？？？？ 但可以通过 as 操作符先进行类型转换。
 
-## 第 071 个番茄时间
+## 第 072 个番茄时间
 
     时间：2022.02.20 00:15
     内容：《Programming Rust 2nd Edition》第313-315页。
@@ -1021,7 +1021,7 @@
 
         AsRef通常用于使函数在接受参数的类型中更加灵活。如此，任何实现了AsRef<T>的类型都可以被接受。
 
-## 第 072 个番茄时间
+## 第 073 个番茄时间
 
     时间：2022.02.20 13:27
     内容：《Programming Rust 2nd Edition》第315-316页。
@@ -1047,7 +1047,7 @@
 
         同样，对于大部分情况，AsRef<T> ------> AsMut<T>。 不适用的情况是：如果修改T会影响对应类型的不变性约束，则不可以。 比如UTF8的字符串就不能够AsMut<T>。
 
-## 第 073 个番茄时间
+## 第 074 个番茄时间
 
     时间：2022.02.20 16:20
     内容：《Programming Rust 2nd Edition》第316-319页。
@@ -1063,7 +1063,7 @@
 
         标准库中，对每种类型T都实现了From<T>和Into<T>。 通常Into比From更灵活。。。。
 
-## 第 074 个番茄时间
+## 第 075 个番茄时间
 
     时间：2022.02.20 17:26
     内容：《Programming Rust 2nd Edition》第320-321页。
@@ -1075,7 +1075,7 @@
         [Utility Traits] - From and Into
         对于不确定如何转化为妥的情形，Rust中实现复杂一些的TryFrom和TryInto来替代From和Into。 对应的方法是：try_from() 和 try_into()。
 
-## 第 075 个番茄时间
+## 第 076 个番茄时间
 
     时间：2022.02.20 18:05
     内容：《Programming Rust 2nd Edition》第322-323页。
@@ -1100,7 +1100,7 @@
 
         ？？？？
 
-## 第 076 个番茄时间
+## 第 077 个番茄时间
 
     时间：2022.02.20 21:40
     内容：《Programming Rust 2nd Edition》第323-324页。
@@ -1114,7 +1114,7 @@
         -------------------------
         Rust的诸多trait仍旧不懂～～～～～
 
-## 第 077 个番茄时间
+## 第 078 个番茄时间
 
     时间：2022.02.21 10:03
     内容：《Programming Rust 2nd Edition》第325-327页。
@@ -1122,7 +1122,7 @@
         [Closures - Capturing Variables]
         变量捕获～～～
 
-## 第 078 个番茄时间
+## 第 079 个番茄时间
 
     时间：2022.02.21 19:35
     内容：《Programming Rust 2nd Edition》第328-330页。
@@ -1141,7 +1141,7 @@
 
         可以像使用其他类型一样来使用函数类型。
 
-## 第 079 个番茄时间
+## 第 080 个番茄时间
 
     时间：2022.02.21 20:50
     内容：《Programming Rust 2nd Edition》第330-333页。
@@ -1168,9 +1168,7 @@
 
         [Closure Performance]   闭包的性能
 
-
-
-## 第 080 个番茄时间
+## 第 081 个番茄时间
 
     时间：2022.02.22 00:24
     内容：《Programming Rust 2nd Edition》第333-336页。
@@ -1180,8 +1178,106 @@
         调用Fn闭包时，实际调用closure.call(), 使用&self。
         调用FnOnce闭包时，实际调用closure.call_once()，使用self本身，将会被消费。
 
-## 第 081 个番茄时间
+## 第 082 个番茄时间
 
-    时间：2022.02.22 
-    内容：《Programming Rust 2nd Edition》第336-页。
-    
+    时间：2022.02.22 11:01
+    内容：《Programming Rust 2nd Edition》第336-338页。
+        [FnMut]
+        从多个线程调用闭包读写同一数据时可能导致条件竞争～
+        FnMut闭包可以用于写数据。 通过mut引用来调用～
+
+        任何需要以mut方式访问值但不清除值的闭包都(应当)是mut闭包。
+
+        - Fn闭包：可以多次调用。
+        - FnMut闭包：self声明为mut，可以多次调用。
+        - FnOnce闭包：调用者拥有该闭包，只能调用一次。
+
+        Fn()是FnMut()的子trait，FnMut()是FnOnce()的子trait。
+
+## 第 083 个番茄时间
+
+    时间：2022.02.22 21:34
+    内容：《Programming Rust 2nd Edition》第338-341页。
+        [Copy and Clone for Closures]
+        对于只包含共享引用变量的non-move闭包，变量实现了Clone和Copy，那么闭包也就实现了Clone和Copy。
+        对于变量可变的non-move闭包，由于可变引用没有实现Clone和Copy，所以闭包也不能实现Clone和Copy。
+        对于move闭包，如果闭包捕获的变量可Copy，那么闭包就可以Copy，Clone雷同。
+
+        [Callbacks] 回调
+        web服务端实现中，URL绑定的函数就是回调函数。
+
+## 第 084 个番茄时间
+
+    时间：2022.02.23 00:55
+    内容：《Programming Rust 2nd Edition》第341-344页。
+        每个闭包都具有不同的类型，因为每个闭包捕获不同的变量，因此它们也都具有不同的大小。
+
+        [Using Closures Effectively]
+        ????
+
+## 第 085 个番茄时间
+
+    时间：2022.02.23 10:58
+    内容：《Programming Rust 2nd Edition》第345-346页。
+        [CHAPTER 14 -- Iterators] 迭代器，闭包YYDS。
+        表达式 1..=n 是 RangeInclusive<i32>值。
+        ```
+        fn triangle(n: i32) -> i32 {
+            (1..=n).fold(0, |sum, item| sum + item)
+        }
+        ```
+        fold(折叠)是高阶函数，其它的常见高阶函数还有：归约（reduce）、积累（accumulate）、聚集（aggregate）、压缩（compress）或注入（inject）。
+
+## 第 086 个番茄时间
+
+    时间：2022.02.23 22:01
+    内容：《Programming Rust 2nd Edition》第347-348页。
+        [The Iterator and IntoIterator Traits]
+        如果某个类型想要实现迭代器，那么就需要为该类型实现std::iter::IntoIterator。即：实现了IntoIterator的类型就是可迭代类型。
+        ```
+        trait IntoIterator where Self::IntoIter: Iterator<Item=Self::Item> {
+            type Item;
+            type IntoIter: Iterator;
+            fn into_iter(self) -> Self::IntoIter;
+        }
+        // IntoIter是迭代器值本身的类型，Item是它产生的值类型。
+        ```
+        vector的遍历，本质过程：
+        ```
+        // for element in &v {println!("{}", element);}
+
+        let mut iterator = (&v).into_iter();
+        while let Some(element) = iterator.next() {
+                println!("{}", element);
+            }
+
+        // For loop使用IntoIterator::into_iter将其操作数&v转换为迭代器，然后反复调用Iterator::next。
+        ```
+
+        - 一个迭代器(iterator)是实现Iterator的任何类型。
+        - 一个可迭代(iterable)是实现了IntoIterator的任何类型，可以通过调用into_iter方法得到迭代器(iterator)。
+        - 迭代器生产值。
+        - 迭代器生产的值是items。 
+        - 接收迭代器生成项目的代码是消费者？？？？？
+
+## 第 087 个番茄时间
+
+    时间：2022.02.24 00:41
+    内容：《Programming Rust 2nd Edition》第348-350页。
+        [Creating Iterators]
+        大部分集合类型提供iter()和iter_mut()以生成迭代器。
+        ```
+        let v = vec![4, 20, 12, 8, 6];
+        let mut iterator = v.iter();
+        assert_eq!(iterator.next(), Some(&4));
+        ```
+        无论是否合理，每一种类型都是可以实现iter()和iter_mut()的。
+        对于有多种常用迭代方案的类型，通常会提供多种迭代方案。 比如&str string slice，.bytes()生成字节(byte)，.chars()生成字符(Unicode字符)。
+
+        [IntoIterator Implementations]
+
+## 第 088 个番茄时间
+
+    时间：2022.02.24 
+    内容：《Programming Rust 2nd Edition》第350-页。
+        
