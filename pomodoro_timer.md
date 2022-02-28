@@ -1274,10 +1274,24 @@
         无论是否合理，每一种类型都是可以实现iter()和iter_mut()的。
         对于有多种常用迭代方案的类型，通常会提供多种迭代方案。 比如&str string slice，.bytes()生成字节(byte)，.chars()生成字符(Unicode字符)。
 
-        [IntoIterator Implementations]
-
 ## 第 088 个番茄时间
 
+    时间：2022.03.01 01:25
+    内容：《Programming Rust 2nd Edition》第350-353页。
+        [IntoIterator Implementations]
+        三种不同的IntoIterator实现：
+            (&favorites).into_iter()
+            (&mut vector).into_iter()
+            favorites.into_iter()
+        迭代器的一般原则是：高效和可预测。
+
+         [from_fn and successors]
+        通过函数/闭包直接返回迭代器。 
+
+        [drain Methods]
+        drain() 和 into_iter() 具有类似功能，区别点在于drain()不消费原集合？？？  
+
+## 第 089 个番茄时间
+
     时间：2022.02.24 
-    内容：《Programming Rust 2nd Edition》第350-页。
-        
+    内容：《Programming Rust 2nd Edition》第354-页。
