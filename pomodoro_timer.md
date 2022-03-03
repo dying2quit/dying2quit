@@ -1293,5 +1293,67 @@
 
 ## 第 089 个番茄时间
 
-    时间：2022.02.24 
-    内容：《Programming Rust 2nd Edition》第354-页。
+    时间：2022.03.01 10:41
+    内容：《Programming Rust 2nd Edition》第354-357页。
+        [Other Iterator Sources]
+
+        [Iterator Adapters] 迭代器适配器？
+        map adapter: 用闭包作用于各条目。
+        filter adapter: 用闭包去筛选条目。
+        ```
+        let text = " ponies \n giraffes\niguanas \nsquid".to_string();
+        let v: Vec<&str> = text.lines()
+            .map(str::trim)
+            .filter(|s| *s != "iguanas")
+            .collect();
+        assert_eq!(v, ["ponies", "giraffes", "squid"]);
+        ```
+
+## 第 090 个番茄时间
+
+    时间：2022.03.02 10:12
+    内容：《Programming Rust 2nd Edition》第357-359页。
+        关于迭代适配器，有两个要点需要注意：
+        第一，只在迭代器上调用适配器不会消耗任何条目；它只会返回一个新的迭代器，根据需要从第一个迭代器中提取即可生成新条目。在适配器链中，真正完成工作的唯一方法是在最终迭代器上调用next()。
+        
+        第二，迭代器适配器是一个零开销抽象。由于map,filter及其同伴是泛型的，将它们应用于迭代器会专门针对所涉及的特定迭代器类型进行代码实现。
+
+        [filter_map and flat_map]
+        filter_map 类似于 filter 与 map 的结合。
+
+## 第 091 个番茄时间
+
+    时间：2022.03.03 10:20
+    内容：《Programming Rust 2nd Edition》第359-361页。
+        ```
+        text.split_whitespace().filter_map(|w| f64::from_str(w).ok())
+        --------------------
+        text.split_whitespace().map(|w|f64::from_str(w)).filter(|r|r.is_ok()).map(|r|r.unwrap())
+        ```
+        传递到flat_map的闭包必须是可迭代的(iterable)。
+
+        事实上，由于Option是一个可迭代的，行为类似于 zero 或一个条目的序列；如果closure返回一个Option<T>，那么iterator.filter_map(closure)相当于iterator.flat_map(closure)。 ？？？？
+        相当于把多个loop打包成一个迭代器使用？
+
+## 第 092 个番茄时间
+
+    时间：2022.03.03 19:45
+    内容：《Programming Rust 2nd Edition》第361-364页。
+        [flatten] 扁平化～～～
+        用于把二级集合整合为一维集合。
+        ```
+        fn flatten(self) -> impl Iterator<Item=Self::Item::Item>
+            where Self::Item: IntoIterator;
+        ```
+        flat_map() 相当于 map().flatten()。
+
+        [take and take_while]   满足条件 --> 取用
+
+        [skip and skip_while]   满足条件 --> 丢弃
+
+## 第 093 个番茄时间
+
+    时间：2022.03.0x 
+    内容：《Programming Rust 2nd Edition》第364-页。
+        [peekable]
+        
