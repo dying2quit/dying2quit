@@ -1353,7 +1353,111 @@
 
 ## 第 093 个番茄时间
 
-    时间：2022.03.0x 
-    内容：《Programming Rust 2nd Edition》第364-页。
-        [peekable]
+    时间：2022.03.06 01:44
+    内容：《Programming Rust 2nd Edition》第364-366页。
+        [peekable] Peekable 迭代器
+        所有的iterator可以转换成peekable iterator。
+        先通过.peek()判断是否存在下一个条目，再执行.next()。
+
+        [fuse]
+        用于确保迭代器产生一次 None 之后，后续.next()永远产生 None。 
+
+        ----------------
+
+        [Reversible Iterators and rev] 迭代器翻转，rev适配器。 
+        通过实现std::iter::DoubleEndedIterator trait来实现双向迭代。
+        ```
+        let bee_parts = ["head", "thorax", "abdomen"];
+        let mut iter = bee_parts.iter();
+
+        assert_eq!(iter.next(),      Some(&"head"));
+        assert_eq!(iter.next_back(), Some(&"abdomen"));
+        assert_eq!(iter.next(),      Some(&"thorax"));
+        assert_eq!(iter.next_back(), None);
+        assert_eq!(iter.next(),      None);
+        ```
+
+## 第 094 个番茄时间
+
+    时间：2022.03.06 14:48
+    内容：《Programming Rust 2nd Edition》第367-369页。
+        并非所有的迭代器都能实现DoubleEndedIterator，比如流数据？io？
+
+       [Iterator Adapters] - [inspect] 
+       多用于测试代码中的调试管道，通常进行打印、断言操作。
+       ```
+        let upper_case: String = "große".chars()
+            .inspect(|c| println!("before: {:?}", c))
+            .flat_map(|c| c.to_uppercase())
+            .inspect(|c| println!(" after: {:?}", c))
+            .collect();
+        assert_eq!(upper_case, "GROSSE");
+       ```
+
+       [Iterator Adapters] - [chain]
+       迭代器合并
+
+## 第 095 个番茄时间
+
+    时间：2022.03.06 16:02
+    内容：《Programming Rust 2nd Edition》第369-371页。
+       [Iterator Adapters] - [enumerate]
+       返回(key, value)对。
+
+       [Iterator Adapters] - [zip] 
+       如拉链一样，一一组合？？？
+       ```
+       let v: Vec<_> = (0..).zip("ABCD".chars()).collect();
+       assert_eq!(v, vec![(0, 'A'), (1, 'B'), (2, 'C'), (3, 'D')]);
+       ```
+
+       [Iterator Adapters] - [by_ref]
+       借用迭代器，而非消费。
+       注意：但是具体的item被消费掉了。   ？？？
+
+       ```
+        let mut words = vec!["hello", "world", "of", "Rust"].into_iter();
+
+        // 以前两个单词为例。
+        let hello_world: Vec<_> = words.by_ref().take(2).collect();
+        assert_eq!(hello_world, vec!["hello", "world"]);
+
+        // 收集剩下的单词。
+        // 我们只能这样做，因为我们之前使用了 `by_ref`。
+        let of_rust: Vec<_> = words.collect();
+        assert_eq!(of_rust, vec!["of", "Rust"]);
+       ```
+
+## 第 096 个番茄时间
+
+    时间：2022.03.06 16:59
+    内容：《Programming Rust 2nd Edition》第371-页。
+       [Iterator Adapters] - [cloned,copied]
+       iter_a.cloned()  类似  iter_a.map(|item| item.clone())   
+       iter_a.copied()  类似  iter_a.map(|r| *r)
+
+       [Iterator Adapters] - [cycle]
+       无限重复迭代器。 迭代器需要实现std::clone::Clone。
+
+## 第 097 个番茄时间
+
+    时间：2022.03.07 00:13
+    内容：《Programming Rust 2nd Edition》第373-374页。
+        [Consuming Iterators] - Simple Accumulation: count, sum, product
+        .count()    统计
+        .sum()      求和
+        .product()  阶乘？？？
+
+        [Consuming Iterators] - max, min
+        使用std库自带的比较函数。浮点类型未实现std::cmp::Ord，所以不能使用max和min。
+
+        [Consuming Iterators] - max_by, min_by
+        使用自定义的比较函数。
+        这两个方法以引用的方式传递条目到比较函数中。
+
+## 第 098 个番茄时间
+
+    时间：2022.03.0x
+    内容：《Programming Rust 2nd Edition》第375-页。
+        [Consuming Iterators] - max_by_key, min_by_key
         
