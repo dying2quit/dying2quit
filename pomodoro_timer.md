@@ -1457,7 +1457,95 @@
 
 ## 第 098 个番茄时间
 
-    时间：2022.03.0x
-    内容：《Programming Rust 2nd Edition》第375-页。
+    时间：2022.03.07 21:57
+    内容：《Programming Rust 2nd Edition》第375-377页。
         [Consuming Iterators] - max_by_key, min_by_key
+        max_by传入的是比较函数，
+        max_by_key传入的是值提取，
+
+        [Consuming Iterators] - any and all
+        传入闭包，作为取舍的判断。
+        any 满足判断条件的任意一个
+        all 满足判断条件的所有
+
+        [Consuming Iterators] - position, rposition, and ExactSizeIterator
+        position    返回第一个满足条件的条目的序号。
+        rposition   position的反向。。。  需要可翻转的迭代器，同时需要实现std::iter::ExactSizeIterator。
+
+## 第 099 个番茄时间
+
+    时间：2022.03.08 01:25
+    内容：《Programming Rust 2nd Edition》第377-379页。
+        [Consuming Iterators] - fold and rfold
+        前一次迭代的输出值作为下一次迭代的输入值。
+        ```
+        leta=[5,6,7,8,9,10];
+        assert_eq!(a.iter().fold(0, |n, _| n+1), 6);        // .count()
+        assert_eq!(a.iter().fold(0, |n, i| n+i), 45);       // .sum()
+        assert_eq!(a.iter().fold(1, |n, i| n*i), 151200);   // .product()
+        
+        // max
+        assert_eq!(a.iter().cloned().fold(i32::min_value(), std::cmp::max), 10);
+        ```
+
+        [Consuming Iterators] - try_fold and try_rfold
+        ```
+        use std::error::Error;
+        use std::io::prelude::*;
+        use std::str::FromStr;
+        fn main() -> Result<(), Box<dyn Error>> {
+            let stdin = std::io::stdin();
+            let sum = stdin.lock()
+                .lines()
+                .try_fold(0, |sum, line| -> Result<u64, Box<dyn Error>> {
+                    Ok(sum + u64::from_str(&line?.trim())?)
+                })?;
+            println!("{}", sum);
+            Ok(())
+        }
+        ```
+        Box<dyn Error> 知识点又忘了。。。。   FUCK
+
+## 第 100 个番茄时间
+
+    时间：2022.03.08 22:00
+    内容：《Programming Rust 2nd Edition》第379-381页。
+        [Consuming Iterators] - nth, nth_back
+        .nth(n)  后续迭代序列的第n个。 
+        .nth(0)即为.next()。
+        .nth_back(0)即为.next_back()。
+
+        [Consuming Iterators] - last
+        最后一个迭代值，注意该方法会消费所有的item。对于可翻转迭代器，可以使用.next_back()。
+
+        [Consuming Iterators] - find, rfind, and find_map
+        查找满足条件(闭包)的条目。
+        
+        .find_map() ???
+
+## 第 101 个番茄时间
+
+    时间：2022.03.09 00:58
+    内容：《Programming Rust 2nd Edition》第381-385页。
+        [Consuming Iterators] - Building Collections: collect and FromIterator ？？？
+        实现了FromIterator trait的类型可以直接在相应的iterator上执行.collect()来生成集合。？？？
+        from_iter() 
+
+        [Consuming Iterators] - The Extend Trait
+        用于扩展已存在的集合，集合整合/拼接/合并。
+
+        [Consuming Iterators] - partition
+        分割迭代器，通过传入的闭包来判断。 ？？？
+
+        [Consuming Iterators] - for_each and try_for_each
+        .for_each() 只是简单的将闭包应用到各个条目。
+        跟.inspect()很像，也许不同点在于：.for_each()消费迭代器？？？
+
+        .try_for_each() ： 执行闭包可能出错时使用。
+
+## 第 102 个番茄时间
+
+    时间：2022.03.0x
+    内容：《Programming Rust 2nd Edition》第385-页。
+        [Implementing Your Own Iterators]
         
