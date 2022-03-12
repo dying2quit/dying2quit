@@ -1545,7 +1545,55 @@
 
 ## 第 102 个番茄时间
 
-    时间：2022.03.0x
-    内容：《Programming Rust 2nd Edition》第385-页。
+    时间：2022.03.09 02:52
+    内容：《Programming Rust 2nd Edition》第385-386页。
         [Implementing Your Own Iterators]
+        通过实现IntoIterator和Iterator traits，从而自定义迭代器。
+
+## 第 103 个番茄时间
+
+    时间：2022.03.09 11:19
+    内容：《Programming Rust 2nd Edition》第386-389页。
+        [Implementing Your Own Iterators]
+        为BinaryTree<T>实现迭代。
+        迭代二叉树！！！   ？？？   没搞懂～
+
+## 第 104 个番茄时间
+
+    时间：2022.03.12 19:36
+    内容：《Programming Rust 2nd Edition》第391-394页。
+        [CHAPTER 16 -- Collections]
         
+        Vec<T>
+
+        vector的长度和索引是usize类型，其它类型均报错。
+
+## 第 105 个番茄时间
+
+    时间：2022.03.13 00:03
+    内容：《Programming Rust 2nd Edition》第395-397页。
+        array, slice, vector 都有 .iter() .iter_mut() .first() .last() .get() .first_mut() .last_mut() .get_mut(index)方法。
+
+        [Growing and Shrinking Vectors] 向量的扩增和瘦身。
+
+## 第 106 个番茄时间
+
+    时间：2022.03.xx
+    内容：《Programming Rust 2nd Edition》第398-页。
+
+
+
+    
+
+
+
+
+-------------
+███████╗██████╗ ███████╗███████╗██████╗     ██╗   ██╗██████╗  
+██╔════╝██╔══██╗██╔════╝██╔════╝██╔══██╗    ██║   ██║██╔══██╗ 
+███████╗██████╔╝█████╗  █████╗  ██║  ██║    ██║   ██║██████╔╝ 
+╚════██║██╔═══╝ ██╔══╝  ██╔══╝  ██║  ██║    ██║   ██║██╔═══╝  
+███████║██║     ███████╗███████╗██████╔╝    ╚██████╔╝██║      
+╚══════╝╚═╝     ╚══════╝╚══════╝╚═════╝      ╚═════╝ ╚═╝      
+
+
