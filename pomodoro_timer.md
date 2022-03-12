@@ -1578,12 +1578,22 @@
 
 ## 第 106 个番茄时间
 
-    时间：2022.03.xx
-    内容：《Programming Rust 2nd Edition》第398-页。
+    时间：2022.03.13 02:59
+    内容：《Programming Rust 2nd Edition》第398-400页。
+        vec.resize(new_len, value)
+        vec.resize_with(new_len, closure)
+        vec.truncate(new_len)
+        vec.clear()  == vec.truncate(0)
+        vec.extend(iterable)                    // 类似于多次 .push() 操作。
+        vec.split_off(index)                    // 相比于 vec.truncate(index)，该方法还会返回被移除部分的值。
+        vec.append(&mut vec2)                   // 相对于vec.extend(vec2)，该方法消费了vec2，执行结束后，vec2是空的。
+        vec.drain(range)                        // 移出某个范围的元素作为返回值。
+        vec.retain(test)                        // 按条件(test: 闭包或者函数)移出某些元素作为返回值。除了性能差异外，其效果类似于： vec = vec.into_iter().filter(test).collect();
+        vec.dedup()                             // 移除重复的相邻元素。
+        vec.dedup_by(same)                      // 移除重复的相邻元素，用函数或闭包来判断是否相等。
+        vec.dedup_by_key(key)                   // 移除重复的相邻元素，以 key(&mut elem1) == key(&mut elem2) 作为判断。
 
 
-
-    
 
 
 
