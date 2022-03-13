@@ -1641,6 +1641,105 @@
     slice.contains(&value)
     slice.iter().position(|x| *x == value)
 
+## 第 109 个番茄时间
+
+    时间：2022.03.13 15:29
+    内容：《Programming Rust 2nd Edition》第406-410页。
+        如果T实现了PartialEq trait，那么array<T>,slice<T>,vec<T> 也同步实现了PartialEq trait。亦即可直接比较。
+        slice.starts_with(other)
+        slice.ends_with(other)
+
+        ```
+        assert_eq!([1, 2, 3, 4].starts_with(&[1, 2]), true);
+        assert_eq!([1, 2, 3, 4].starts_with(&[2, 3]), false);
+
+        assert_eq!([1, 2, 3, 4].ends_with(&[3, 4]), true);
+        ```
+        随机取数：
+        slice.choose(&mut rng)      // 随机选一个元素
+        slice.shuffle(&mut rng)     // 随机重新排序
+        ```
+        use rand::seq::SliceRandom;
+        use rand::thread_rng;
+        my_vec.shuffle(&mut thread_rng());
+        ```
+        Rust不会发生“无效”错误。
+        
+        [VecDeque<T>]  'deque' -- double ended queue
+        VecDeque是环形buffer的一种实现；相比于Vec<T>，非常适合FIFO场景。 
+
+        deque.push_front(value)
+        deque.push_back(value)
+        deque.pop_front()
+        deque.pop_back()
+        deque.front(), deque.back()  类似于 vec.first(), vec.last()
+        deque.front_mut(), deque.back_mut()
+
+        deque.make_contiguous()  // 重整序列。
+
+        Vec<T>和VecDeque<T>可以相互转换：
+        Vec::from(deque)
+        VecDeque::from(vec)
+
+## 第 110 个番茄时间
+
+    时间：2022.03.13 16:06
+    内容：《Programming Rust 2nd Edition》第410-411页。
+        [BinaryHeap<T>] 二叉堆，最大值总是在队列最前面。
+        要求T类型实现了 Ord trait。
+
+        heap.push(value)
+        heap.pop()          // 提取最大值
+        heap.peek()         // 借用最大值
+        heap.peek_mut()     // 可变借用最大值？？？？
+
+        特别适合用来作为有优先级的任务堆。
+        ```
+        while let Some(task) = heap.pop() {
+            handle(task);
+        }
+        ```
+
+## 第 111 个番茄时间
+
+    时间：2022.03.13 17:21
+    内容：《Programming Rust 2nd Edition》第411-415页。
+        [HashMap<K, V> and BTreeMap<K, V>]
+        HashMap<K, V>存储在table中，K需要实现Hash 和 Eq trait。本质上以hash(T)作为主键。
+        BTreeMap<K, V>存储在nodes中，是有序的，K需要实现Ord trait。K作为主键。
+
+        B-trees效率比balanced binary trees(平衡二叉树)高。
+
+        HashMap::new(), BTreeMap::new()
+        iter.collect()   // item: Iterator<Item=(K, V)>
+        HashMap::with_capacity(n)
+
+        map.len()
+        map.is_empty()
+        map.contains_key(&key)
+        map.get(&key)
+        map.get_mut(&key)
+        map.insert(key, value)
+        map.extend(iterable)
+        map.append(&mut map2)  // 移动map2中所有实体到map中
+        map.remove(&key)        // 删除某实体，返回Option<V>
+        map.remove_entry(&key)  // 删除某实体，返回Option<(K, V)>
+        map.retain(test)        // 
+        map.clear()
+        btree_map.split_off(&key)   
+
+        other: 【译】为什么Rust中的BTreeMap没有with_capacity()方法？ 
+                https://juejin.cn/post/6904621455724511245
+
+## 第 112 个番茄时间
+
+    时间：2022.03.13 
+    内容：《Programming Rust 2nd Edition》第415-页。
+
+
+
+
+
 
 
 
