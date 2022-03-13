@@ -1593,6 +1593,55 @@
         vec.dedup_by(same)                      // 移除重复的相邻元素，用函数或闭包来判断是否相等。
         vec.dedup_by_key(key)                   // 移除重复的相邻元素，以 key(&mut elem1) == key(&mut elem2) 作为判断。
 
+## 第 107 个番茄时间
+
+    时间：2022.03.13 11:37
+    内容：《Programming Rust 2nd Edition》第400-403页。
+        slices.concat()
+        slices.join(&separator)
+        slice.iter(), slice.iter_mut()
+        slice.split_at(index), slice.split_at_mut(index)
+        slice.split_first(), slice.split_first_mut()
+        slice.split_last(), slice.split_last_mut()
+        slice.split(is_sep), slice.split_mut(is_sep)
+        slice.rsplit(is_sep), slice.rsplit_mut(is_sep)
+        slice.splitn(n, is_sep), slice.splitn_mut(n, is_sep)
+        slice.rsplitn(n, is_sep), slice.rsplitn_mut(n, is_sep)
+        slice.chunks(n), slice.chunks_mut(n)
+        slice.rchunks(n), slice.rchunks_mut(n)
+        slice.chunks_exact(n), slice.chunks_exact_mut(n)
+        slice.rchunks_exact(n), slice.rchunks_exact_mut(n)
+        slice.windows(n)
+
+## 第 108 个番茄时间
+
+    时间：2022.03.13 14:43
+    内容：《Programming Rust 2nd Edition》第403-405页。
+        slice.swap(i, j)            // 交换元素。
+        slice_a.swap(&mut slice_b)  // slice_a, slice_b 长度相同。
+        vec.swap_remove(i)          // 移除某元素，然后用尾部元素填充空位。 
+
+        ------------- 排序 搜索
+        slice.sort()
+    slice.sort_by(cmp)              // cmp: Fn(&T, &T) -> std::cmp::Ordering   指定排列顺序。
+        ```
+        students.sort_by(|a, b| a.last_name.cmp(&b.last_name));
+        -------
+        students.sort_by(|a, b| {
+            let a_key = (&a.last_name, &a.first_name);
+            let b_key = (&b.last_name, &b.first_name);
+            a_key.cmp(&b_key)
+        });
+        ```
+    slice.sort_by_key(key)      // key: Fn(&T) -> K where K: Ord   按key升序排列。
+    slice.reverse()
+    
+    slice.binary_search(&value), slice.binary_search_by(&value, cmp),
+    slice.binary_search_by_key(&value, key)
+    slice.contains(&value)
+    slice.iter().position(|x| *x == value)
+
+
 
 
 
