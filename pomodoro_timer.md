@@ -1733,15 +1733,20 @@
 
 ## 第 112 个番茄时间
 
-    时间：2022.03.13 
-    内容：《Programming Rust 2nd Edition》第415-页。
+    时间：2022.03.14 22:10
+    内容：《Programming Rust 2nd Edition》第415-418页。
+        map.entry(key).or_insert(value)     // mut引用 已有或新建的实体
+        map.entry(key).or_default()
+        map.entry(key).or_insert_with(default_fn)
+        map.entry(key).and_modify(closure)
 
+        (for (k, v) in map)  ----->  (K, V)
+        (for (k, v) in &map) ----->  (&K, &V)
+        (for (k, v) in &mut map) -----> (&K, &mut V)
 
-
-
-
-
-
+        map.keys()      ----->  &K
+        map.values()    ----->  &V
+        map.values_mut()----->  &mut V
 
 
 
