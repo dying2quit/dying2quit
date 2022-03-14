@@ -1748,6 +1748,43 @@
         map.values()    ----->  &V
         map.values_mut()----->  &mut V
 
+## 第 113 个番茄时间
+
+    时间：2022.03.15 01:26
+    内容：《Programming Rust 2nd Edition》第418-421页。
+        HashSet<T> and BTreeSet<T>
+        即 HashMap<T, ()> 和 BTreeMap<T, ()>
+
+        HashSet::new(), BTreeSet::new()
+        iter.collect()
+        HashSet::with_capacity(n)
+        set.len()
+        set.is_empty()
+        set.contains(&value)    // value 即 key
+        set.insert(value)
+        set.remove(&value)
+        set.retain(test)
+
+        不能以可变引用的方式迭代set(集合)，因为无法获取存储在集合中的值的mut引用。
+
+        set.iter()
+
+
+        set.get(&value)
+        set.take(&value)
+        set.replace(value)
+
+        set1.intersection(&set2)        // 取集合的交集
+        set1.union(&set2)               // 并集
+        set1.difference(&set2)          // 在set1中，不在set2中
+        set1.symmetric_difference(&set2) // 对称差集，在set1或set2中，但不在两者交集中。
+        set1.is_disjoint(set2)          // 判断是否无任何交集
+        set1.is_subset(set2)            // set1是否为set2的子集
+        set1.is_superset(set2)          // set1是否为set2的超集。
+
+        支持 == 和 != 运算符
+
+
 
 
 
