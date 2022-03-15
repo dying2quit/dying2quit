@@ -1784,6 +1784,33 @@
 
         支持 == 和 != 运算符
 
+## 第 114 个番茄时间
+
+    时间：2022.03.15 10:34
+    内容：《Programming Rust 2nd Edition》第422-425页。
+        [Hashing] std::hash::Hash trait
+        大部分实现Eq的内建类型同样实现了Hash。
+        Hash标准库有一个原则：无论是指向引用还是值，具有相同的hash值。 所以：hash(&T) == hash(T) ？？？
+
+        [Using a Custom Hashing Algorithm]
+        rust默认的hash算法是；SipHash-1-3。  SipHash 能够有效减缓 hash flooding 攻击。凭借这一点，它逐渐成为 Ruby、Python、Rust 等语言默认的 hash 表实现的一部分。
+
+        可以使用其它hash算法。
+
+        [Beyond the Standard Collections]
+
+
+## 第 115 个番茄时间
+
+    时间：2022.03.16 01:52
+    内容：《Rust 程序设计》p319-p324,相当于《Programming Rust 2nd Edition》第427-435页。
+        [CHAPTER 17 -- Strings and Text]  
+        String实际上是Vec<u8>的包装类型，同时确保了vec内容始终是良好的UTF-8格式。所以String与Vec性能相同。
+
+
+
+
+
 
 
 
