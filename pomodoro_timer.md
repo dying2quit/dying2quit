@@ -1807,11 +1807,37 @@
         [CHAPTER 17 -- Strings and Text]  
         String实际上是Vec<u8>的包装类型，同时确保了vec内容始终是良好的UTF-8格式。所以String与Vec性能相同。
 
+## 第 116 个番茄时间
 
+    时间：2022.03.17 00:24
+    内容：《Rust 程序设计》p325-p328，17.3.7
+    slice.to_string() == &slice.to_owned() ？？？
 
+## 第 117 个番茄时间
 
+    时间：2022.03.18 00:28
+    内容：《Rust 程序设计》p328-334，17.3.15
+        对于一个实现了Display特性的类型，标准库自动为其实现std::str::ToString 特性。
 
+        String::from_urf8_lossy(byte_slice) ？？？   返回值：Cow<str> ？？？
 
+## 第 118 个番茄时间
+
+    时间：2022.03.20 02:31
+    内容：《Rust 程序设计》p335-p335，17.3.16
+        Cow类型可以同时处理(存储) Owned 和 Borrowed 数据。
+        对于纠结String类型还是&str类型的变量改用Cow智能指针类型。 ？？？ 比如“同时接受 &str 和 String 作为参数”的场景～～～
+
+        无论是Owned还是Borrowed，Cow<'a T>均生成&T以供使用。
+        ```
+        use std::borrow::Cow;
+        
+        fn get_name() -> Cow<'static, str> {
+            std::env::var("USER")
+                .map(|v| Cow::Owned(v))
+                .unwrap_or(Cow::Borrowed("whoever you are"))
+        }
+        ```
 
 
 
