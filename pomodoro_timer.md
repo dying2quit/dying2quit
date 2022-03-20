@@ -1831,13 +1831,34 @@
         无论是Owned还是Borrowed，Cow<'a T>均生成&T以供使用。
         ```
         use std::borrow::Cow;
-        
+
         fn get_name() -> Cow<'static, str> {
             std::env::var("USER")
                 .map(|v| Cow::Owned(v))
                 .unwrap_or(Cow::Borrowed("whoever you are"))
         }
         ```
+
+## 第 119 个番茄时间
+
+    时间：2022.03.20 23:54
+    内容：《Rust 程序设计》p335-p338，next: 17.4.1
+        因为Cow<'a, str> 提供了来自String和&str的From和Into转换，因此可以简化代码：
+        ```
+        fn get_name() -> Cow<'static, str> {
+            std::env::var("USER")
+            .map(|v| v.into())
+            .unwrap_or("whoever you are".into())
+        }
+        ```
+        因为Cow<'a, str>实现了 std::ops::Add 和 std::ops::AddAssign，所以：
+        ```
+        if let Some(title) = get_title() {
+            name += ", ";
+            name += title;
+        }
+        ```
+
 
 
 
