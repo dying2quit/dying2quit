@@ -1859,6 +1859,44 @@
         }
         ```
 
+## 第 120 个番茄时间
+
+    时间：2022.03.24 22:01
+    内容：《Rust 程序设计》p338-343，Next: Ch17.4.8
+        格式化形式参数：{which:how}，which用以标注参数名或者参数序号，how用以标注格式化要求。 
+
+        格式化文本值时，模版字符串`{:*^m.n}`，`*` 是填充字符，`^`或`<`或`>` 是对齐方式，m 是最小字段宽度，n 是最大文本长度。
+        Table 17-5. Format string directives for text  
+
+        Table 17-6. Format string directives for integers
+
+        Table 17-7. Format string directives for floating-point numbers
+        
+        {:?} 和 {:#?}
+
+        {:p}    格式化指针(pointer)
+
+        ```
+         assert_eq!(format!("{mode} {2} {} {}",
+                       "people", "eater", "purple", mode="flying"),
+                        "flying purple people eater");
+        ```
+
+        动态宽度和精度：
+        ```
+        format!("{:>1$}", content, get_width())
+        ----------
+        format!("{:>width$.limit$}", content,
+            width=get_width(), limit=get_limit())
+
+        ----------
+        format!("{:.*}", get_limit(), content)
+        ```
+
+
+
+
+
 
 
 
