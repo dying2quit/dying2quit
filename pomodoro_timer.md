@@ -1893,6 +1893,23 @@
         format!("{:.*}", get_limit(), content)
         ```
 
+## 第 121 个番茄时间
+
+    时间：2022.03.25 00:55
+    内容：《Rust 程序设计》p344-347，Next: Ch17.5.1
+        可以通过实现std::fmt模块中的某些trait可以自定义格式化类型。
+        Table 17-8. Format string directive notation
+
+        使用格式化语言？
+        ```
+        macro_rules! log { // no ! needed after name in macro definitions 
+            ($format:tt, $($arg:expr),*) => (
+                write_log_entry(format_args!($format, $($arg),*))
+            )
+        }
+        ```
+        正则表达式包regex不在std中，但仍旧是rust团队维护的。
+
 
 
 
