@@ -1910,6 +1910,36 @@
         ```
         正则表达式包regex不在std中，但仍旧是rust团队维护的。
 
+## 第 122 个番茄时间
+
+    时间：2022.03.26 
+    内容：《Rust 程序设计》p347-p351，Next: 第18章 -- 输入和输出
+
+        正则表达式。。。。
+
+        lazy_static是个好东西。。。。
+        ```
+        use lazy_static::lazy_static;
+
+        lazy_static! {
+            static ref SEMVER: Regex
+                = Regex::new(r"(\d+)\.(\d+)\.(\d+)(-[-.[:alnum:]]*)?")
+                    .expect("error parsing regex");
+        }
+        ```
+        如上代码中的SEMVER并非Regex类型，而是一个宏生成的实现了Deref<Target=Regex>的类型，具备与Regex完全相同的方式。首次deref SEMVER的时候，执行初始化，随后被保存起来随时取用。
+
+        规划化形式：
+            - Unicode NFC (规范化形式C)  -- 最大化组合
+            - Unicode NFD (规范化形式D)  -- 最大化分解
+            - NFKC
+            - NFKD
+
+        crate: unicode-normalization
+
+        规范化形式通常适合持久存储，而不受Unicode标准演进的影响。
+
+
 
 
 
