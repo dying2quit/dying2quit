@@ -1939,10 +1939,100 @@
 
         规范化形式通常适合持久存储，而不受Unicode标准演进的影响。
 
+## 第 123 个番茄时间
 
+    时间：2022.03.26 17:27 
+    内容：《Rust 程序设计》p352-356，Next: Ch18.1.3
+        Reader & Writer
+        reader.read(&mut buffer)
+        reader.read_to_end(&mut byte_vec)
+        reader.read_to_string(&mut string)
+        reader.read_exact(&mut buf)
 
+        reader.bytes()
+        reader.chain(reader2)
+        reader.take(n)
 
+        如下方法需要reader实现BufRead：
+        reader.read_line(&mut line)
+        reader.lines()
+        reader.read_until(stop_byte, &mut byte_vec), reader.split(stop_byte)
 
+## 第 124 个番茄时间
+
+    时间：2022.03.26 20:42
+    内容：《Rust 程序设计》p356-p359，Next: Ch18.1.5
+
+        let lines = reader.lines().collect::<io::Result<Vec<String>>>()?; 略懵。。。
+        ```
+        impl<T, E, C> FromIterator<Result<T, E>> for Result<C, E>
+            where C: FromIterator<T>
+            {
+            ...
+            }
+        ```
+        假设 C 是任何集合类型，如 Vec 或 HashSet。 只要我们已经知道如何从 T 值的迭代器构建 C，我们就可以从产生 Result<T, E> 值的迭代器构建 Result<C, E>。 
+        
+        reader.lines()可迭代生成String，
+        T: IntoIterator<Item=String>  
+        String                  ==>     C: Vec<String>
+        Result<T, E>            ==>     Result<C, E>
+        io::Result<String>      ==>     io::Result<Vec<String>>
+
+        ?????
+
+## 第 125 个番茄时间
+
+    时间：2022.03.27 21:54
+    内容：《Rust 程序设计》p359-361，Next: Ch18.1.8
+        写入器：Writer
+        writer.write(&buf)      // 底层方法，一般不建议直接使用。
+        writer.write_all(&buf)
+        writer.flush()
+
+        添加缓冲：   
+            BufReader::new(reader)
+            BufWriter::with_capacity(size, writer)
+
+        文件
+        File::open(filename)		reader
+        File::create(filename)		新建文件，如果存在则覆盖。
+        
+		如果上述两种方式不满足需求，则通过OpenOptions指定具体行为。
+			- .append()
+			- .write()
+			- .create_new()
+		构建器???  builder ???
+
+		Seek特征
+
+		file.seek(SeekFrom::Start(0))		定位到文档开头
+		file.seek(SeekFrom::Current(-8))	当前位置倒退8字节。
+
+## 第 126 个番茄时间
+
+    时间：2022.03.27 23:28
+    内容：《Rust 程序设计》p359-361，Next: Ch18.2
+		io::stdin()		Stdin有一个.lock()方法用于获取互斥量并返回io::StdinLock()，由于技术原因，不能直接使用io::stdin().lock()，而应当有一个中间变量，以保存生命周期信息。
+		io::stdout()
+		io::stderr()
+		Cursor::new(buf)	Cursor实现了Read,BufRead,Seek，对于可写buf(如：&mut [u8], Vec<u8>)还实现了Write。
+		std::net::TcpStream		网络连接，双向通道。
+		std::process::Command
+
+		std::sink()		无操作写入器，所有数据被抛弃，直接返回Ok。
+		std::empty()	无操作读取器，读取成功，但没有数据(返回 end-of-input)。
+		std::repeat(byte)	无止尽的返回byte。
+
+		二进制数据、压缩、序列化。
+		byteorder crate
+		flate2 crate
+		serde crate
+
+		
+						
+		
+		
 
 
 
