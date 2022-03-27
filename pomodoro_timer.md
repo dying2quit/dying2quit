@@ -2012,7 +2012,7 @@
 ## 第 126 个番茄时间
 
     时间：2022.03.27 23:28
-    内容：《Rust 程序设计》p359-361，Next: Ch18.2
+    内容：《Rust 程序设计》p361-364，Next: Ch18.2
 		io::stdin()		Stdin有一个.lock()方法用于获取互斥量并返回io::StdinLock()，由于技术原因，不能直接使用io::stdin().lock()，而应当有一个中间变量，以保存生命周期信息。
 		io::stdout()
 		io::stderr()
@@ -2029,8 +2029,60 @@
 		flate2 crate
 		serde crate
 
+## 第 127 个番茄时间
+
+    时间：2022.03.28 00:42
+    内容：《Rust 程序设计》p364-p370，Next: Ch18.3 网络编程
+        操作文件及目录
+		OsStr是UTF-8的超集，可能不是有效的Unicode。用于在系统中表示路径、文件名、参数等信息。
+		Path跟OsStr是一样的，只是多了几个处理文件名的方式。
 		
-						
+		Table 18-1. Filename types
+
+		str		==>		String
+		OsStr	==>		std::ffi::OsString
+		Path	==>		std::path:PathBuf
+
+		如上三种类型均实现了AsRef<Path>，因此可以作为方法中的泛型参数，，， （这种表述方法？？？）
+		
+		呵，AsRef 又忘了。。。。。。。。。   M Fuck....
+
+		Path::new(str)	将&str和&OsStr转化为&Path。
+		path.parent()
+		path.file_name()
+		path.is_absolute(), path.is_relative()
+		path1.join(path2)
+		path.components()
+		path.ancestors()
+		path.to_str()
+		path.to_string_lossy()		返回std::borrow::Cow<str>
+		path.display()
+
+		Table 18-2. Summary of filesystem access functions	std::fs
+
+		读取目录，std::fs::DirEntry类型的一些方式：
+			.file_name()
+			.path()			返回全新的PathBuf。
+			.file_type()	返回io::Result<FileType>
+			.metadata()		
+
+		`#[cfg]`属性表示“条件编译”
+		```
+		#[cfg(unix)]
+		use std::os::unix::fs::symlink;
+    
+		/// Stub implementation of `symlink` for platforms that don't provide it.
+    	#[cfg(not(unix))]
+		fn symlink<P: AsRef<Path>, Q: AsRef<Path>>(src: P, _dst: Q) -> std::io::Result<()>
+    	{
+        	Err(io::Error::new(io::ErrorKind::Other,
+                           format!("can't copy symbolic link: {}",
+                                   src.as_ref().display())))
+		}
+
+		```
+		
+		
 		
 		
 
