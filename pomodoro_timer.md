@@ -2082,9 +2082,53 @@
 
 		```
 		
+## 第 128 个番茄时间
+
+    时间：2022.03.28 01:43
+    内容：《Rust 程序设计》p370-p374, 第19章：并发。
+		吐槽：中文版的翻译真是有够恶心的。
+
+		有用reqwest来写demo。
 		
+		-------------------------
+		使用Rust线程的3种方式：
+		- Fork-join parallelism    	并行的飞叉-合并
+		- Channels					通道
+		- Shared mutable state		共享的可修改状态
+
+		Rust的所有权、借用、生命周期等一系列知识在“并发”中将统统被使用。
 		
+## 第 129 个番茄时间
+
+    时间：2022.03.28 21:53
+    内容：《Rust 程序设计》p374-p380, Next: Ch19.1.4 Rayon??? 
+		生成新线程：std::thread::spawn
+		Rust中的新线程是一个真实的系统线程，有自己的栈。
+
+		使用引用计数器的并发版本：原子引用计数器Arc 来跨线程共享不可修改的数据。
+
+## 第 130 个番茄时间
+
+    时间：2022.03.28 22:42
+    内容：《Rust 程序设计》pp380-p383, Next: Ch19.2 通道。
+		标准库中的spawn函数是一个重要的原语，但并不是专门为并行Fork-Join设计的。基于spawn的crossbeam库受限线程(scoped thread)可以相当自然的支持并行fork-join。
+		除了Crossbeam，Rayon库实现了并发任务。
+		```
+		use rayon::prelude::*;
+		// "do 2 things in parallel"
+		let (v1, v2) = rayon::join(fn1, fn2);
+	
+		// "do N things in parallel"  N 为CPU核心数
+		giant_vector.par_iter().for_each(|value| {
+			do_thing_with_value(value);
+		});
+		```
+		MapReduce编程模型？？？
 		
+		Rayon使用work-stealing技术实现在线程间负载均衡。
+		
+
+
 
 
 
