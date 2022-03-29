@@ -2152,8 +2152,23 @@
 		let (sender, receiver) = sync_channel(1000);		
 		```
 
+## 第 133 个番茄时间
 
+    时间：2022.03.30 01:12
+    内容：《Rust 程序设计》p391-p395, Next:Ch19.3
+		std::marker::Send	数据在线程间安全的转移。
+		std::marker::Sync	数据在线程间安全的共享。
+		安全：没有数据争用和其他未定义行为。
 		
+		大多数的类型同时实现了Send和Sync。
+
+		少数没有实现Send和Sync的类型主要用于在非线程安全的条件下提供可修改能力，例如：std::rc::Rc<T>如果在两个线程中同时clone，可能出现数据争用。
+
+		.off_thread()	？？？
+
+		通道channel还可以用于异步服务。。。。
+
+		Next： 19.3 共享的可修改状态。
 		
 
 
