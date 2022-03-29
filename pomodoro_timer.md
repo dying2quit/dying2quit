@@ -2126,6 +2126,34 @@
 		MapReduce编程模型？？？
 		
 		Rayon使用work-stealing技术实现在线程间负载均衡。
+
+## 第 131 个番茄时间
+
+    时间：2022.03.29 22:05
+    内容：《Rust 程序设计》pp383-387, Next:Ch19.2.2
+		[19.2 通道channel]
+		channel 是把数据从一个线程发送到另一个线程的单向管道 -- 一个线程安全的队列 -- 线程间转移数据所有权。
+
+		channel 属于 std::sync::mpsc模块
+
+## 第 132 个番茄时间
+
+    时间：2022.03.30 00:10
+    内容：《Rust 程序设计》pp387-p391, Next:Ch19.2.5
+		mpsc ：multi-producer, signle-consumer
+		所以一个channel可以接收多个发送者。
+		Sender<T>实现了Clone trait，需要额外的Sender时，只需要进行Clone即可。
+
+		PS：Receiver<T>不能clone，如果需要多个线程从同一个channel接收数据，则需要使用Mutex。
+
+		同步通道    
+		```
+		use std::sync::mpsc::sync_channel;
+		let (sender, receiver) = sync_channel(1000);		
+		```
+
+
+		
 		
 
 
