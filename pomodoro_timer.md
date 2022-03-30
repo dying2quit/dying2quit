@@ -2170,8 +2170,41 @@
 
 		Next： 19.3 共享的可修改状态。
 		
+## 第 134 个番茄时间
 
+    时间：2022.03.30 22:06
+    内容：《Rust 程序设计》p395-p398, Next:Ch19.3.3
+		互斥量(mutex)或锁(lock)用于独占特定数据的访问权。
 
+		Arc和Mutex经常一起使用，使用Arc进行跨线程共享数据，使用Mutex进行跨线程共享可修改数据。
+
+		对于Mutex类型的数据，操作数据的唯一方式是先调用.lock()方法。
+		```
+		let mut guard = self.waiting_list.lock().unwrap();
+		```
+		.lock()方法返回的MutexGuard<WaitingList>值是对&mut WaitingList的一个封装。 因为实现了Deref，所以可以直接调用 T 的方法。
+
+		获取到互斥量的变量释放时，锁也被释放。
+
+## 第 135 个番茄时间
+
+    时间：2022.03.30 23:44
+    内容：《Rust 程序设计》p398-p400, Next:Ch19.3.7
+		在Rust中，&mut 表示专属访问/排他性访问(exclusive access), & 表示共享访问(shared access)。
+		一般情况下，如果父线程中没有专属访问权，那么在子线程中也没有。 但Mutex可以通过锁来实现。
+
+		Mutex的内部修改能力与RefCell相同，都是由Rust编译器来保障的。
+
+		Mutex可能存在的问题：
+			- Rust程序可以不出现数据竞争，但可能出现竞态条件(race condition)。
+			- 共享的可修改状态可能影响程序设计。？？？？
+			- 其他问题？？？？？    。。。。。
+
+		尽量使用结构化处理方式，其次再考虑Mutex。  ？？？？
+
+		死锁	Deadlock
+		中毒的互斥量	Poisoned Mutexes
+		
 
 
 
