@@ -2204,7 +2204,51 @@
 
 		死锁	Deadlock
 		中毒的互斥量	Poisoned Mutexes
-		
+	
+## 第 136 个番茄时间
+
+    时间：2022.03.31 00:51
+    内容：《Rust 程序设计》p400-p402, Next:Ch19.3.9
+		Rust channel 是多生产者单消费者的 -- 一个通道只有一个Receiver。 通过Mutex可以实现Receiver共享。
+
+		```
+        pub mod shared_channel {
+            use std::sync::{Arc, Mutex};
+            use std::sync::mpsc::{channel, Sender, Receiver};
+            
+            /// A thread-safe wrapper around a `Receiver`.
+            #[derive(Clone)]
+            pub struct SharedReceiver<T>(Arc<Mutex<Receiver<T>>>); 
+            
+            impl<T> Iterator for SharedReceiver<T> {
+                type Item = T;
+                /// Get the next item from the wrapped receiver.
+                fn next(&mut self) -> Option<T> {
+                        let guard = self.0.lock().unwrap(); guard.recv().ok()
+                } 
+            }
+
+            /// Create a new channel whose receiver can be shared across threads.
+            /// This returns a sender and a receiver, just like the stdlib's
+            /// `channel()`, and sometimes works as a drop-in replacement. 
+            pub fn shared_channel<T>() -> (Sender<T>, SharedReceiver<T>) {
+                let (sender, receiver) = channel();
+                (sender, SharedReceiver(Arc::new(Mutex::new(receiver))))
+            }
+        }
+        ```
+
+        读写锁 RWLock
+        通常可以用在APP对配置文件的读写上。？？？   实现一个写入器和多个读取器。
+        重新加载配置文件时使用RWLock::write()，防止读取过程中数据变动？？？
+        ```
+        fn reload_config(&self) -> io::Result<()> {
+            let new_config = AppConfig::load()?;
+            let mut config_guard = self.config.write().unwrap();
+            *config_guard = new_config;     // 这里令人困惑。。。。。。？？？？？？？
+            Ok(())
+        }
+        ```
 
 
 
