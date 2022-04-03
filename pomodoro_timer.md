@@ -2254,10 +2254,58 @@
 
     时间：2022.04.03 15:20
     内容：《Rust 程序设计》p402-p404, Next:Ch19.3.11
-		std::sync::Condvar 类型实现了条件变量(condition variable)。
-		std::sync::atomic 模块包含无锁并发编程要使用的原子类型。多线程同时读取原子类型数据不会造成数据争用。
+		std::sync::Condvar 类型实现了条件变量(condition variable)。   ？？？？
 
-		迷糊，，，，，，，
+		std::sync::atomic 模块包含无锁并发编程要使用的原子类型。多线程同时读取原子类型数据不会造成数据争用。
+        
+        原子类型可用于子线程的取消指令。（主线程写标识，子线程读标识）。 相比于Mutex<bool>或channel实现方式，原子操作更高效，通常只是一个CPU指令即可。
+
+
+## 第 138 个番茄时间
+
+    时间：2022.04.03 17:14
+    内容：《Programming Rust 2nd Edition》第535-538页。
+        全局变量  Global Variables
+
+        static PACKETS_SERVED: usize = 0;    // 不可修改
+
+        搞成原子整数(atomic integer)即可线程安全的进行读写。 
+        ```
+        use std::sync::atomic::AtomicUsize;
+        use std::sync::atomic::Ordering;
+
+        static PACKETS_SERVED: AtomicUsize = AtomicUsize::new(0);
+        PACKETS_SERVED.fetch_add(1, Ordering::SeqCst);
+        ```
+        原子全局变量只能存储一个整数或者布尔。
+        
+        若要创建其他类型的全局变量：
+            - 变量必须满足线程安全：安全的静态变量必须同时Sync且non-mut。？？？？
+            - 静态初始化器只能调用专门标记为const的函数？？？？？
+
+        lazy_static crate ～～～
+
+        ```
+        use lazy_static::lazy_static;
+        use std::sync::Mutex;
+        
+        lazy_static! {
+            static ref HOSTNAME: Mutex<String> = Mutex::new(String::new());
+        }
+        ```
+        
+        const 与 static 区别？？？？
+
+## 第 139 个番茄时间
+
+    时间：2022.04.xx
+    内容：《Programming Rust 2nd Edition》第539-页。
+        [CHAPTER 20 -- Asynchronous Programming]
+
+
+
+
+
 
 
 
