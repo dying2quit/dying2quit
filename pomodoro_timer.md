@@ -2298,14 +2298,82 @@
 
 ## 第 139 个番茄时间
 
-    时间：2022.04.xx
-    内容：《Programming Rust 2nd Edition》第539-页。
+    时间：2022.04.04 15:56
+    内容：《Programming Rust 2nd Edition》第539-541页。
         [CHAPTER 20 -- Asynchronous Programming]
+        异步任务(asynchronous tasks)类似于线程，但更高效且节省资源。   so，异步任务本质是线程池？？？？
+        ```rust
+        // use std::{net, thread};
+        use async_std::{net, task};
 
+        let listener = net::TcpListener::bind(address).await?;
+        let mut new_connections = listener.incoming();
 
+        // for socket_result in listener.incoming() {
+        while let Some(socket_result) = new_connections.next().await {
+            let socket = socket_result?;
+            let groups = chat_group_table.clone();
 
+            // thread::spawn(|| {
+            //     log_error(serve(socket, groups));
+            // });
+            task::spawn(async {
+                        log_error(serve(socket, groups).await);
+                    });
+        }
+        ```
 
+## 第 140 个番茄时间
 
+    时间：2022.04.04 16:48
+    内容：《Programming Rust 2nd Edition》第541-543页。
+        Rust程序中，通过引入std::future::Future trait来实现对异步操作的支持。
+
+        相对于同步运行的函数，异步函数的返回类型使用Futureh进行包裹。 如下代码中返回的即是：未来会返回的类型为Result<usize>的值（个人理解）。。。。。
+        ```
+        fn read_to_string(&mut self, buf: &mut String) -> impl Future<Output = Result<usize>>;
+        ```
+
+## 第 141 个番茄时间
+
+    时间：2022.04.04 17:48
+    内容：《Programming Rust 2nd Edition》第543-545页。
+        | 由于某些计算（或者网络请求）尚未结束，我们需要一个对象来代理这个未知的结果，于是就有了这些构造（future、promise等）。术语“future”、“promise”、“delay”和“deferred”通常可以互换使用。
+
+        调用异步函数时不会实际执行，而是在轮询(poll)时才具体执行？？？？？   anyway，必须要考虑参数的生命周期。正确的函数签名如下：
+        ```
+        fn read_to_string<'a>(&'a mut self, buf: &'a mut String) -> impl Future<Output = Result<usize>> + 'a;
+        ```
+
+        async-std crate提供了所有std::io的异步版本，包括带有read_to_string方法的异步Read trait。
+
+        [Async Functions and Await Expressions]
+
+## 第 142 个番茄时间
+
+    时间：2022.04.04 19:08
+    内容：《Programming Rust 2nd Edition》第545-547页。
+        调用异步函数时返回的future中包含所有需要的参数和本地变量等信息。
+        第一次轮询future时，正式执行代码。
+
+        .await 表达式：获取future的所有权并进行轮询(poll)操作，返回最终值或者Poll::Pending。
+
+        Rust尚不允许trait中包含异步方法。 自由函数或属于某类型的函数能够异步。
+
+        如果确实需要在trait中包含异步函数，可以考虑使用：async-trait crate。（采用了基于宏的变通办法）。。。
+
+        [Calling Async Functions from Synchronous Code: block_on]
+        在同步代码中可以通过 async_std::task::block_on 函数来调用异步函数。
+        block_on 函数本身是一个最终能获取内部异步函数执行结果的同步函数（阻塞函数）。 可以理解为是一个适配器: async func ---> sync func。
+
+        所以，不能在异步代码中使用block_on函数。
+
+## 第 143 个番茄时间
+
+    时间：2022.04.04 23:03
+    内容：《Programming Rust 2nd Edition》第547-550页。
+        同步代码中调用异步函数： block_on
+        异步代码中调用异步函数： await
 
 
 
