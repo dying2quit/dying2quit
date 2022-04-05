@@ -2372,8 +2372,96 @@
 
     时间：2022.04.04 23:03
     内容：《Programming Rust 2nd Edition》第547-550页。
-        同步代码中调用异步函数： block_on
-        异步代码中调用异步函数： await
+        同步代码中调用异步函数： block_on (async_std::task::block_on)
+        异步代码中调用异步函数： await 
+        ？？？
+
+## 第 144 个番茄时间
+
+    时间：2022.04.05 16:36
+    内容：《Programming Rust 2nd Edition》第550-553页。
+        [Spawning Async Tasks]
+        async_std::task::spawn_local 对应 std::thread::spawn ？？？
+
+        如果要使用 spawn_local，需要引用 async-std 的 unstable 特性。
+
+        std::thread::spawn(c)               c = closure
+        async_std::task::spawn_local(f)     f = future
+
+        spawn_local返回的future通过await触发执行？？？？  block_on调用？？？
+
+## 第 145 个番茄时间
+
+    时间：2022.04.05 17:23
+    内容：《Programming Rust 2nd Edition》第553-555页。
+        在异步任务中不宜放入需要长时间运行的计算，避免造成实际的阻塞。一般考虑放入新的线程中，，，
+
+        如确有需要在异步任务中放入长时间计算任务，使用：yield_now 和 spawn_blocking。
+
+        [Async Blocks]  异步块
+        异步块返回最后一个表达式的future值，可以在块中使用.await表达式。
+
+        在异步块中使用?操作符（或 return 表达式），只是从块内返回，而非整个函数。
+        
+        如果涉及到变量的移动，使用： async move { ... }
+
+## 第 146 个番茄时间
+
+    时间：2022.04.05 18:38
+    内容：《Programming Rust 2nd Edition》第555-557页。
+        异步块提供了一种简洁的方式来分离异步运行的代码部分？？？  减少对参数生命周期的考虑。
+
+        ```
+        let future = async { 
+            ...
+            input.read_line(&mut line).await?;
+            ...
+            Ok::<(), std::io::Error>(())   // 指定异步块可能返回的错误类型。
+        };
+        ```
+        
+        [Building Async Functions from Async Blocks]    通过异步块构建异步函数。
+        ？？？
+
+## 第 147 个番茄时间
+
+    时间：2022.04.05 19:35
+    内容：《Programming Rust 2nd Edition》第557-560页。
+        [Spawning Async Tasks on a Thread Pool]     在线程池中运行异步任务。
+        async_std::task::spawn  用法类似于 async_std::task::spawn_local。
+        与spawn_local不同的是，对于spawn返回的future在线程池有空闲时就会开始运行，而非必需调用block_on方法。 某一个异步任务可能在不同的线程执行。。。。
+
+        实践中，spawn 比 spawn_local使用广泛。
+
+        thread-local    存储
+        task- local     存储
+
+        [But Does Your Future Implement Send?]
+        spawn有一个限制：必须实现Send trait。    （因为使用了线程池）
+        
+        `async_std::task::spawn`的签名如下：
+        ```
+        pub fn spawn<F, T>(future: F) -> JoinHandle<T>
+        where
+            F: Future<Output = T> + Send + 'static,
+            T: Send + 'static, 
+        ```
+
+        解决办法：
+            1. 未实现Send trait的值的生命周期不覆盖await表达式。 从而该值不会保存到future中。
+            2. 使用实现了Send trait的变量值。  比如： Rc<String> 替换为 Arc<String>。
+
+## 第 148 个番茄时间
+
+    时间：2022.04.05 
+    内容：《Programming Rust 2nd Edition》第560-页。
+        
+
+
+
+
+
+
 
 
 
