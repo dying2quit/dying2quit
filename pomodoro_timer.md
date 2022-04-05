@@ -2453,14 +2453,21 @@
 
 ## 第 148 个番茄时间
 
+    时间：2022.04.05 20:12
+    内容：《Programming Rust 2nd Edition》第560-562页。
+        如果不能保证future实现了Send trait，只能在当前线程中使用spawn_local。
+
+        [Long Running Computations: yield_now and spawn_blocking]
+        async_std::task::yield_now      异步代码中主动yield。
+        调用方式： async_std::task::yield_now().await;
+
+        async_std::task::spawn_blocking 把函数过程扔到独立线程处理，当前异步任务Pending。
+
+## 第 149 个番茄时间
+
     时间：2022.04.05 
-    内容：《Programming Rust 2nd Edition》第560-页。
+    内容：《Programming Rust 2nd Edition》第562-页。
         
-
-
-
-
-
 
 
 
