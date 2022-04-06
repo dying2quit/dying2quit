@@ -2461,13 +2461,103 @@
         async_std::task::yield_now      异步代码中主动yield。
         调用方式： async_std::task::yield_now().await;
 
-        async_std::task::spawn_blocking 把函数过程扔到独立线程处理，当前异步任务Pending。
+        async_std::task::spawn_blocking 把函数过程扔到独立线程处理，当前异步任务Pending。  
+        即：某异步任务特别耗时间，所以将具体任务打包派发到额外的线程，当前的异步任务对其做监控。  
+        不赚差价老中间商！！！
 
 ## 第 149 个番茄时间
 
-    时间：2022.04.05 
-    内容：《Programming Rust 2nd Edition》第562-页。
+    时间：2022.04.06 22:17
+    内容：《Programming Rust 2nd Edition》第562-564页。
+        [Comparing Asynchronous Designs]
+        Rust calls them “futures,”
+        JavaScript calls them “promises,”
+        C# calls them “tasks,” 
+
+        异步调用什么都不做，直到您将其传递给block_on、spawn或spawn_local等函数，该函数将轮询它并推动工作完成。
+
+        在rust中，当future传递到executors(block_on, spawn, or spawn_local)后才开始具体执行直到任务完成。
+
+        [A Real Asynchronous HTTP Client]
+        ```
+        pub async fn many_requests(urls: &[String]) -> Vec<Result<String, surf::Exception>> {
+            let client = surf::Client::new();
+            let mut handles = vec![];
+            for url in urls {
+                let request = client.get(&url).recv_string();
+                handles.push(async_std::task::spawn(request));
+            }
+            let mut results = vec![];
+            for handle in handles {
+                results.push(handle.await);
+            }
+            results
+        }
+        fn main() {
+            let requests = &[
+                "http://example.com".to_string(),
+                "https://www.red-bean.com".to_string(),
+                "https://en.wikipedia.org/wiki/Main_Page".to_string(),
+            ];
+            let results = async_std::task::block_on(many_requests(requests));
+            for result in results {
+                match result {
+                    Ok(response) => println!("*** {}\n", response),
+                    Err(err) => eprintln!("error: {}\n", err),
+                }
+            }
+        }
+
+        ```
+
+## 第 150 个番茄时间
+
+    时间：2022.04.07 00:18
+    内容：《Programming Rust 2nd Edition》第564-568页。
+        [Chapter 20.2 -- An Asynchronous Client and Server] async-chat 项目示例
+
+        ```
+        cargo new --lib async-chat
+
+        async-chat
+            ├── Cargo.toml
+            └── src
+                ├── lib.rs
+                ├── utils.rs
+                └── bin
+                    ├── client.rs
+                    └── server
+                        ├── main.rs
+                        ├── connection.rs
+                        ├── group.rs
+                        └── group_table.rs
+
+        $ cargo run --release --bin server -- localhost:8088
+        $ cargo run --release --bin client -- localhost:8088
+        ```
+
+        [Error and Result Types]
+        ```
+        use std::error::Error;
+
+        pub type ChatError = Box<dyn Error + Send + Sync + 'static>;
+        pub type ChatResult<T> = Result<T, ChatError>;
+        ```
+        各类Error通过?操作符均可自动转换为ChatError。
+
+        在真实项目中，建议使用 anyhow crate。  
+
+## 第 151 个番茄时间
+
+    时间：2022.04.07 
+    内容：《Programming Rust 2nd Edition》第568-页。
+
+
+
+
+
         
+
 
 
 
