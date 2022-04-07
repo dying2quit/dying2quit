@@ -2549,14 +2549,31 @@
 
 ## 第 151 个番茄时间
 
+    时间：2022.04.07 22:49
+    内容：《Programming Rust 2nd Edition》第568-571页。
+        [[Taking User Input: Asynchronous Streams]]
+        async_std::stream 模块相当于是模拟iterator的异步实现。可以理解为Iterator和Future traits的混合体。（缝合怪？？？ LOL）
+
+        如同iterator一样，Stream具有关联项目类型以及标识序列返回的Option值。 也如同future一样，Stream需要通过轮询来获取next值。（poll_next ？？？） 
+
+        所以，stream = 类迭代器的future ？？？？
+
+        由于Stream的很多实用方法定义在StreamExt中，所以实际使用时，必须引入`async_std::prelude::*`。 即： use async_std::prelude::*; 
+
+        [[Sending Packets]]
+
+        serde_json可以直接序列化输出到stream，但只支持同步的streams。
+
+        ？？？  好像还是不清楚 serde 与 serde_json 的区别是什么？？？？ 
+
+## 第 152 个番茄时间
+
     时间：2022.04.07 
-    内容：《Programming Rust 2nd Edition》第568-页。
-
-
-
+    内容：《Programming Rust 2nd Edition》第571-页。
 
 
         
+
 
 
 
