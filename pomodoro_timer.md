@@ -2579,12 +2579,22 @@
 
 ## 第 153 个番茄时间
 
-    时间：2022.04.08 
-    内容：《Programming Rust 2nd Edition》第574-页。
+    时间：2022.04.08 23:46
+    内容：《Programming Rust 2nd Edition》第574-579页。
         [[The Server’s Main Function]]
 
+        [[Handling Chat Connections: Async Mutexes]]
+        略微难了点儿，跑马观花。。。。。。。。。
+        async_std::sync::Mutex 可以跨线程~~~~
 
+        [[The Group Table: Synchronous Mutexes]]
+        
 
+## 第 154 个番茄时间
+
+    时间：2022.04.0x 
+    内容：《Programming Rust 2nd Edition》第579-页。
+        [[Chat Groups: tokio’s Broadcast Channels]]
 
 
 
