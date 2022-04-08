@@ -2568,11 +2568,22 @@
 
 ## 第 152 个番茄时间
 
-    时间：2022.04.07 
-    内容：《Programming Rust 2nd Edition》第571-页。
+    时间：2022.04.08 22:22
+    内容：《Programming Rust 2nd Edition》第571-574页。
+        [[Receiving Packets: More Asynchronous Streams]]
+        DeserializeOwned 是Deserialize更严格的变体？？？ 声明周期比buffer更长？？？
+
+        [[The Client’s Main Function]]
+        async_std::prelude::FutureExt::race 同时等待多个future，返回第一个完成的。
 
 
-        
+## 第 153 个番茄时间
+
+    时间：2022.04.08 
+    内容：《Programming Rust 2nd Edition》第574-页。
+        [[The Server’s Main Function]]
+
+
 
 
 
