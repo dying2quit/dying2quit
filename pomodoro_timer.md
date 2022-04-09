@@ -2592,12 +2592,12 @@
 
 ## 第 154 个番茄时间
 
-    时间：2022.04.0x 
-    内容：《Programming Rust 2nd Edition》第579-页。
+    时间：2022.04.10 01:44
+    内容：《Programming Rust 2nd Edition》第579-583页。
         [[Chat Groups: tokio’s Broadcast Channels]]
 
-
-
+        [[Primitive Futures and Executors: When Is a Future Worth Polling Again?]]
+        轮询future时，如果返回Poll::Pending，则在future中保存waker，当值得再次轮询是，executor就调用相应的waker。
 
 
 
