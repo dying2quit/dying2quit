@@ -2596,8 +2596,35 @@
     内容：《Programming Rust 2nd Edition》第579-583页。
         [[Chat Groups: tokio’s Broadcast Channels]]
 
-        [[Primitive Futures and Executors: When Is a Future Worth Polling Again?]]
+        [Primitive Futures and Executors: When Is a Future Worth Polling Again?]
         轮询future时，如果返回Poll::Pending，则在future中保存waker，当值得再次轮询是，executor就调用相应的waker。
+
+## 第 155 个番茄时间
+
+    时间：2022.04.11 23:29
+    内容：《Programming Rust 2nd Edition》第584-585页。
+        [[Invoking Wakers: spawn_blocking]]
+        spawn_blocking: 在另一个线程上运行闭包，并返回其future。 
+
+## 第 156 个番茄时间
+
+    时间：2022.04.12 01:34
+    内容：《Programming Rust 2nd Edition》第585-588页。
+        [[Implementing block_on]]
+        太南了，，，，，，，，，，，，，
+
+        先配置为阻塞，然后再闭包解阻塞？？？？
+
+        pin!(future)  ???
+        获取future的所有权并声明类型为Pin<&mut F>的同名新变量并借用？？？？   （轮询函数需要~~~）
+        原因： 异步函数和异步块的future必须通过Pin引用，然后才能轮询。~~~
+
+
+
+
+        
+
+
 
 
 
