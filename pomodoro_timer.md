@@ -2617,7 +2617,44 @@
 
         pin!(future)  ???
         获取future的所有权并声明类型为Pin<&mut F>的同名新变量并借用？？？？   （轮询函数需要~~~）
-        原因： 异步函数和异步块的future必须通过Pin引用，然后才能轮询。~~~
+        原因： 异步函数和异步块的future必须通过Pin引用，然后才能轮询。~????
+
+## 第 157 个番茄时间
+
+    时间：2022.04.12 19:25
+    内容：《Programming Rust 2nd Edition》第588-588页。
+        [Pinning]   锚定？ 固定？ 钉住？RFC2349
+        为何异步函数的future不能任意handle处理？
+        Pin 如何保障 future的安全？
+        使用Pin????
+
+        https://zhuanlan.zhihu.com/p/348648305
+
+        https://folyd.com/blog/rust-pin-unpin/    ☆☆☆
+        
+        Pin自身是一个智能指针。为什么呢？因为他impl了Deref和DerefMut。
+        Pin包裹的内容只能是指针，不能是其他普通类型。比如Pin<u32>就没有意义。
+        Pin具有“钉住”T不能移动的功能，这个功能是否生效取决于T是否impl Unpin。简单的说，如果T实现了Unpin，Pin的“钉住”功能完全失效了，这时候的Pin<P<T>>就等价于P<T>。
+        Unpin是一个auto trait，编译器默认会给所有类型实现Unpin。唯独有几个例外，他们实现的是!Unpin。这几个例外是PhantomPinned，编译器为async/await desugar之后生成的impl Future的结构体。
+        所以Pin<P<T>>默认情况下的“钉住”功能是不生效的，只针对上面说的这几个impl !Unpin的情况生效。
+
+        2018年官方异步组引入Pin API的初衷就是为了解决Future内部自引用的问题。因为async/await就是通过Generator实现的，Generator是通过匿名结构体实现的。如果async函数中存在跨await的引用，会导致底层Generator存在跨yield的引用，那根据Generator生成的匿名结构体就会是一个自引用结构体！然后这个自引用结构体会impl Future，异步的Runtime在调用Future::poll()函数查询状态的时候，需要一个可变借用（即&mut Self）。如果这个&mut Self不包裹在Pin里面的话，开发者自己impl Future就会利用std::mem::swap()之类的函数move掉&mut Self！所以这就是Future的poll()必须要使用Pin<&mut Self>的原因。
+
+        ----------------------------
+        
+        关于async/await的原理，强烈推荐阅读这两本书：
+
+            https://rust-lang.github.io/async-book
+            https://cfsamson.github.io/books-futures-explained
+
+
+## 第 158 个番茄时间
+
+    时间：2022.04.12
+    内容：《Programming Rust 2nd Edition》第588-页。
+        [[The Two Life Stages of a Future]]
+
+
 
 
 
