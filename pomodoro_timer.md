@@ -2676,10 +2676,15 @@
 
 ## 第 160 个番茄时间
 
-    时间：2022.04.12 
-    内容：《Programming Rust 2nd Edition》第595-页。
+    时间：2022.04.13 01:31
+    内容：《Programming Rust 2nd Edition》第595-600页。
+        [When Is Asynchronous Code Helpful?]
+        相对于多线程，使用更小的内存使用。
+        相对于多线程，创建异步任务更快。
+        相对于多线程，任务切换速度更快。
 
-
+        [CHAPTER 21 -- Macros]
+        
 
 
 
