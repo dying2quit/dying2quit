@@ -2657,14 +2657,27 @@
 
 ## 第 159 个番茄时间
 
+    时间：2022.04.12 22:59
+    内容：《Programming Rust 2nd Edition》第592-595页。
+        [[Pinned Pointers]]
+        Pin<&mut T> , Pin<Box<T>>
+
+        构建方法：
+            - pin!宏。
+            - Box::pin
+            - Pin::from(boxed)
+
+        所有Pin<pointer to T>类型都可以通过as_mut方法来解引用以返回poll需要的Pin<&mut T>。
+
+        执行器(block_on, spawn等)在内部自动实现了再引用。。。
+
+        [[The Unpin Trait]]
+        ...
+
+## 第 160 个番茄时间
+
     时间：2022.04.12 
-    内容：《Programming Rust 2nd Edition》第592-页。
-
-
-
-
-
-        
+    内容：《Programming Rust 2nd Edition》第595-页。
 
 
 
