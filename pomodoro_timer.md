@@ -2650,10 +2650,15 @@
 
 ## 第 158 个番茄时间
 
-    时间：2022.04.12
-    内容：《Programming Rust 2nd Edition》第588-页。
+    时间：2022.04.12 21:52
+    内容：《Programming Rust 2nd Edition》第588-592页。
         [[The Two Life Stages of a Future]]
+        poll方法要求future以Pin<&mut Self>形式作为参数值。 Pin智慧指针禁止数据move。
 
+## 第 159 个番茄时间
+
+    时间：2022.04.12 
+    内容：《Programming Rust 2nd Edition》第592-页。
 
 
 
