@@ -2707,11 +2707,31 @@
 
 ## 第 162 个番茄时间
 
+    时间：2022.04.14 01:08
+    内容：《Programming Rust 2nd Edition》第603-607页。  
+        [[Unintended Consequences]]
+            - 用中间变量存储值。
+            - 使用值的引用来进行比较，而非数据本身。
+
+        [[Repetition]]
+        ```
+        macro_rules! vec {
+            ($elem:expr ; $n:expr) => {
+                        ::std::vec::from_elem($elem, $n)
+                    };
+            ($($x:expr),*)=>{ <[_]>::into_vec(Box::new([ $( $x ),* ]))
+            }; ($($x:expr),+,)=>{
+                        vec![ $( $x ),* ]
+                    };
+            }
+        ```
+
+        // <[_]>::into_vec(Box::new([ $( $x ),* ]))   这个的具体实现未知。。。。。。
+
+## 第 163 个番茄时间
+
     时间：2022.04.14 
-    内容：《Programming Rust 2nd Edition》第603-页。  
-        
-
-
+    内容：《Programming Rust 2nd Edition》第607-页。  
 
 
 
