@@ -2684,7 +2684,36 @@
         相对于多线程，任务切换速度更快。
 
         [CHAPTER 21 -- Macros]
+
+## 第 161 个番茄时间
+
+    时间：2022.04.14 00:02
+    内容：《Programming Rust 2nd Edition》第600-603页。  
+        [Macro Basics]
+        macro_rules! 是rust中定义宏的主要方法。  感叹号"!"在定义时不需要，在调用时需要。
+
+        file!, line!, macro_rules! 是内建在编译器中的宏。
+
+        宏调用时可使用圆括号、方括号、花括号：
+        ```
+            assert_eq!(gcd(6, 10), 2);
+            assert_eq![gcd(6, 10), 2];
+            assert_eq!{gcd(6, 10), 2}           // 花括号后可以不写分号。
+        ```
+        按照惯例，调用 assert_eq! 时使用圆括号，vec! 使用方括号，macro_rules! 使用花括号。
+
+        [[Basics of Macro Expansion]]
+        宏必须先定义，然后才能使用。
+
+## 第 162 个番茄时间
+
+    时间：2022.04.14 
+    内容：《Programming Rust 2nd Edition》第603-页。  
         
+
+
+
+
 
 
 
