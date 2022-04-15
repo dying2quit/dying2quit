@@ -2730,8 +2730,101 @@
 
 ## 第 163 个番茄时间
 
-    时间：2022.04.14 
-    内容：《Programming Rust 2nd Edition》第607-页。  
+    时间：2022.04.15 00:45
+    内容：《Programming Rust 2nd Edition》第607-611页。  
+        [Built-In Macros]
+        file!(), line!(), column!()
+
+        stringify!(...tokens...)
+
+        concat!(str0, str1, ...)
+
+        cfg!(...)           条件编译
+        ```
+        #[cfg(target_os = "linux")]
+        fn are_you_on_linux() {
+            println!("You are running linux!")
+        }
+
+        -------------------
+
+        if cfg!(target_os = "linux") {
+            println!("Yes. It's definitely linux!");
+        }
+        ```
+        env!("VAR_NAME")        获取环境变量
+
+        option_env!("VAR_NAME")
+
+        include!("file.rs")
+
+        include_str!("file.txt")
+
+        include_bytes!("file.dat")
+
+        todo!(), unimplemented!()
+
+        matches!(value, pattern)
+
+        [Debugging Macros]
+        cargo build --verbose 显示具体的rustc命令行，然后给命令行追加 -Z unstable-options --pretty ???
+
+        log_syntax!() 
+
+        #![feature(trace_macros)]
+            trace_macros!(true);
+            ...一些宏...
+            trace_macros!(false);
+
+        [Building the json! Macro]
+        
+        --------------
+        Rust宏小册： https://zjp-cn.github.io/tlborm/
+
+## 第 164 个番茄时间
+
+    时间：2022.04.16 01:00
+    内容：《Programming Rust 2nd Edition》第611-614页。  
+        [[Fragment Types]]
+        Table 21-2. Fragment types supported by macro_rules!
+        - expr
+        - stmt      难用
+        - ty       ???  还是 try ? 文档勘误？
+        - path
+        - pat
+        - item
+        - block
+        - meta
+        - ident
+        - literal
+        - lifetime
+        - vis
+        - tt
+
+        ```
+        macro_rules! json {
+            (null) => {
+                Json::Null
+            };
+            ([ $( $element:tt ),* ]) => { Json::Array(...)
+            };
+            ({ $( $key:tt : $value:tt ),* }) => {
+                        Json::Object(...)
+                    };
+            ($other:tt) => {
+            ... // TODO: Return Number, String, or Boolean
+            }; 
+        }
+        ```
+
+## 第 165 个番茄时间
+
+    时间：2022.04.16
+    内容：《Programming Rust 2nd Edition》第614-页。  
+        
+
+
+
 
 
 
