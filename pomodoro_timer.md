@@ -2799,7 +2799,7 @@
         - literal
         - lifetime
         - vis
-        - tt
+        - tt        token tree
 
         ```
         macro_rules! json {
@@ -2819,11 +2819,28 @@
 
 ## 第 165 个番茄时间
 
-    时间：2022.04.16
-    内容：《Programming Rust 2nd Edition》第614-页。  
-        
+    时间：2022.04.16 17:36
+    内容：《Programming Rust 2nd Edition》第614-618页。  
+        [[Recursion in Macros]]
+        ```
+        macro_rules! json {
+            (null) => {
+                Json::Null
+            };
+            ([ $( $element:tt ),* ]) => { Json::Array(vec![ $( json!($element) ),* ])
+            };
+            ({ $( $key:tt : $value:tt ),* }) => {
+                        Json::Object(Box::new(vec![
+                            $( ($key.to_string(), json!($value)) ),*
+                        ].into_iter().collect()))
+                    };
+            ( $other:tt ) => {
+            Json::from($other) // Handle Boolean/number/string
+            }; 
+        }
+        ```
 
-
+        [[Scoping and Hygiene]]
 
 
 
