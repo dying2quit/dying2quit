@@ -2866,14 +2866,18 @@
 
         Yes!  I hate macros。
 
+## 第 168 个番茄时间
+
+    时间：2022.04.16 23:45
+    内容：《Programming Rust 2nd Edition》第625-626页。
         [CHAPTER 22 -- Unsafe Code]
-        
+        unsafe code 可以获得调用标注库中的unsafe函数、解引用不安全指针、低啊用其他语言函数等能力。
 
+        rust的常规安全检查仍旧有效：类型检查、生命周期检查、对索引的边界检查等。。。    
 
-## 第 16x 个番茄时间
+        [Unsafe from What?]
+        太难看懂了，，，，
 
-    时间：2022.04.xx 
-    内容：《Programming Rust 2nd Edition》第625- 页。
 
 
 
