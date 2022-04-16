@@ -2842,8 +2842,18 @@
 
         [[Scoping and Hygiene]]
 
+## 第 166 个番茄时间
 
+    时间：2022.04.16 19:12
+    内容：《Programming Rust 2nd Edition》第618-622页。
+        。。。。。
 
+        [[Importing and Exporting Macros]]
+        使用 #[macro_use] 属性 暴露宏到父模块。
+
+         #[macro_export]   暴露到其他模块？？？
+
+        
 
 
 
