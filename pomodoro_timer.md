@@ -2853,7 +2853,28 @@
 
          #[macro_export]   暴露到其他模块？？？
 
+## 第 167 个番茄时间
+
+    时间：2022.04.16 20:16
+    内容：《Programming Rust 2nd Edition》第622-624页。
+        [Avoiding Syntax Errors During Matching]
+        - 避免混淆规则。  比如使用不同的indentifier。
+        - 将更具体的规则前置。  
+
+        [Beyond macro_rules!]
+        procedural macro   
+
+        Yes!  I hate macros。
+
+        [CHAPTER 22 -- Unsafe Code]
         
+
+
+## 第 16x 个番茄时间
+
+    时间：2022.04.xx 
+    内容：《Programming Rust 2nd Edition》第625- 页。
+
 
 
 
