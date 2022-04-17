@@ -2911,7 +2911,7 @@
 ## 第 171 个番茄时间
 
     时间：2022.04.17 18:01
-    内容：《Programming Rust 2nd Edition》第634-636页。
+    内容：《Programming Rust 2nd Edition》第634-636页。 实阅中文第一版。
         [Undefined Behavior]
         Rust认为不会在相关代码中出现的行为。
         
@@ -2932,7 +2932,43 @@
         • The program must not unwind across a call made from another language, via the foreign function interface, as explained in “Unwinding” on page 158.
         • The program must comply with the contracts of standard library functions.
 
+## 第 172 个番茄时间
 
+    时间：2022.04.17 22:07
+    内容：《Programming Rust 2nd Edition》第636-638页。实阅中文第一版。
+        Unsafe Traits（不安全特型）：某些特征在使用时必须满足一些rust无法自动检查或强制的协议(contract)。
+
+        通常，变量类型与不安全特型绑定的函数本身也使用不安全特性。 该函数的协议依赖于不安全特型的协议。
+
+        不安全特型的经典例子是： std::marker::Send 和 std::mark::Sync。
+            - Send 要求实现者安全地移动到另一个线程，
+            - Sync 要求实现者安全地通过共享引用在线程之间共享。
+        如果给一个不满足条件/协议的类型实现Send，可能会导致如std::sync::Mutex不再安全，从而无法避免数据挣用。
+
+        标准库中有一个不安全特型：  core::nonzero::Zeroable，将类型所有字节设置为0来初始化。
+        ```
+        pub unsafe trait Zeroable {}
+
+        unsafe impl Zeroable for u8 {}
+        unsafe impl Zeroable for i32 {} 
+        unsafe impl Zeroable for usize {}
+        // and so on for all the integer types
+        ```
+
+        ```
+        use core::nonzero::Zeroable;
+
+        fn zeroed_vector<T>(len: usize) -> Vec<T> 
+            where T: Zeroable
+        {
+            let mut vec = Vec::with_capacity(len); 
+            unsafe {
+                        std::ptr::write_bytes(vec.as_mut_ptr(), 0, len);
+                        vec.set_len(len);
+                    }
+            vec
+        }
+        ```
 
 
 
