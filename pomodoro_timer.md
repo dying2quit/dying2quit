@@ -2897,6 +2897,43 @@
 
         [Example: An Efficient ASCII String Type]
 
+## 第 170 个番茄时间
+
+    时间：2022.04.17 15:32
+    内容：《Programming Rust 2nd Edition》第631-634页。
+        [Unsafe Block or Unsafe Function?]
+        一般优先考量使用Unsafe函数，而非Unsafe块。
+
+        函数是否安全与函数体内部是否使用unsafe函数或块无关。 真正决定函数安全与否的是有无协议(约定？)~~~
+
+        如果倾向于让人查看unsafe细节的时候，使用Unsafe块？？？？？
+
+## 第 171 个番茄时间
+
+    时间：2022.04.17 18:01
+    内容：《Programming Rust 2nd Edition》第634-636页。
+        [Undefined Behavior]
+        Rust认为不会在相关代码中出现的行为。
+        
+        程序行为良好的Rust规则：
+        • The program must not read uninitialized memory.
+        • The program must not create invalid primitive values:
+            — References, boxes, or fn pointers that are null
+            — bool values that are not either a 0 or 1
+            — enum values with invalid discriminant values
+            — char values that are not valid, nonsurrogate Unicode code points
+            — str values that are not well-formed UTF-8
+            — Fat pointers with invalid vtables/slice lengths
+            — Any value of the type !
+        • The rules for references explained in Chapter 5 must be followed. No reference may outlive its referent; shared access is read-only access; and mutable access is exclusive access.
+        • The program must not dereference null, incorrectly aligned, or dangling pointers.
+        • The program must not use a pointer to access memory outside the allocation with which the pointer is associated. We will explain this rule in detail in “Deref‐ erencing Raw Pointers Safely” on page 641.
+        • The program must be free of data races. A data race occurs when two threads access the same memory location without synchronization, and at least one of the accesses is a write.
+        • The program must not unwind across a call made from another language, via the foreign function interface, as explained in “Unwinding” on page 158.
+        • The program must comply with the contracts of standard library functions.
+
+
+
 
 
 
