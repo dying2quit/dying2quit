@@ -2878,6 +2878,28 @@
         [Unsafe from What?]
         太难看懂了，，，，
 
+## 第 169 个番茄时间
+
+    时间：2022.04.17 13:20
+    内容：《Programming Rust 2nd Edition》第626-631页。
+        [Unsafe Blocks]
+        unsafe块解锁4项能力：
+            - 调用unsafe函数。
+            - 解引用原始指针。
+            - 访问union体字段？？？
+            - 访问可修改static变量。
+            - 访问由外来函数接口声明的函数和变量。
+
+        unsafe块的意义：
+            - 不会意外使用unsafe特性。
+            - 代码评审人会格外关注unsafe块。
+            - 慎重使用。
+
+        [Example: An Efficient ASCII String Type]
+
+
+
+
 
 
 
