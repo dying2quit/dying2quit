@@ -3042,13 +3042,30 @@
 
         so，可空指针干啥用的？
 
-        [[Type Sizes and Alignments]]
-
 ## 第 176 个番茄时间
 
+    时间：2022.04.21 23:14
+    内容：《Programming Rust 2nd Edition》第645-647页。 实阅中文第一版。
+        [[Type Sizes and Alignments]]
+        std::mem::size_of::<T>()    返回类型T的长度
+        std::mem::align_of::<T>()   返回类型T要求的对齐值。
+        ```
+        assert_eq!(std::mem::size_of::<i64>(), 8);
+        assert_eq!(std::mem::align_of::<(i32, i32)>(), 4);
+        ```
+        std::mem::size_of_val 和 std::mem::align_of_val 分别返回值的大小和分配量？？？ 可用于Sized和Unsized类型的引用。
+
+        [[Pointer Arithmetic]]  指针算术
+        ptr.offset(i)
+
+        ptr.wrapping_offset(i)
+
+## 第 177 个番茄时间
+
     时间：2022.04.2x 
-    内容：《Programming Rust 2nd Edition》第645-页。 实阅中文第一版。
-        
+    内容：《Programming Rust 2nd Edition》第647-页。 实阅中文第一版。
+        [[Moving into and out of Memory]]
+
 
 
 
