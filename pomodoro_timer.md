@@ -3062,9 +3062,29 @@
 
 ## 第 177 个番茄时间
 
-    时间：2022.04.2x 
-    内容：《Programming Rust 2nd Edition》第647-页。 实阅中文第一版。
+    时间：2022.04.23 01:15
+    内容：《Programming Rust 2nd Edition》第647-650页。 实阅中文第一版。
         [[Moving into and out of Memory]]
+        初始化值真正的定义是将其视作为存活值。？？？
+
+        Rust跟踪在编译时存活的本地变量，并阻止你使用其值已移动到其他地方的变量。Vec、HashMap、Box等类型能动态跟踪其缓冲区。如果您实现一种管理自己内存的类型，则也需要这样做。
+
+        std::ptr::read(src)             src应该是一个 *const T 原始指针。 Vec::pop() 
+        std::ptr::write(dest, value)    dest应该是一个 *mut T 原始指针。    Vec::push()
+
+        std::ptr::copy(src, dst, count)
+        ptr.copy_to(dst, count)
+        std::ptr::copy_nonoverlapping(src, dst, count)  相比于copy，要求源、目标内存块不能重叠。
+
+        read_unaligned, write_unaligned     类似于read 和 write，但不要求指针对齐~~·
+        read_volatile, write_volatile       相当于C或C++中的volatile(易失性)读写。???
+
+## 第 178 个番茄时间
+
+    时间：2022.04.25 00:03
+    内容：《Programming Rust 2nd Edition》第651-654页。 实阅中文第一版。
+        [Example: GapBuffer]
+        用于文本编辑器中，，，， 以便于高效插入、删除。。。。
 
 
 
