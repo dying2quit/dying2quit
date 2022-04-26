@@ -3112,9 +3112,48 @@
 
         不同于enum，union没有tag ？？？  所以读取union的字段总是不安全的。
 
+## 第 181 个番茄时间
+
+    时间：2022.04.26 23:00
+    内容：《Programming Rust 2nd Edition》第660-663页。
+         #[repr(C)] 保证所有字段从偏移量0的位置开始存储，，，
+        可以利用Union来提取数据中的某个byte。
+        ```
+        #[repr(C)]
+        union SignExtractor { 
+            value: i64,
+            bytes: [u8; 8] 
+        }
+
+        fn sign(int: i64) -> bool {
+            let se = SignExtractor { value: int};
+            println!( "{:b} ({:?})", unsafe { se.value }, unsafe { se.bytes }); 
+            unsafe { se.bytes[7] >= 0b10000000 }
+        }
+
+        assert_eq!(sign(-1), true); 
+        assert_eq!(sign(1), false); 
+        assert_eq!(sign(i64::MAX), false); 
+        assert_eq!(sign(i64::MIN), true);
+        ```
+
+        [Matching Unions]
+        必须匹配具体的字段值。
+        ```
+        unsafe {
+            match u {
+                SmallOrLarge { s: true } => { println!("boolean true"); } 
+                SmallOrLarge { l: 2 } => { println!("integer 2"); }
+                _ => { println!("something else"); }
+            }
+        }
+        ```
+
+        [Borrowing Unions]
+
+        [CHAPTER 23 -- Foreign Functions Interface]   FFI
 
 
-        
         
 
 
