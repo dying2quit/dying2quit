@@ -3094,8 +3094,28 @@
 
         虽然set_position必须使用copy在间隙中来回移动元素，而 enlarge_gap可以使用copy_nonoverlapping，因为它正在将元素移动到一个全新的缓冲区。
 
+## 第 180 个番茄时间
+
+    时间：2022.04.26 21:03
+    内容：《Programming Rust 2nd Edition》第657-659页。
+        [[Panic Safety in Unsafe Code]]
+        说人话：在不安全代码中，需要考虑panic情况。。。。   I guess。
+
+        [Reinterpreting Memory with Unions]   重新解读Union的内存？？？
+
+        ```
+        let mut one = FloatOrInt { i: 1 }; 
+        assert_eq!(unsafe { one.i }, 0x00_00_00_01); 
+        one.f = 1.0;
+        assert_eq!(unsafe { one.i }, 0x3F_80_00_00);
+        ```
+
+        不同于enum，union没有tag ？？？  所以读取union的字段总是不安全的。
 
 
+
+        
+        
 
 
 
