@@ -3175,7 +3175,7 @@
 
 ## 第 183 个番茄时间
 
-    时间：2022.04.27 
+    时间：2022.04.27 23:00
     内容：《Programming Rust 2nd Edition》第667-669页。
         与String和str相比，CString和CStr的方法非常有限，仅限于构建和转换为其他类型。
 
@@ -3215,15 +3215,35 @@
                 println!("first environment variable: {}",ar.to_string_lossy())
             }
         }
-
-
-
         ```
 
+## 第 184 个番茄时间
 
+    时间：2022.04.28 00:01
+    内容：《Programming Rust 2nd Edition》第669-674页。
+        [Using Functions from Libraries]
+        使用外部库的函数，需要在extern代码块前置 #[link] 属性。
+        ```
+        use std::os::raw::c_int;
+        #[link(name = "git2")] 
+        extern {
+            pub fn git_libgit2_init() -> c_int;
+            pub fn git_libgit2_shutdown() -> c_int; 
+        }
+        fn main() { 
+            unsafe {
+                git_libgit2_init();
+                git_libgit2_shutdown();
+            }
+        }
+        ```
+        需要写构建脚本：build.rs。
+        还需要设置LD路径？  LD_LIBRARY_PATH (Linux), DYLD_LIBRARY_PATH (macOS), PATH (Windows)。
 
+        还可以将外部库静态链接到rust包中。
+        Cargo约定提供访问C库的crate必须命名为 LIB-sys 格式。（LIB 为 C库的名字）
 
-
+        [A Raw Interface to libgit2]
 
 
 
