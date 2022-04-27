@@ -3153,8 +3153,81 @@
 
         [CHAPTER 23 -- Foreign Functions Interface]   FFI
 
+## 第 182 个番茄时间
 
+    时间：2022.04.27 13:32
+    内容：《Programming Rust 2nd Edition》第664-666页。
+        [Finding Common Data Representations]
+        Rust的bool类型等同于C/C++的bool。
+        C/C++中的指针对应于Rust中的原始指针( *mut T , *const T)。
         
+        要定义与C结构兼容的Rust结构类型，您可以使用#[repr(C)]属性。
+        #[repr(C)]      按C语言的风格编译？？？？？   repr == representation
+        ```
+        use std::os::raw::{c_char, c_int};
+
+        #[repr(C)]
+        pub struct git_error {
+            pub message: *const c_char,
+            pub klass: c_int
+        }
+        ```
+
+## 第 183 个番茄时间
+
+    时间：2022.04.27 
+    内容：《Programming Rust 2nd Edition》第667-669页。
+        与String和str相比，CString和CStr的方法非常有限，仅限于构建和转换为其他类型。
+
+        [Declaring Foreign Functions and Variables]
+        使用 extern 块来声明来之其他库的函数和变量。
+        ```
+        use std::os::raw::c_char;
+        extern {
+            fn strlen(s: *const c_char) -> usize;
+        }
+        // ------------------------
+        use std::ffi::CString;
+        let rust_str = "I'll be back";
+        let null_terminated = CString::new(rust_str).unwrap();
+        unsafe {
+            assert_eq!(strlen(null_terminated.as_ptr()), 12);
+        }
+        ```
+
+        还可以在 extern块中定义全局变量。 POSIX系统有一个叫environ的全局变量，保存在进程的环境变量。
+
+        ```
+        // C中
+        extern char **environ;
+    
+        // Rust中
+        use std::ffi::CStr;
+        use std::os::raw::c_char;
+        extern {
+            static environ: *mut *mut c_char;
+        }
+
+        // --------------------
+        unsafe {
+            if !environ.is_null() && !(*environ).is_null() {
+                let var = CStr::from_ptr(*environ);
+                println!("first environment variable: {}",ar.to_string_lossy())
+            }
+        }
+
+
+
+        ```
+
+
+
+
+
+
+
+
+
 
 
 
