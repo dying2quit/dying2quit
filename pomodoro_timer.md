@@ -3245,6 +3245,32 @@
 
         [A Raw Interface to libgit2]
 
+## 第 185 个番茄时间
+
+    时间：2022.04.28 11:33
+    内容：《Programming Rust 2nd Edition》第675-678页。
+        ```
+        extern int git_repository_open(git_repository **out, const char *path);
+        // ---------------------
+        pub fn git_repository_open(out: *mut *mut git_repository, path: *const c_char) -> c_int;
+        ```
+
+        bindgen crate 可以根据C库header自动生成对应的rust声明。
+
+        有点复杂。。。。
+
+## 第 186 个番茄时间
+
+    时间：2022.04.28 18:36
+    内容：《Programming Rust 2nd Edition》第678-682页。
+        
+        MaybeUninit<T> 用于为变量预留内存（但非初始化）。
+        as_mut_ptr() 返回一个可修改的原始指针；
+        assume_init() 直接将原始指针标记为初始化了的指针？？？？
+
+        [A Safe Interface to libgit2]
+
+        
 
 
 
