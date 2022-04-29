@@ -43,4 +43,5 @@
 
 - (2022.03.24) 最先实现一个具备CRUD的API-DB功能。  axum -- sqlx? -- postgresql
 
-- (2022.04.29) 本已经开始准备啃小程序，但看了之前的note，干脆还是搞个最简单的：web版本。(前后端分离，H5前端taro，后端axum，数据库postgresql)。
+- (2022.04.29) 本已经开始准备啃小程序，但看了之前的note，干脆还是搞个最简单的：web版本。(前后端分离，H5前端taro，后端axum，数据库postgresql)。 先学习一下axum。
+
