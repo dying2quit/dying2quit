@@ -3314,5 +3314,18 @@
         本来想做一个《axum解读》，但回过头来想，好像走偏了，，，， 大概率做不好，还费时间分心了主要目标。。。。
         so，搞清楚axum怎么用就好了！！！！ 
 
+## 第 191 个番茄时间
+    时间：2022.04.30 01:14
+    内容：docs.rs/axum
+        - Routing (路由)
+        - Handlers (处理程序)
+            handler 是一个接收 extractor 作为参数异步函数，其返回值可转换为response。
+        - Extracotrs (提取器)
+            extractor 是一种实现了 FromRequest 的类型，用于从请求中提取handler需要的数据。
+
+
+
+
+
 ---------
 时常检视“第一性原则”!!!!
