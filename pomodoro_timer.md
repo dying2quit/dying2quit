@@ -3334,6 +3334,30 @@
         axum的中间件本质就是一个包含了tower Service的结构体？ 可以灵活的串联在处理过程的任何位置~？？
         session，权限、jwt、数据库连接池都可以通过中间件提供给handler？？？？
     
+## 第 193 个番茄时间
+    时间：2022.04.30 15:27
+    内容：docs.rs/axum
+        - Sharing State With Handlers (handler间状态共享？)
+            在处理程序之间共享某些状态是很常见的，例如共享数据库连接池或与其他服务的客户端。
+            两种最常见的方法是：
+            - 使用请求扩展
+                从handler中提取状态最简单的方法是使用 `Extension` 作为layer和extractor。
+                这种方法的缺点是，如果尝试提取的扩展不存在，将收到运行时错误（特别是 `500 Internal Server Error` 响应），可能是因为忘记添加中间件或提取错误的类型。
+
+            - 使用闭包捕获
+                状态也可以使用闭包捕获直接传递给处理程序。
+                这种方法的缺点是，它比使用扩展更冗长。
+                - [ ]  示例学习：使用闭包捕获方式进行handler间状态共享
+
+        - Building Integrations For Axum (为axum构建集成)
+            在自建库时，如果需要实现 FromRequest 或 IntoResponse ，最好依赖 axum-core crate，而非axum。 可以保持核心类型和特型，但不太可能有重大改变。
+
+## 第 194 个番茄时间
+    时间：2022.04.30 20:52
+    内容：https://docs.rs/axum/latest/axum/struct.Router.html
+
+
+
 
 
 ---------
