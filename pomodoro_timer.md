@@ -3323,8 +3323,17 @@
         - Extracotrs (提取器)
             extractor 是一种实现了 FromRequest 的类型，用于从请求中提取handler需要的数据。
 
-
-
+## 第 192 个番茄时间
+    时间：2022.04.30 13:52
+    内容：
+    - Responses (响应)
+        能从handler返回的实现了 `IntoResponse` 的类型？
+    - Error handling (错误处理)
+        axum 旨在拥有一个简单且可预测的错误处理模型。 这意味着将错误转换为响应很简单，并且可以保证所有错误都得到处理。 
+    - Middleware (中间件)
+        axum的中间件本质就是一个包含了tower Service的结构体？ 可以灵活的串联在处理过程的任何位置~？？
+        session，权限、jwt、数据库连接池都可以通过中间件提供给handler？？？？
+    
 
 
 ---------
