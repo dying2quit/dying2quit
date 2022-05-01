@@ -3374,7 +3374,7 @@
         粗略过了一遍，很多懵逼之处。。。
 
 ## 第 198 个番茄时间
-    时间：2022.05.01 
+    时间：2022.05.01 11:00
     内容：
         unimplemented! vs todo!
             - unimplemented!()    带有特定信息的panic!()。  用于指示相关的实现代码并不应该被用到，如果用到了就是错误的，抛出panic ？？？？
@@ -3382,6 +3382,16 @@
 
         https://docs.rs/axum/latest/axum/response/index.html
         任何实现 IntoResponse 的类型都可以作为handler的返回值。 axum 提供了常见类型的实现。
+
+## 第 199 个番茄时间
+    时间：2022.05.01 
+    内容：https://docs.rs/axum/latest/axum/error_handling/index.html
+        axum::error_handling::HandleError
+        axum::error_handling::HandleErrorLayer
+
+
+
+
 
 
 
