@@ -3396,6 +3396,33 @@
         这个算是tower的指引。。。主要是从无到有的讲解tower::Service,,,,  看了一部分，，， 待续。。。。
         Next: The Handler trait
 
+## 第 201 个番茄时间
+    时间：2022.05.01 18:54
+    内容：Inventing the Service trait  (tower::Service的构建过程)
+        https://tokio.rs/blog/2021-05-14-inventing-the-service-trait
+        [The Handler trait]
+        [Making Handler more flexible]
+        [Backpressure]
+        ```
+        pub trait Service<Request> {
+            type Response;
+            type Error;
+            type Future: Future<Output = Result<Self::Response, Self::Error>>;
+
+            fn poll_ready(
+                &mut self,
+                cx: &mut Context<'_>,
+            ) -> Poll<Result<(), Self::Error>>;
+
+            fn call(&mut self, req: Request) -> Self::Future;
+        }
+        ```
+
+
+
+
+
+
 
 ---------
 时常检视“第一性原则”!!!!
