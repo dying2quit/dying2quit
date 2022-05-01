@@ -3389,10 +3389,12 @@
         axum::error_handling::HandleError
         axum::error_handling::HandleErrorLayer
 
-
-
-
-
+## 第 200 个番茄时间
+    时间：2022.05.01 15:49
+    内容：Inventing the Service trait
+        https://tokio.rs/blog/2021-05-14-inventing-the-service-trait
+        这个算是tower的指引。。。主要是从无到有的讲解tower::Service,,,,  看了一部分，，， 待续。。。。
+        Next: The Handler trait
 
 
 ---------
