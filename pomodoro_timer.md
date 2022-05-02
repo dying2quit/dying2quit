@@ -3427,7 +3427,17 @@
     时间：2022.05.02 04:19
     内容：https://docs.rs/axum/latest/axum/middleware/index.html
         寥寥草草过一遍，，，，    我是个辣鸡，，，， 看得有点懵逼，，，，
-        
+
+## 第 204 个番茄时间(非标)
+    时间：2022.05.02 13:48
+    内容：axum数据库示例一瞥：
+        sqlx-postgres : https://github.com/tokio-rs/axum/blob/main/examples/sqlx-postgres/src/main.rs
+        tokio-postgres : https://github.com/tokio-rs/axum/blob/main/examples/tokio-postgres/src/main.rs
+
+        postgresql的Schema是一个纯逻辑层面的概念，类似于“命名空间”的概念。。。
+
+        这种资料乱翻，没法确定哪个更好，拍拍脑袋用：sqlx+postgres吧！！！
+
 
 
 
