@@ -3438,6 +3438,15 @@
 
         这种资料乱翻，没法确定哪个更好，拍拍脑袋用：sqlx+postgres吧！！！
 
+## 第 205 个番茄时间(非标)
+    时间：2022.05.02 
+    内容：https://github.com/tokio-rs/axum/blob/main/examples/sqlx-postgres/src/main.rs
+        该示例涉及到tracing和tracing_subscriber的使用·~~
+
+        https://github.com/tokio-rs/tracing/tree/master/tracing-subscriber
+
+        没看明白~~~~
+
 
 
 
