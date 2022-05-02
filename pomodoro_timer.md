@@ -3448,6 +3448,34 @@
         没看明白~~~~
 
 
+## 第 206 个番茄时间(非标)
+    时间：2022.05.02 22:13
+    内容：tracing & tracing_subscriber
+        ```
+        tracing_subscriber::registry()
+            .with(tracing_subscriber::EnvFilter::new(
+                std::env::var("RUST_LOG").unwrap_or_else(|_| "example_tokio_postgres=debug".into()),
+            ))
+            .with(tracing_subscriber::fmt::layer())
+            .init();
+        ```
+        `tracing_subscriber::registry()` 返回一个结构体：tracing_subscriber::Registry。
+        `with()` 是你属于tracing_subscriber::layer::SubscriberExt的函数，用于将 with(layer)组合到Subscriber中。
+
+        `tracing_subscriber::EnvFilter::new(directives: S)` 返回一个 tracing_subscriber::filter::EnvFilter 。S 是逗号分隔的多个匹配Span和Event的directive。
+
+        directive的表达式类似env_logger：`target[span{field=value}]=level`。
+
+            - `target` 匹配event和span的目标，通常是模块路径和(或)crate的名称。比如：`h2`, `tokio::net`, or `tide::server`。
+            - `span` 匹配 span的名称。
+            - `field` matches on fields within spans.
+            - `value` matches on the value of a span’s field.
+            - `level` sets a maximum verbosity level accepted by this directive.
+
+        `tracing_subscriber::fmt::layer()` 返回一个结构体 tracing_subscriber::fmt::Layer。 (默认配置)
+
+
+
 
 
 ---------
