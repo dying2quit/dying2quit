@@ -3484,6 +3484,20 @@
 
         常用两种方式使用数据库连接池： Extension作为extractor 和 自定义extractor？？？
 
+## 第 208 个番茄时间(非标)
+    时间：2022.05.03 14:58
+    内容：打算先实现HTTP请求信息的数据库读写操作~
+        请求来源IP、User-agent、URL、PATH、时间等，，，，
+
+        请求包中的信息只能通过extractor来提取吗？？？？？？？
+
+        参考： https://axum.rs/topic/roaming-axum/request
+
+        略懵，，，， 待续。。。。。
+
+
+
+
 
 
 ---------
