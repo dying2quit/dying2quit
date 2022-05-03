@@ -3474,7 +3474,15 @@
 
         `tracing_subscriber::fmt::layer()` 返回一个结构体 tracing_subscriber::fmt::Layer。 (默认配置)
 
+## 第 207 个番茄时间(非标)
+    时间：2022.05.03 11:36
+    内容：搬运sqlx-postgres代码。。。。
 
+        Send 和 Sync 属于 marker trait，几乎所有类型都默认实现了Send和Sync。
+        Send 表示跨线程 move，Sync 表示跨线程 share data. 两者基本就是 ownership 和 borrow 的区别。
+        Rc<T> 与 Arc<T> 的区别就在于：后者实现了Send和Sync，所以可以跨线程使用。
+
+        常用两种方式使用数据库连接池： Extension作为extractor 和 自定义extractor？？？
 
 
 
