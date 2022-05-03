@@ -3495,6 +3495,35 @@
 
         略懵，，，， 待续。。。。。
 
+## 第 209 个番茄时间(非标)
+    时间：2022.05.03 17:19
+    内容：打算先实现HTTP请求信息的数据库读写操作~
+
+        OriginalUri提取器的使用：
+        ```
+        let app = Router::new()
+            .nest("/api",get(|OriginalUri(original_uri): OriginalUri|async move {
+                format!("Original Uri : {}",original_uri)
+            }))
+        ////////////////////////////////////
+        async fn req_info(OriginalUri(original_uri): OriginalUri) -> String  {
+            format!("Original Uri : {}", original_uri)
+        }
+
+        let app = Router::new().nest("/api",any(req_info))
+        ```
+
+        通过request extension来提取URL：OriginalUri 也可以通过请求扩展从middleware访问。
+        粗浅的理解，Router::new().layer(service: S)的参数service就是所谓的中间件，实现了Service trait(内部实现poll_ready(), call()函数。。。)。
+        
+        在middleware内部使用 req.extensions().get::<OriginalUri>() 获得 url。
+
+        继续懵逼，，，，，，，
+
+
+
+
+
 
 
 
