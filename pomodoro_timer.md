@@ -3547,6 +3547,13 @@
         使用 layer()加入要共享的数据，使用Extension extractor在handler中取用数据？？？？
 
 
+## 第 214 个番茄时间(非标)
+    时间：2022.05.06 01:22
+    内容：https://axum.rs/topic/roaming-axum/route        路由及路由嵌套
+        https://axum.rs/topic/roaming-axum/middleware    中间件
+            - 可以通过实现 `tower::Service` 来自定义中间件，但它非常复杂。
+            - 可以通过`extractor_middleware()`方法，将一个 extractor 转成中间件。
+
 
 
 
