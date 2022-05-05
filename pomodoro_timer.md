@@ -3541,6 +3541,11 @@
 
         后续可以关注下：https://github.com/tokio-rs/axum/discussions
 
+## 第 213 个番茄时间(非标)
+    时间：2022.05.06 00:20
+    内容：https://axum.rs/topic/roaming-axum/response
+        使用 layer()加入要共享的数据，使用Extension extractor在handler中取用数据？？？？
+
 
 
 
