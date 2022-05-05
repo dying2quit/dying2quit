@@ -3530,11 +3530,20 @@
         继续懵逼，，，，，，，
 
 ## 第 211 个番茄时间(非标)
-    时间：2022.05.03 20:56
+    时间：2022.05.04
     内容：https://axum.rs/topic/roaming-axum/request
         https://axum.rs/topic/roaming-axum/cookie
 
-        
+## 第 212 个番茄时间(非标)
+    时间：2022.05.05 12:25
+    内容：https://axum.rs/topic/roaming-axum/response
+        任何实现了IntoResponse trait的，都可以作为handler的返回值（即response 响应)
+
+        后续可以关注下：https://github.com/tokio-rs/axum/discussions
+
+
+
+
 
 
 
