@@ -3557,9 +3557,23 @@
 ## 第 215 个番茄时间(非标)
     时间：2022.05.06 11:48
     内容：https://axum.rs/topic/roaming-axum/postgres       axum 操作 Postgres 数据库
-        相关源代码：https://github.com/axumrs/roaming-axum/blob/main/postgres/src/main.rs
+        相关源代码： https://github.com/axumrs/roaming-axum/blob/main/postgres/src/main.rs
+        该示例中，数据库连接是直接在各个handler中call外部函数获得的，而非通过axum的状态共享获得。
+
+## 第 216 个番茄时间(非标)
+    时间：2022.05.06 23:52
+    内容：https://axum.rs/topic/roaming-axum/redis          axum操作redis
+        https://axum.rs/topic/roaming-axum/session         axum实现Session (with redis)  很好的例子！！！！
+
+        相关源代码： https://github.com/axumrs/roaming-axum/blob/main/session/src/main.rs
 
 
 
----------
+
+
+
+
+
+
+--------------------
 时常检视“第一性原则”!!!!
