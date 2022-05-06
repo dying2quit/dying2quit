@@ -3567,10 +3567,20 @@
 
         相关源代码： https://github.com/axumrs/roaming-axum/blob/main/session/src/main.rs
 
+## 第 217 个番茄时间(非标)
+    时间：2022.05.07 00:55
+    内容： https://axum.rs/topic/roaming-axum/config        axum配置文件
 
+          同时使用了配置文件、Redis、postgresql：
+          https://github.com/axumrs/roaming-axum/blob/main/config/src/main.rs
 
+          https://axum.rs/topic/roaming-axum/error-handling    axum自定义extractor error。
 
+        axum.rs的漫游系列浏览完了。。。。
 
+        其他的实际项目，
+
+        感觉又可以继续尝试写d2q项目的内容了。。。。
 
 
 
