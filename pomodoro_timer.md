@@ -3578,9 +3578,24 @@
 
         axum.rs的漫游系列浏览完了。。。。
 
-        其他的实际项目，
+        其他的实际项目，看起来还是不错的，可以作为参考。。。
 
         感觉又可以继续尝试写d2q项目的内容了。。。。
+
+## 第 218 个番茄时间(非标)
+    时间：2022.05.07 11:25
+    内容： 规划接口功能。
+
+## 第 219 个番茄时间(非标)
+    时间：2022.05.07 15:55
+    内容：  懵逼+发呆。。。
+            tracing的levels: error > warn > info > debug > trace
+            
+        关于session，axum的Example代码中使用了async-session (https://github.com/http-rs/async-session)。
+
+        可以考虑使用，以便后续直接将redis作为后端KV数据库使用。。。
+
+        使用tracing::debug来打印http请求记录，应该如何实现？  通过中间件吗？
 
 
 

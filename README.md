@@ -18,7 +18,7 @@
                             2022年1月4日凌晨3点许，苏州
 
 ----------------------
-经历23次放弃，188个番茄时间，看完了 《Programming Rust》，开始写代码，项目缩水搞一个简单版本的。   H5(taro-vue) + axum + postgresql 实现。
+经历23次放弃，188个番茄时间，看完了 《Programming Rust》，开始写代码，项目缩水搞一个简单版本的。   H5(taro-vue) + axum + sqlx + postgresql 实现。
 
                             2022年4月29日凌晨2点许，苏州
 
