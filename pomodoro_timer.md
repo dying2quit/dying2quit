@@ -3597,6 +3597,31 @@
 
         使用tracing::debug来打印http请求记录，应该如何实现？  通过中间件吗？
 
+## 第 220 个番茄时间(非标)
+    时间：2022.05.07 23:43
+    内容：发现了官方的showcase。。。。。
+        https://github.com/tokio-rs/axum/blob/main/ECOSYSTEM.md#project-showcase
+
+        其中有一个showcase使用的技术栈是：axum+sqlx+postgresql. 非常值得借鉴。。。。
+        https://github.com/launchbadge/realworld-axum-sqlx
+
+        目前成功润起来了，，，，
+        ```
+        $ cargo install sqlx-cli --features postgres
+        $ sqlx migrate run
+        $ cargo run
+        ```
+        curl http://127.0.0.1:8080/api/users
+
+        使用了下apifox，确实很不错的样子。。。。
+
+## 第 221 个番茄时间(非标)
+    时间：2022.05.0x 
+    内容：继续研究 realworld-axum-sqlx
+
+
+
+
 
 
 
