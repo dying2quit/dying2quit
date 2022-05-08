@@ -3616,9 +3616,13 @@
         使用了下apifox，确实很不错的样子。。。。
 
 ## 第 221 个番茄时间(非标)
-    时间：2022.05.0x 
+    时间：2022.05.08 17:20
     内容：继续研究 realworld-axum-sqlx
+        再次浏览了以便《Programming Rust》第8章 包和模块。
 
+        大概测试了realworld-axum-sqlx的user注册登录几个api。
+
+        
 
 
 
