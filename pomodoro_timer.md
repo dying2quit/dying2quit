@@ -3622,7 +3622,12 @@
 
         大概测试了realworld-axum-sqlx的user注册登录几个api。
 
+## 第 222 个番茄时间(非标)
+    时间：2022.05.08 22:40
+    内容：
+        https://cloak.software/blog/rust-on-nails   这个指导性项目也是  axum+sqlx+postgresql。
         
+        看困了，，，，，，   
 
 
 
