@@ -3649,6 +3649,14 @@
     内容：
         https://cloak.software/blog/rust-on-nails   继续
 
+## 第 226 个番茄时间(非标)
+    时间：2022.05.11 
+    内容：https://cloak.software/blog/rust-on-nails  
+        省略的内容越来越多了，看不太明白了。。。。
+        算了，还是开始搞自己的项目好一点，这个反倒是复杂的一批。。。  涉及太多别的内容。。。
+
+        build.rs到底是干什么用的呢？
+        Cargo 就会先编译和执行build.rs，然后再去构建整个项目！！！
 
 
 
