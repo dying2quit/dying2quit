@@ -3639,13 +3639,15 @@
         https://github.com/purton-tech/cloak
 
 ## 第 224 个番茄时间(非标)
-    时间：2022.05.0x 
+    时间：2022.05.10
     内容：cloak项目比较复杂，打算还是先按着其blog操作运行起来看看。。。
 
         能跟着稍微学习vscode远程开发，还是可以的。。。
 
-
-
+## 第 225 个番茄时间(非标)
+    时间：2022.05.11 21:00
+    内容：
+        https://cloak.software/blog/rust-on-nails   继续
 
 
 
