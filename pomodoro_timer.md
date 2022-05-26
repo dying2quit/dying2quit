@@ -3680,6 +3680,28 @@
     时间：2022.05.25 22:27
     内容：d2q项目ing      
         需要自定义error。。。。。
+        error 也需要实现IntoResponse
+
+## 第 232 个番茄时间(非标)
+    时间：2022.05.27 00:52
+    内容：d2q项目ing      
+        thiserror  ---> 派生宏。
+        thiserror::Error
+        ```
+        #[derive(Error)]
+        {
+            // Attributes available to this derive:
+            #[backtrace]
+            #[error]
+            #[from]
+            #[source]
+        }
+        ```
+        感觉为了看懂`realworld-axum-sqlx`都不是那么简单的事情。。。。。
+
+
+
+
 
 
 --------------------
