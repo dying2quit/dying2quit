@@ -3703,8 +3703,20 @@
     时间：2022.06.18 15:00
     内容： 细说Rust错误处理  https://rustcc.cn/article?id=75dbd87c-df1c-4000-a243-46afc8513074
         
-        所以，这就是为什么都推荐使用anyhow或thiserror吗？  那这两者孰优孰劣呢？
-        
+        所以，这就是为什么都推荐使用anyhow / thiserror吗？
+
+        anyhow: Flexible concrete Error type built on std::error::Error
+        thiserror: derive(Error) for struct and enum error types
+
+
+## 第 233 个番茄时间(非标)
+    时间：2022.06.30 00:12
+    内容： 关于 Rust 错误处理的思考     https://rustmagazine.github.io/rust_magazine_2021/chapter_2/rust_error_handle.html
+
+        对于一些新的错误处理库，目前社区里较为主流的建议可能是组合使用 thiserror 和 anyhow 这两个库。其中 thiserror 可以看作是定义 Error 的一个工具，它只帮你生成一些定义 Error 的代码，别的什么都不做，相当纯粹。
+        而 anyhow 则为你定义好了一个 Error 类型，基本可以看作是一个 Box<dyn Error> ，同时还提供了一些如 context 等扩展功能，用起来更加无脑。
+
+        snafu 是更好的选择？？？
 
 
 
