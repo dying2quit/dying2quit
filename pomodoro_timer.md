@@ -3709,7 +3709,7 @@
         thiserror: derive(Error) for struct and enum error types
 
 
-## 第 233 个番茄时间(非标)
+## 第 234 个番茄时间(非标)
     时间：2022.06.30 00:12
     内容： 关于 Rust 错误处理的思考     https://rustmagazine.github.io/rust_magazine_2021/chapter_2/rust_error_handle.html
 
