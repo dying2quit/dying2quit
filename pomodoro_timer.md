@@ -3718,6 +3718,14 @@
 
         snafu 是更好的选择？？？
 
+## 第 235 个番茄时间(非标)
+    时间：2022.07.14 14:22
+    内容： 重读https://github.com/launchbadge/realworld-axum-sqlx。
+        遇到cargo.toml文件中clap未启用derive特性导致的报错问题。
+
+
+
+
 
 
 --------------------
