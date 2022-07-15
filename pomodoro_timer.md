@@ -3723,6 +3723,10 @@
     内容： 重读https://github.com/launchbadge/realworld-axum-sqlx。
         遇到cargo.toml文件中clap未启用derive特性导致的报错问题。
 
+## 第 236 个番茄时间(非标)
+    时间：2022.07.15 14:33
+    内容： 重读https://github.com/launchbadge/realworld-axum-sqlx。
+        good job, str和闭包的知识忘了，，，，，   
 
 
 
