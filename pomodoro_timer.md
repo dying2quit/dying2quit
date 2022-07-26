@@ -3767,6 +3767,15 @@
     时间：2022.07.25 18:45
     内容： go on....
 
+## 第 244 个番茄时间
+    时间：2022.07.26 18:12
+    内容： 
+        axum 0.5版本相对于0.3版本有变动，故而在realworld-axum-sqlx代码存在变动。
+        
+        https://tokio.rs/blog/2022-03-whats-new-in-axum-0-5
+
+        下一步：看看怎么给自定义错误类型添加 IntoResponse trait。
+
 
 
 
