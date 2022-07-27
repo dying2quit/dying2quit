@@ -3776,7 +3776,15 @@
 
         下一步：看看怎么给自定义错误类型添加 IntoResponse trait。
 
+## 第 245 个番茄时间
+    时间：2022.07.27 11:46
+    内容： 
+        因为axum 0.5 版本差异，所以相关的学习，最好还是看官方原始文档。
+        error_handling的核心目的就是让error类型实现Infallible。（功能意义上错误，但代码意义上要正确的处理错误。。。。）
+        https://docs.rs/axum/latest/axum/error_handling/index.html
 
+        next: 阅读 IntoResponse 相关内容。
+        
 
 
 --------------------
