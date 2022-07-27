@@ -3784,7 +3784,15 @@
         https://docs.rs/axum/latest/axum/error_handling/index.html
 
         next: 阅读 IntoResponse 相关内容。
-        
+
+## 第 246 个番茄时间
+    时间：2022.07.27 15:37
+    内容：
+        看了一丢丢 IntoResponse，解决了d2q上的一个小问题。。。。
+
+        待续。。。
+
+
 
 
 --------------------
