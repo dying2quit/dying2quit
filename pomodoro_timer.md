@@ -3807,6 +3807,32 @@
 
         next: 暂停折腾数据库，先把用户的增删改查功能实现。。。。
 
+## 第 249 个番茄时间
+    时间：2022.07.28 
+    内容：
+         echo -n "examplepass" | openssl dgst -sha256     --->   7437de75202124dc8370ee1c167712074c395d6db64f8266d04412f8adfa0a46
+         
+## 第 250 个番茄时间
+    时间：2022.07.28 18:18
+    内容： String 与 &str
+        https://blog.thoughtram.io/string-vs-str-in-rust/  https://zhuanlan.zhihu.com/p/123278299
+        
+        因为rust的解引用强制转换（deref coercions）特性，使得 &String 自动转换为 &str。
+
+## 第 251 个番茄时间
+    时间：2022.07.28 23:43
+    内容： 
+        rust 加密生态： ring, rustls。
+        rust hash库： https://github.com/RustCrypto/hashes
+        sha2: https://docs.rs/sha2/latest/sha2/
+
+        let mut hasher = Sha512::new();
+        hasher.update(password_tmp);
+        let result = hasher.finalize();
+
+        result是Box<[u8]>类型，如何转换为String呢？？？？？
+
+    
 
 
 
