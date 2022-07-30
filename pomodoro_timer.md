@@ -3844,11 +3844,21 @@
         next: create_user 写数据到数据库。
 
 ## 第 253 个番茄时间(非标)
-    时间：2022.07.29 
+    时间：2022.07.29 18:33
     内容： 
         生成uuid。
 
         next: sqlx insert操作。。。。
+
+## 第 254 个番茄时间(非标)
+    时间：2022.07.30 11:33
+    内容： 
+        使用 sqlx::query_scalar! 执行了insert。
+
+        next: 研究下 on_constraint 的实现。。。。
+
+
+
 
 
 
