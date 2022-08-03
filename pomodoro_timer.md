@@ -3881,14 +3881,34 @@
         亟待研究下extractor的写法。。。
 
 ## 第 258 个番茄时间(非标)
-    时间：2022.08.03 
+    时间：2022.08.03
     内容：
         jwt长度瘦身：简化Claims的字段名称及内容长度；使用更短的哈希算法。
         从当前版本的jwt代码来看，貌似只支持Sha256,Sha384,Sha512，分别对应Hs256,Hs384,Hs512。
 
         jwt中payload可能会信息泄漏，怎么处理？
 
-        
+## 第 259 个番茄时间(非标)
+    时间：2022.08.03 15:31
+    内容：
+        实现在login的时候，更新user表中的last_login_at字段。
+        ```
+        if user.credential == credential {
+            // update the last login datetime
+            let update_result = sqlx::query!(
+            // language=PostgreSQL
+            r#"
+                update "user"
+                set last_login_at = now()
+                where uuid = $1
+            "#,
+            &user.uuid
+        )
+                .execute(&ctx.db)
+                .await?;
+        ```
+
+
 
 --------------------
 时常检视“第一性原则”!!!!
