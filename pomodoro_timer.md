@@ -3942,10 +3942,45 @@
         ```
 
 ## 第 263 个番茄时间(非标)
-    时间：2022.08.04 
+    时间：2022.08.04 16:22
     内容：
         做好了memo::router()。
-        
+
+## 第 264 个番茄时间(非标)
+    时间：2022.08.05 00:31
+    内容：
+        在设计Memo相关的响应包时，设计了结构体
+        ```
+        #[derive(serde::Serialize)]
+        struct MemoResponse {
+            state: bool,
+            msg: Option<String>,
+            data: Option<MemoResponseData>,
+        }
+        ```,
+        其中MemoResponseData原本尝试使用联合体union类型，但总是报错，可能跟Copy trait, ManuallyDrop什么的有关，，，，  
+
+        改用enum类型，貌似可以解决问题。。
+        ```
+        #[derive(serde::Serialize)]
+        enum MemoResponseData {
+            memolist(Vec<String>),
+            memodetail(Memo),
+        }
+        ```
+
+        handler函数中响应：
+        ```
+        Ok(Json(MemoResponse{state: true, msg: None,
+            data: None,
+            // data: MemoResponseData::memodetail(Memo{memoid: Some("123123".to_string()),..Default::default()})
+            // data: Some(MemoResponseData::memolist(vec!["1234".to_string(),"5678".to_string(),"1100".to_string()]))
+        }))
+        ```
+
+        next: 完善create_update_memo的功能。。。。
+
+
 
 
 
