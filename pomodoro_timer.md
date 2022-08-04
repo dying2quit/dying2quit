@@ -3918,8 +3918,28 @@
     时间：2022.08.03 21:38
     内容：勉强完成了用户的更新，，，    整体而言，代码功能上还存在问题的。。。
 
+## 第 262 个番茄时间(非标)
+    时间：2022.08.04 
+    内容：Memo数据表设计~
+        Memo名，触发类型、触发条件、终止条件
+        ```
+        create table if not exists memo
+        (
+            uuid              uuid not null constraint memo_pk primary key,
+            user_uuid         uuid not null,
+            memoname          text not null,
+            description       text,
+            trigger_type      integer,
+            trigger_condition text,
+            termination_times integer,
+            is_delete         boolean default false,
+            create_at         timestamp with time zone,
+            update_at         timestamp with time zone
+        );
 
-
+        create unique index if not exists memo_uuid_uindex
+            on memo (uuid);
+        ```
 
 
 --------------------
