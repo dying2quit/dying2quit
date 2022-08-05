@@ -3993,9 +3993,39 @@
     内容：
         有错误。。。。
 
+## 第 267 个番茄时间(非标)
+    时间：2022.08.05 
+    内容：
+        ```
+        async fn create_update_memo(
+            auth_user: AuthUser,
+            Json(memo): Json<Memo>,
+            ctx: Extension<ApiContext>,
+        ) -> Result<Json<MemoResponse>> {
+            let memo_uuid = Uuid::try_parse(&memo.memoid.unwrap_or(String::new()))?;
+            // 此处 ? 返回的错误类型是：Uuid::Error，是不同于 D2qErr的，该如何处理呢？
 
+            Err(D2qErr::NotFound)
+        }
+        ```
 
+        当前解决办法：
+        在error.rs中：
+        ```
+        #[derive(thiserror::Error, Debug)]
+        pub enum D2qErr {
+            
+            #[error("an internal server error occurred")]
+            Anyhow(#[from] anyhow::Error),
 
+            #[error("an uuid error occurred")]
+            Uuid(#[from] uuid::Error),
+        }
+        ```
+
+        触发报错时：直接返回“an uuid error occurred”。 
+
+        本质上应该是用anyhow来实现的From<T> trait。
 
 --------------------
 时常检视“第一性原则”!!!!
