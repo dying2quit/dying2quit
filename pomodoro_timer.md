@@ -4034,6 +4034,48 @@
     内容：
         going...
 
+## 第 269 个番茄时间(非标)
+    时间：2022.08.06 01:08
+    内容：
+        设计Memo记录的消极表、积极表
+        ```sql
+        create table if not exists quitmemo
+        (
+            uuid       uuid                               not null
+            constraint memo_quitrecord_pk
+            primary key,
+            memo_uuid  uuid                               not null,
+            quit_time  timestamp with time zone default now(),
+            quit_level integer                  default 1 not null,
+            quit_type  text,
+            quit_desc  text
+            );
+
+        comment on table quitmemo is '所有过程中或主观或客观原因造成的放弃。';
+
+        comment on column quitmemo.quit_level is '消极情绪的级别：1-一般，2-高，3-严重。';
+
+        comment on column quitmemo.quit_type is '原因：怠惰，挫败，焦虑，烦躁，贪玩，没时间，，，';
+
+        create unique index if not exists memo_quitrecord_uuid_uindex
+            on quitmemo (uuid);
+        ------------------------
+        create table if not exists staymemo
+        (
+            uuid      uuid not null
+            constraint staymemo_pk
+            primary key,
+            memo_uuid uuid not null,
+            stay_time timestamp with time zone default now(),
+            stay_desc text
+            );
+
+        comment on table staymemo is '所有积极的付出';
+
+        create unique index if not exists staymemo_uuid_uindex
+            on staymemo (uuid);
+        ```
+
 
 
 --------------------
