@@ -4097,8 +4097,30 @@
 
         在rust中，如果中途return，需要加return关键字。。。
 
+## 第 272 个番茄时间(非标)
+    时间：2022.08.06 21:03
+    内容：
 
-        
+        sqlx返回大量结构体，如何进行批量重整呢？
+
+        ```
+        let quitrecdlist = sqlx::query_as!(
+            QuitRecordFromQuery,
+            r#"
+                select uuid as record_uuid, memo_uuid, quit_time, quit_type, quit_level, quit_desc from quitrecord
+                where memo_uuid = (select uuid from memo where user_uuid = $1 and uuid = $2 and is_delete = false)
+            "#,
+            user_uuid,
+            memo_uuid
+        )
+            .fetch_all(&ctx.db)
+            .map_ok(QuitRecordFromQuery::into_quitrecord)
+            .try_collect()
+            .await?;
+        ```
+
+        遇到苦难呢了。。。。
+
 
 --------------------
 时常检视“第一性原则”!!!!
