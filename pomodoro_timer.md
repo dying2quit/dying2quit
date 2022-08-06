@@ -4121,6 +4121,24 @@
 
         遇到苦难呢了。。。。
 
+## 第 273 个番茄时间(非标)
+    时间：2022.08.06 02:19
+    内容：
+        如此进行转换，，，，，
+        ```
+        let newquitrecdlist: Vec<QuitRecord> = quitrecdlist.into_iter()
+                .map(|x|x.into_quitrecord())
+                .collect();
+        ```
+
+        至此，record的创建及查询功能完成。。。。
+
+        next: 前端代码的实现。。。。
+
+        next next: 前端作为需求，驱动后端代码改进。。。
+
+
+
 
 --------------------
 时常检视“第一性原则”!!!!
