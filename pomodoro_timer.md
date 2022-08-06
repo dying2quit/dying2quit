@@ -4083,9 +4083,22 @@
 
         create_quitrecd 又报错，，，，，
 
+## 第 271 个番茄时间(非标)
+    时间：2022.08.06 14:18
+    内容：
+        sqlx::query! select返回值的处理有点麻烦的样子，，，
+        ```
+        let validmemocount;
+        match sql_result.validmemocount{
+            Some(vvv) => validmemocount = vvv,
+            _ => validmemocount = 0,
+        }
+        ```
+
+        在rust中，如果中途return，需要加return关键字。。。
 
 
-
+        
 
 --------------------
 时常检视“第一性原则”!!!!
