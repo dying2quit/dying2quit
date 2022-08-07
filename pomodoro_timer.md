@@ -4144,7 +4144,7 @@
         taro 项目初始化
         ```bash
         $ taro init w2qweb
-        
+
         ? 请输入项目介绍 d2quit web端
         ? 请选择框架 Vue3
         ? 是否需要使用 TypeScript ？ Yes
@@ -4156,7 +4156,20 @@
         ? 请选择模板 vue3-NutUI（使用 NutUI3.0 的模板）
         ```
         
+## 第 275 个番茄时间(非标)
+    时间：2022.08.07 23:38
+    内容：
+        兔子洞 taro --> vue3 --> typescript
 
+        了不起的 TypeScript 入门教程（1.2W字）
+        https://segmentfault.com/a/1190000022876390
+
+
+        TypeScript: TS Playground
+        https://www.typescriptlang.org/play
+
+        Next: 快速过一遍TS，酌情看要不要过过JS，然后过vue3。
+        
 
 
 
