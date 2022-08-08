@@ -4198,6 +4198,19 @@
         }
         ```
 
+## 第 277 个番茄时间(非标)
+    时间：2022.08.08 22:00
+    内容：
+        若干怪异类型：Any, Unknown, Void, Null, Undefined, Never。
+
+        断言语法： <>    as 
+
+        next: type guard
+
+
+
+
+        
 
 
 
