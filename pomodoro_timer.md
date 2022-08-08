@@ -4172,6 +4172,35 @@
         
 
 
+## 第 276 个番茄时间(非标)
+    时间：2022.08.08 18:42
+    内容：
+        ```
+        var Direction;   是变量声明
+
+        Direction = {}  是变量赋初始值
+
+        然后函数体内对参数的修改，可以影响外部变量~~~
+        ```
+
+        any 和 unknown 的最大区别是, unknown 是 top type (任何类型都是它的 subtype) , 而 any 即是 top type, 又是 bottom type (它是任何类型的 subtype ) ,这导致 any 基本上就是放弃了任何类型检查.
+
+        可以使用 as 关键字将 unknown强制转换为具体类型，再进行操作。   该方式存在问题。。。
+
+        可以使用 typeof，instanceof 来缩小变量的类型。   此方法称为： 类型收缩。
+        ```
+        type getAnimal = () => unknown;
+
+        const dog = getAnimal();
+        
+        if (dog instanceof Dog) {
+        console.log(dog.name.toLowerCase());
+        }
+        ```
+
+
+
+
 
 --------------------
 时常检视“第一性原则”!!!!
