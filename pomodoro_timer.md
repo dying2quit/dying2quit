@@ -4241,6 +4241,19 @@
 
         next: 继续看看infer。。。。
 
+## 第 282 个番茄时间(非标)
+    时间：2022.08.09 17:31
+    内容：
+        TypeScript装饰器 是什么鬼~~~~
+
+## 第 283 个番茄时间(非标)
+    时间：2022.08.09 19:00
+    内容：
+
+        跑马观花 ：[了不起的 TypeScript 入门教程（1.2W字） - SegmentFault 思否](https://segmentfault.com/a/1190000022876390)
+
+        next: https://24kcs.github.io/vue3_study
+
 
 
 
