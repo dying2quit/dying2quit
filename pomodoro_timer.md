@@ -4255,6 +4255,20 @@
         next: https://24kcs.github.io/vue3_study
 
 
+## 第 284 个番茄时间(非标)
+    时间：2022.08.10 00:20
+    内容：暂时中断了vue学习，考虑联系下rust，避免长时间不用生疏了。
+
+        一个比较好的命令行应用开发指引：https://suibianxiedianer.github.io/rust-cli-book-zh_CN/README_zh.html
+
+        接下来考虑采用：测试驱动开发完成一个命令行工具。。。。
+
+
+
+
+
+
+
 
 
 
