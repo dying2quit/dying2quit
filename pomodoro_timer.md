@@ -4288,7 +4288,25 @@
         #[link(name = "CoreFoundation", kind = "framework")]
         ```
 
+## 第 287 个番茄时间(非标)
+    时间：2022.08.11 02:20
+    内容：
+        [Documentation: Derive Reference](https://docs.rs/clap/latest/clap/_derive/index.html)
+
+        ```
+        - `Parser` : 将参数解析为 struct（参数）或 enum（子命令）。
+            - `Args`：允许定义一组可重用的参数，这些参数被合并到它们的父容器中。
+            - `Subcommand`：定义可用的子命令。子命令参数可以在 struct-variant 中定义，也可以使用 tuple-variant 自动展平。
+        - `ValueEnum`：允许将值直接解析到enum，如果是不受支持的值则进行报错。
+            - The derive doesn’t work on enums that contain non-unit variants, unless they are skipped???
+        ```
         
+        next: 继续阅读 Derive Reference
+
+
+        
+
+
 
 --------------------
 时常检视“第一性原则”!!!!
