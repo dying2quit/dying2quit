@@ -4272,11 +4272,23 @@
 
         next: clap如何写测试函数？？？？
 
+## 第 286 个番茄时间(非标)
+    时间：2022.08.11 00:16
+    内容：
+        clap还没搞清楚。。。。。
 
+        属性的语法借鉴了 C#，内部属性（Inner attributes）以 #! 开头，外部属性（Outer attributes）则以 # 开头。内部属性应用于它所在的项（Item），外部属性应用于紧跟在它之后的项（Item）。
+        属性中的参数支持不同的语法形式，比如：
 
+        ```
+        #[no_std]
+        #[doc = "example"]
+        #[allow(unused, clippy::inline_always)]
+        #[macro_use(foo, bar)]
+        #[link(name = "CoreFoundation", kind = "framework")]
+        ```
 
-
-
+        
 
 --------------------
 时常检视“第一性原则”!!!!
