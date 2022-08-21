@@ -4346,18 +4346,27 @@
         next: jump into vue3
 
 ## 第 296 个番茄时间(非标)
-    时间：2022.08.19 19:35
+    时间：2022.08.19
     内容：对于vue的脚手架工具，vue-cli是稳如老狗，vite是明日之星。
 
 ## 第 297 个番茄时间(非标)
     时间：2022.08.21 03:57
     内容：Composition API 了解....
 
+## 第 298 个番茄时间(非标)
+    时间：2022.08.22 15:56
+    内容：
+        shallowReactive, shallowRef
+        readonly, shallowReadonly
+        toRaw, markRaw
+        toRef
+        customRef
+        provide, inject
 
 
 
 
-    
+
 
 --------------------
 时常检视“第一性原则”!!!!
