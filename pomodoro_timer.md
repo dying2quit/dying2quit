@@ -4383,6 +4383,25 @@
             - [深入指南](https://cn.vuejs.org/guide/essentials/application.html)
             - [示例](https://cn.vuejs.org/examples/)
 
+## 第 302 个番茄时间(非标)
+    时间：2022.08.22 
+    内容：
+        vite官方文档： https://cn.vitejs.dev/guide/
+
+        搭建vue3项目：
+        ```
+        npm create vite@latest
+
+        npm create vite@latest my-vue-app -- --template vue-ts
+        ```
+
+## 第 302 个番茄时间(非标)
+    时间：2022.08.22 18:39
+    内容：
+        看 https://cn.vuejs.org/examples/，进行中。
+
+        计算看完example后，直接试试taro。
+
 
 
 --------------------
