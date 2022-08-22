@@ -4369,10 +4369,19 @@
         https://24kcs.github.io/vue3_study/  过了一遍，，， 说不上看懂，，，
 
 ## 第 300 个番茄时间(非标)
-    时间：2022.08.21 
+    时间：2022.08.22 01:41
     内容：
-        
+        https://cn.vuejs.org/tutorial/ step1-8
 
+## 第 301 个番茄时间(非标)
+    时间：2022.08.22 15:33
+    内容：
+        https://cn.vuejs.org/tutorial/ finish
+
+        next:
+            - [快速上手](https://cn.vuejs.org/guide/quick-start.html)
+            - [深入指南](https://cn.vuejs.org/guide/essentials/application.html)
+            - [示例](https://cn.vuejs.org/examples/)
 
 
 
