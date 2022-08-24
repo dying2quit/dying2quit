@@ -4435,9 +4435,34 @@
 
         next: 学习Vue Test Utils。 https://test-utils.vuejs.org/
 
+## 第 308 个番茄时间(非标)
+    时间：2022.08.24 
+    内容：
+        [测试|Vue.js](https://cn.vuejs.org/guide/scaling-up/testing.html)
+        Vue的单元测试方案：
+            - Vitest        https://vitest.dev/
+            - Jest
+            - Peeky
+        Vue的组件测试：
+            - Vitest ???
+            - Vue Test Utils
+            - Cypress
+            - Testing Library
+        Vue的端到端测试：
+            - Crypress      https://www.cypress.io/
+            - Playwright
+            - Nightwatch v2
+
+        Vitest配置？？？   https://vitest.dev/config/
+
+
+
+
+
 
 
 
 
 --------------------
 时常检视“第一性原则”!!!!
+ 
