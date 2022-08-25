@@ -4460,7 +4460,11 @@
     内容：vitest体验。。。
         https://www.bilibili.com/video/BV1hd4y1P7aQ
 
+## 第 310 个番茄时间(非标)
+    时间：2022.08.24 14:38
+    内容：vue+ts，需要给各组件/变量等标注类型。
 
+    
 
 
 
