@@ -4496,8 +4496,30 @@
     内容：
         example-grid 还是不那么简单啊，，，  蛮烧脑的。。。。
 
+        next: example tree
 
-        
+## 第 317 个番茄时间(非标)
+    时间：2022.08.27 02:32
+    内容：example tree，为TreeItem.vue中props标注类型。
+
+        ```
+        // const props = defineProps({
+        //   model: Object
+        // })
+        interface TreeNode {
+        name: string,
+        children?: TreeNode[]
+        }
+
+        const props = defineProps<{
+        model: TreeNode
+        }>()
+        ```
+
+
+
+
+
 
 --------------------
 时常检视“第一性原则”!!!!
