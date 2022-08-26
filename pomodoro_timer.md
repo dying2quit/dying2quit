@@ -4480,8 +4480,24 @@
     时间：2022.08.26 13:59
     内容：《TypeScript 与组合式 API》
 
+## 第 315 个番茄时间(非标)
+    时间：2022.08.26 
+    内容：
+        回example-grid
+        ```
+        const gridColumns = ['name', 'power'];
+        let a = gridColumns.reduce((o, key) => ((o[key] = 1), o), new Object())
+
+        console.log("the reduce returned: ",a);
+        ```
+
+## 第 316 个番茄时间(非标)
+    时间：2022.08.26 16:10
+    内容：
+        example-grid 还是不那么简单啊，，，  蛮烧脑的。。。。
 
 
+        
 
 --------------------
 时常检视“第一性原则”!!!!
