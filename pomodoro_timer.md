@@ -3589,7 +3589,7 @@
 ## 第 219 个番茄时间(非标)
     时间：2022.05.07 15:55
     内容：  懵逼+发呆。。。
-            tracing的levels: error > warn > info > debug > trace
+        tracing的levels: error > warn > info > debug > trace
             
         关于session，axum的Example代码中使用了async-session (https://github.com/http-rs/async-session)。
 
@@ -4727,3 +4727,17 @@
         小程序获取code: wx.login()     用于登录
         小程序获取UserInfo: wx.getUserProfile()   用于注册
 
+## 第 350 个番茄时间(非标)
+    时间：2022.09.21 16:02
+    内容：
+        需要使用redis，查看原有的d2q代码，基本已不适用当前的需求。
+        d2q version 0.1 终结。
+
+        next: d2q version 0.2，注意以测试驱动开发。对于旧代码，以先增、后改、再删的原则处理。
+
+## 第 351 个番茄时间(非标)
+    时间：2022.09.22 00:51
+    内容：
+        .env作为配置文件看着有点怪异，去掉，换toml文件作为配置。
+
+        next: 搞明白 mod 和 use是什么，，， 把命令行参数和配置文件搞定。。。。
