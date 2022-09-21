@@ -4712,3 +4712,18 @@
         getUserProfile是在小程序端调用？  
         https://uniapp.dcloud.net.cn/api/plugins/login.html#getuserprofile
 
+        原有的getUserInfo只能获取到基本无用的匿名信息。
+
+## 第 348 个番茄时间(非标)
+    时间：2022.09.21 12:17
+    内容：
+        梳理用户登录流程。。。
+
+## 第 349 个番茄时间
+    时间：2022.09.21 14:04
+    内容：
+        服务端校验session_key: auth.checkSessionKey
+        小程序校验session_key: wx.checkSession
+        小程序获取code: wx.login()     用于登录
+        小程序获取UserInfo: wx.getUserProfile()   用于注册
+
