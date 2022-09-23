@@ -4788,3 +4788,10 @@
 
         next: 查看wechat-rs是如何使用redis存储会话的，进行借鉴使用。。。
 
+## 第 358 个番茄时间(非标)
+    时间：2022.09.23 13:22
+    内容：
+        wechat-rs中的redis代码看起来也不是很简洁的样子，，，，  
+
+        next: 参考 https://axum.rs/topic/roaming-axum/session
+
