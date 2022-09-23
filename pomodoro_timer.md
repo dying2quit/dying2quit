@@ -4795,3 +4795,13 @@
 
         next: 参考 https://axum.rs/topic/roaming-axum/session
 
+## 第 359 个番茄时间(非标)
+    时间：2022.09.23 17:17
+    内容：
+        回顾内部可变性 Cell vs RefCell上了。。。。 
+
+        依旧觉得很难理解。。。。
+
+
+
+
