@@ -4803,5 +4803,19 @@
         依旧觉得很难理解。。。。
 
 
+## 第 360 个番茄时间(非标)
+    时间：2022.09.23 18:45
+    内容：
+        [Rust源码阅读： Cell/RefCell与内部可变性](https://zhuanlan.zhihu.com/p/384388192)
+        ```
+        pub const fn get(&self) -> *mut T {
+            self as *const UnsafeCell<T> as *const T as *mut T
+        }
+        ```
+        搞不明白。。。。。
 
+## 第 361 个番茄时间(非标)
+    时间：2022.09.23
+    内容：
+        
 
