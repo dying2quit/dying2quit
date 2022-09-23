@@ -4819,5 +4819,16 @@
     内容：
         过了一遍docs.rs/redis的首页描述。。。
 
+## 第 362 个番茄时间(非标)
+    时间：2022.09.23 23:30
+    内容：
+        如果类型U实现了AsRef<T>，则as_ref可以实现&U到&T的转换
+        如果类型U实现了AsMut<T>，则as_mut可以实现从&U到&mut T的转换
+
+        在Redis中存储用户会话比较好的数据类型是：HashMap。
+
+        next: wechat-rs中的session.rs貌似还是可以细看看的。
+
+
 
 
