@@ -4839,4 +4839,21 @@
     内容：
         瞎忙，，，，
 
+## 第 365 个番茄时间(非标)
+    时间：2022.09.24 21:09
+    内容：
+        https://blog.logrocket.com/using-redis-in-a-rust-web-service/
+        代码： https://github.com/zupzup/rust-redis-web-example
         
+        redis-rs: 可同步/异步的单Connection。
+        r2d2-redis: 同步模式的Redis Connection Pool。
+        mobc: 异步模式的Redis Connection Pool。
+
+        redis connection pool:
+            - r2d2-redis
+            - mobc-redis
+            - bb8-redis
+            - deadpool-redis
+
+        next: 采用bb8-redis。
+
