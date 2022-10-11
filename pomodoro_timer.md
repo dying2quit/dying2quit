@@ -4840,7 +4840,7 @@
         瞎忙，，，，
 
 ## 第 365 个番茄时间(非标)
-    时间：2022.09.24 21:09
+    时间：2022.09.24 23:20
     内容：
         https://blog.logrocket.com/using-redis-in-a-rust-web-service/
         代码： https://github.com/zupzup/rust-redis-web-example
@@ -4855,5 +4855,10 @@
             - bb8-redis
             - deadpool-redis
 
-        next: 采用bb8-redis。
+        next: 采用bb8-redis，参考项目：https://github.com/zupzup/rust-redis-web-example
+
+## 第 xxx 个番茄时间(非标)
+    时间：2022.10.11
+    内容：
+        0.2版本代码基本写完了，也不打算继续再搞了，主要是如果完整完成小程序，那还需要很多时间精力，而到最后也是无能盈利的。
 
